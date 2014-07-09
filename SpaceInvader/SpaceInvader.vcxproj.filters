@@ -13,5 +13,78 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Boss">
+      <UniqueIdentifier>{f986fa0e-fb91-431c-b0f2-47d4c8d0b211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Decor">
+      <UniqueIdentifier>{e87c37a6-cc05-4416-bcd4-c544b495532d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Font">
+      <UniqueIdentifier>{ff5ee04c-94e4-4398-b3a3-37642cd1de7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Invader">
+      <UniqueIdentifier>{f12789a8-b2e9-408b-bc5d-6930a15c0cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Player">
+      <UniqueIdentifier>{1106122a-84e0-444d-b8b5-8d80f20876c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\graphisme\img\boss\boss_1200x7200_P_1200.png">
+      <Filter>Resource Files\Boss</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\boss\boss_tire_1200x4800_P_1200.png">
+      <Filter>Resource Files\Boss</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\decor\earth_1400x9600.png">
+      <Filter>Resource Files\Decor</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\decor\fond_4800x4800.png">
+      <Filter>Resource Files\Decor</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\decor\lune_3200x16000_P_3200.png">
+      <Filter>Resource Files\Decor</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\decor\mars_1200x1200.png">
+      <Filter>Resource Files\Decor</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\decor\titre_1500x2800.png">
+      <Filter>Resource Files\Decor</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader1_600x3600_P_600.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader1_tire_300x480_P_120.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader2_600x3600_P_600.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader2_tire_300x480_P_120.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader3_600x3600_P_600.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader3_tire_300x480_P_120.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader4_600x3600_P_600.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\invader\invader4_tire_300x480_P_120.png">
+      <Filter>Resource Files\Invader</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\player\joueur_600x3000_P_600.png">
+      <Filter>Resource Files\Player</Filter>
+    </Image>
+    <Image Include="..\graphisme\img\player\joueur_tire_300x480_P_120.png">
+      <Filter>Resource Files\Player</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\graphisme\img\font\BMgermar.TTF">
+      <Filter>Resource Files\Font</Filter>
+    </Font>
   </ItemGroup>
 </Project>

@@ -36,6 +36,7 @@ void DeadShip();
 void InitShip(Coordonnees position){
     Ship->Position.x = 640;
     Ship->Position.y = 20;
+
     
     Ship->LoadContent = LoadContentShip();
     Ship->UnLoadContent = UnLoadContentShip();

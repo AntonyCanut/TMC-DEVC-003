@@ -11,6 +11,7 @@
 #include "SpriteFunc.h"
 
 struct Player *Ship;
+struct Ennemi *EnnemyShip;
 
 SDL_Surface* LoadContentShip(){
     SDL_Surface *sShip;
@@ -18,7 +19,17 @@ SDL_Surface* LoadContentShip(){
     return sShip;
 }
 
+SDL_Surface* LoadContentEShip(){
+    SDL_Surface *eShip;
+    eShip = SDL_LoadBMP("invader1_600x3600_P_600.png");
+    return eShip;
+}
+
 void UnLoadContentShip(){
+    SDL_FreeSurface(LoadContentShip());
+}
+
+void UnLoadContentEnnemyShip(){
     SDL_FreeSurface(LoadContentShip());
 }
 
@@ -31,6 +42,14 @@ void UpdateInputShip();
 void ShotShip();
 
 void DeadShip();
+
+void DrawEShip();
+
+void UpdateEShip();
+
+void ShotEShip();
+
+void DeadEShip();
 
 
 void InitShip(Coordonnees position){
@@ -45,4 +64,16 @@ void InitShip(Coordonnees position){
     Ship->UpdateInput = UpdateInputShip();
     Ship->Shot = ShotShip();
     Ship->Dead = DeadShip();
+}
+
+void InitEShip(Coordonnees position){
+    EnnemyShip->Position.x = 20;
+    EnnemyShip->Position.y = 800;
+    
+    EnnemyShip->LoadContent = LoadContentEShip();
+    EnnemyShip->UnLoadContent = UnLoadContentEShip();
+    EnnemyShip->Draw = DrawEShip();
+    EnnemyShip->Update = UpdateEShip();
+    EnnemyShip->Shot = ShotEShip();
+    EnnemyShip->Dead = DeadEShip();
 }

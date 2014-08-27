@@ -12,9 +12,15 @@
 
 struct Player *Ship;
 <<<<<<< HEAD
+<<<<<<< HEAD
 struct Ennemi *EnnemyShip1;
 =======
 struct Ennemi *EnnemyShip;
+>>>>>>> FETCH_HEAD
+=======
+
+struct Ennemi *EnnemyShip;
+
 >>>>>>> FETCH_HEAD
 
 SDL_Surface* LoadContentShip(){
@@ -24,15 +30,23 @@ SDL_Surface* LoadContentShip(){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 SDL_Surface* LoadContentEShip1(){
     SDL_Surface *eShip1;
     eShip1 = SDL_LoadBMP("invader1_600x3600_P_600.png");
     return eShip1;
 =======
+=======
+
+>>>>>>> FETCH_HEAD
 SDL_Surface* LoadContentEShip(){
     SDL_Surface *eShip;
     eShip = SDL_LoadBMP("invader1_600x3600_P_600.png");
     return eShip;
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
+
 >>>>>>> FETCH_HEAD
 }
 
@@ -41,11 +55,18 @@ void UnLoadContentShip(){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void UnLoadContentEnnemyShip1(){
     SDL_FreeSurface(LoadContentShip1());
 =======
 void UnLoadContentEnnemyShip(){
     SDL_FreeSurface(LoadContentShip());
+>>>>>>> FETCH_HEAD
+=======
+
+void UnLoadContentEnnemyShip(){
+    SDL_FreeSurface(LoadContentShip());
+
 >>>>>>> FETCH_HEAD
 }
 
@@ -60,14 +81,11 @@ void ShotShip();
 void DeadShip();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void DrawEShip1();
-
-void UpdateEShip1();
-
-void ShotEShip1();
-
-void DeadEShip1();
 =======
+>>>>>>> FETCH_HEAD
+
 void DrawEShip();
 
 void UpdateEShip();
@@ -75,6 +93,10 @@ void UpdateEShip();
 void ShotEShip();
 
 void DeadEShip();
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
+
 >>>>>>> FETCH_HEAD
 
 
@@ -93,6 +115,7 @@ void InitShip(Coordonnees position){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 void InitEShip1(Coordonnees position){
     EnnemyShip1->Position.x = 20;
     EnnemyShip1->Position.y = 800;
@@ -104,6 +127,9 @@ void InitEShip1(Coordonnees position){
     EnnemyShip1->Shot = ShotEShip1();
     EnnemyShip1->Dead = DeadEShip1();
 =======
+=======
+
+>>>>>>> FETCH_HEAD
 void InitEShip(Coordonnees position){
     EnnemyShip->Position.x = 20;
     EnnemyShip->Position.y = 800;
@@ -114,5 +140,9 @@ void InitEShip(Coordonnees position){
     EnnemyShip->Update = UpdateEShip();
     EnnemyShip->Shot = ShotEShip();
     EnnemyShip->Dead = DeadEShip();
+<<<<<<< HEAD
+>>>>>>> FETCH_HEAD
+=======
+
 >>>>>>> FETCH_HEAD
 }

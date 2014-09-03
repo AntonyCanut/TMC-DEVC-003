@@ -98,6 +98,5 @@ void UpdateInvaderShip();
 void InitInvaderShip();
 void DestroyInvaderShip();
 
->>>>>>> Debut du vaisseau invader
 
 #endif

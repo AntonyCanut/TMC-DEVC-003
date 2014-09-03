@@ -13,6 +13,8 @@ typedef struct Coordonnees Coordonnees;
 struct Coordonnees {
     int x;
     int y;
+    int w;
+    int h;
 };
 
 // Préparation des type def, on pourrait faire directement mais visuellement c'est mieux
@@ -71,6 +73,19 @@ struct Bullet {
     UnLoadContent UnLoadContent;
     Draw Draw;
     Update Update;
+};
+
+typedef struct Moon;
+struct Moon {
+    Coordonnees Position;
+    int IsAlive;
+    int Speed;
+    Init Init;
+    LoadContent LoadContent;
+    UnLoadContent UnLoadContent;
+    Draw Draw;
+    Update Update;
+    Dead Dead;
 };
 
 #endif

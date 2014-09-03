@@ -60,6 +60,8 @@ void DeadEShip();
 void InitShip(Coordonnees position){
     Ship->Position.x = 640;
     Ship->Position.y = 20;
+    Ship->Position.w = 30;
+    Ship->Position.h = 50;
 
     
     Ship->LoadContent = LoadContentShip();
@@ -74,6 +76,8 @@ void InitShip(Coordonnees position){
 void InitEShip(Coordonnees position){
     EnnemyShip->Position.x = 20;
     EnnemyShip->Position.y = 800;
+    EnnemyShip->Position.w = 30;
+    EnnemyShip->Position.h = 50;
     
     EnnemyShip->LoadContent = LoadContentEShip();
     EnnemyShip->UnLoadContent = UnLoadContentEShip();

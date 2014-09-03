@@ -25,7 +25,7 @@ struct Ennemi *EnnemyShip;
 
 SDL_Surface* LoadContentShip(){
     SDL_Surface *sShip;
-    sShip = SDL_LoadBMP("joueur_600x3000_P_600.png");
+    sShip = SDL_LoadBMP("img/player/joueur_600x3000_P_600.png");
     return sShip;
 }
 
@@ -33,7 +33,7 @@ SDL_Surface* LoadContentShip(){
 <<<<<<< HEAD
 SDL_Surface* LoadContentEShip1(){
     SDL_Surface *eShip1;
-    eShip1 = SDL_LoadBMP("invader1_600x3600_P_600.png");
+    eShip1 = SDL_LoadBMP("img/invader/invader1_600x3600_P_600.png");
     return eShip1;
 =======
 =======
@@ -41,7 +41,7 @@ SDL_Surface* LoadContentEShip1(){
 >>>>>>> FETCH_HEAD
 SDL_Surface* LoadContentEShip(){
     SDL_Surface *eShip;
-    eShip = SDL_LoadBMP("invader1_600x3600_P_600.png");
+    eShip = SDL_LoadBMP("img/invader/invader1_600x3600_P_600.png");
     return eShip;
 <<<<<<< HEAD
 >>>>>>> FETCH_HEAD

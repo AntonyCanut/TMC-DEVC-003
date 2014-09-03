@@ -13,7 +13,7 @@ SDL_Texture *tBackground;
 
 SDL_Rect bPos;
 
-char *srcBackgroundPicture = "fond_4800x4800.png";
+char *srcBackgroundPicture = "img/decor/fond_4800x4800.png";
 
 void Init()
 {
@@ -33,7 +33,7 @@ void Init()
 
 void Load()
 {
-    tBackground = IMG_LoadTexture(Renderer, "fond_4800x4800.png");
+    tBackground = IMG_LoadTexture(Renderer, "img/decor/fond_4800x4800.png");
 }
 
 void Destroy()

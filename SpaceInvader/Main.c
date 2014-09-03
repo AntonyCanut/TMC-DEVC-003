@@ -1,13 +1,6 @@
-//
-//  Main.c
-//  Space Invader
-//
-//  Created by Antony Canut on 19/07/14.
-//  Copyright (c) 2014 Antony Canut. All rights reserved.
-//
-
 #include <stdio.h>
-#include <SDL2/SDL.h>
+#include <SDL2.framework/Headers/SDL.h>
+#include <SDL2_image.framework/Headers/SDL_image.h>
 
 #define SCREEN_WIDTH 1280
 #define SCREEN_HEIGHT 800
@@ -40,15 +33,11 @@ void Init()
 
 void Load()
 {
-    sBackground = SDL_LoadBMP(srcBackgroundPicture);
-    tBackground = SDL_CreateTextureFromSurface(Renderer, sBackground);
-    // Charger le vaisseau
+    tBackground = IMG_LoadTexture(Renderer, "fond_4800x4800.png");
 }
 
 void Destroy()
 {
-    // boucle for
-    // sprite.destroy
     SDL_DestroyTexture(tBackground);
     SDL_FreeSurface(sBackground);
     SDL_DestroyRenderer(Renderer);
@@ -58,8 +47,6 @@ void Destroy()
 
 void Update()
 {
-    // boucle
-    // sprite.update
     SDL_RenderClear(Renderer);
     SDL_RenderCopy(Renderer, tBackground, 0, &bPos);
     SDL_RenderPresent(Renderer);

@@ -10,13 +10,12 @@
 
 CC	= gcc
 
-RM = rm -f
-
-SRC = Main.c ~/Library/Frameworks/SDL2.framework
+SRC = Main.c /Library/Frameworks/SDL2.framework/SDL2 /Library/Frameworks/SDL2_image.framework/SDL2_image
 
 NAME = SpaceInvader
 
 OBJ = $(SRC:%.c=%.o)
+
 
 
 all:		$(NAME)

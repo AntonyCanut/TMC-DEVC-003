@@ -10,7 +10,7 @@
 
 CC	= gcc
 
-SRC = Main.c Moon.c background.c /Library/Frameworks/SDL2.framework/SDL2 /Library/Frameworks/SDL2_image.framework/SDL2_image
+SRC = Main.c Moon.c background.c ~/Library/Frameworks/SDL2.framework/SDL2 ~/Library/Frameworks/SDL2_image.framework/SDL2_image
 
 NAME = SpaceInvader
 
@@ -21,12 +21,4 @@ OBJ = $(SRC:%.c=%.o)
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		$(CC) $(OBJ) -o $(NAME)
-
-clean:
-		$(RM) $(OBJ)
-
-fclean:		clean
-		$(RM) $(NAME)
-
-re:		fclean all
+			$(CC) $(OBJ) -o $(NAME)

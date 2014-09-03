@@ -71,6 +71,7 @@ struct Bullet {
 typedef struct MoonStruct;
 struct MoonStruct {
     SDL_Rect Position;
+    SDL_Rect Part;
     int IsAlive;
     int Speed;
     Init InitMoon;

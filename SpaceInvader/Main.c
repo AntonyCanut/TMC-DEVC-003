@@ -1,21 +1,7 @@
-#include <stdio.h>
-#include <SDL2.framework/Headers/SDL.h>
-#include <SDL2_image.framework/Headers/SDL_image.h>
 
-#define SCREEN_WIDTH 1280
-#define SCREEN_HEIGHT 800
+#include "header.h"
 
-SDL_Window *Window;
-SDL_Renderer *Renderer;
-
-SDL_Surface *sBackground;
-SDL_Texture *tBackground;
-
-SDL_Rect bPos;
-
-char *srcBackgroundPicture = "img/decor/fond_4800x4800.png";
-
-void Init()
+void InitMain()
 {
     if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)
     {
@@ -24,31 +10,38 @@ void Init()
     }
     Window = SDL_CreateWindow("Space Invader", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     Renderer = SDL_CreateRenderer(Window, -1, 0);
-    
-    bPos.x = 0;
-    bPos.y = 0;
-    bPos.w = SCREEN_WIDTH;
-    bPos.h = SCREEN_HEIGHT;
+
+    InitBackground();
+    InitMoon();
 }
 
-void Load()
+void LoadMain()
 {
-    tBackground = IMG_LoadTexture(Renderer, "img/decor/fond_4800x4800.png");
+    LoadContentBackground();
+    LoadContentMoon();
 }
 
-void Destroy()
+void DestroyMain()
 {
-    SDL_DestroyTexture(tBackground);
-    SDL_FreeSurface(sBackground);
+    DestroyMoon();
+    DestroyBackground();
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
     SDL_Quit();
 }
 
-void Update()
+void UpdateMain()
 {
+    UpdateBackground();
+    UpdateMoon();    
+}
+
+void DrawMain(){
     SDL_RenderClear(Renderer);
-    SDL_RenderCopy(Renderer, tBackground, 0, &bPos);
+
+    DrawBackground();
+    DrawMoon();
+
     SDL_RenderPresent(Renderer);
 }
 
@@ -56,17 +49,18 @@ int main()
 {
     int isRunning = 1;
     
-    Init();
-    Load();
+    InitMain();
+    LoadMain();
     while(isRunning == 1)
     {
         Uint32 toWait;
         Uint32 time = SDL_GetTicks();
-        Update();
+        UpdateMain();
+        DrawMain();
         toWait = SDL_GetTicks() - time;
         if (toWait < 16)
             SDL_Delay(16 - toWait);
     }
-    Destroy();
+    DestroyMain();
     return (0);
 }

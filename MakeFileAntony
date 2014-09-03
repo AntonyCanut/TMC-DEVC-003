@@ -10,7 +10,11 @@
 
 CC	= gcc
 
+<<<<<<< HEAD:MakeFileAntony
 SRC = main.c 
+=======
+SRC = Main.c Moon.c background.c ~/Library/Frameworks/SDL2.framework/SDL2 ~/Library/Frameworks/SDL2_image.framework/SDL2_image
+>>>>>>> FETCH_HEAD:SpaceInvader/Makefile
 
 NAME = SpaceInvader
 
@@ -21,6 +25,7 @@ LFLAGS = -lSDL2 -lSDL2_image
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
+<<<<<<< HEAD:MakeFileAntony
 		$(CC) $(OBJ) -lSDL2 -lSDL2_image -o $(NAME)
 
 clean:
@@ -30,3 +35,6 @@ fclean:		clean
 		$(RM) $(NAME)
 
 re:		fclean all
+=======
+			$(CC) $(OBJ) -o $(NAME)
+>>>>>>> FETCH_HEAD:SpaceInvader/Makefile

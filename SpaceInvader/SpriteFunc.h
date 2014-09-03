@@ -9,28 +9,23 @@
 #ifndef SpaceInvader_SpriteFunc_h
 #define SpaceInvader_SpriteFunc_h
 
-typedef struct Coordonnees Coordonnees;
-struct Coordonnees {
-    int x;
-    int y;
-};
-
 // Préparation des type def, on pourrait faire directement mais visuellement c'est mieux
 // La piscine c'est finit, ce qui est dégueulasse va disparaitre merci
-typedef void (*Init)(Coordonnees position);
-typedef void (*LoadContent)(SDL_Surface surface);
+typedef void (*Init)(void);
+typedef void (*LoadContent)(void);
 typedef void (*UnLoadContent)(void);
 typedef void (*Draw)(void);
 typedef void (*Update)(void);
 typedef void (*UpdateInput)(void);
 typedef void (*Shot)(void);
 typedef void (*Dead)(void);
+typedef void (*Destroy)(void);
 
 // La structure d'un sprite agit comme une classe en langage objet : Attributs et fonctions
 // Une structure Joueur, Ennemi, et Tir
 typedef struct Player;
 struct Player {
-    Coordonnees Position;
+    SDL_Rect Position;
     int IsAlive;
     int Speed;
     // Cet endroit doit contenir une liste de "Bullet", et donc de sprite nommé Bullet
@@ -47,7 +42,7 @@ struct Player {
 
 typedef struct Ennemi;
 struct Ennemi {
-    Coordonnees Position;
+    SDL_Rect Position;
     int IsAlive;
     int Speed;
     // Cet endroit doit contenir une liste de "Bullet", et donc de sprite nommé Bullet
@@ -63,7 +58,7 @@ struct Ennemi {
 
 typedef struct Bullet;
 struct Bullet {
-    Coordonnees Position;
+    SDL_Rect Position;
     int IsAlive;
     int Speed;
     Init Init;
@@ -71,6 +66,35 @@ struct Bullet {
     UnLoadContent UnLoadContent;
     Draw Draw;
     Update Update;
+};
+
+typedef struct MoonStruct;
+struct MoonStruct {
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprite
+    int IsAlive;
+    int Speed;
+    Init InitMoon;
+    LoadContent LoadContentMoon;
+    UnLoadContent UnLoadContentMoon;
+    Draw DrawMoon;
+    Update UpdateMoon;
+    Dead DeadMoon;
+    Destroy DestroyMoon;
+};
+
+typedef struct BackgroundStruct;
+struct BackgroundStruct {
+    SDL_Rect PositionStar;
+    SDL_Rect PositionEarth;
+    int IsAlive;
+    int Speed;
+    Init InitBackground;
+    LoadContent LoadContentBackground;
+    UnLoadContent UnLoadContentBackground;
+    Draw DrawBackground;
+    Update UpdateBackground;
+    Destroy DestroyBackground;
 };
 
 #endif

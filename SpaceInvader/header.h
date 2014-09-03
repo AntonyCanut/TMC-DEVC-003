@@ -68,4 +68,36 @@ void UpdateMars();
 void InitMars();
 void DestroyMars();
 
+
+/*
+*       SpaceShip
+*
+*/
+struct SpaceShipStruct *SpaceShip;
+SDL_Texture *tSpaceShip;
+
+void LoadContentShip();
+void UnLoadShip();
+void DrawShip();
+void UpdateShip();
+void InitShip();
+void DestroyShip();
+
+/*
+*
+*       InvaderShip
+*
+*/
+struct InvaderShipStruct *InvaderShip;
+SDL_Texture *tInvaderShip;
+
+void LoadContentInvaderShip();
+void UnLoadInvaderShip();
+void DrawInvaderShip();
+void UpdateInvaderShip();
+void InitInvaderShip();
+void DestroyInvaderShip();
+
+>>>>>>> Debut du vaisseau invader
+
 #endif

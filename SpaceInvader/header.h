@@ -53,5 +53,19 @@ void UpdateBackground();
 void InitBackground();
 void DestroyBackground();
 
+/*
+*
+*       Mars
+*
+*/
+struct MarsStruct *Mars;
+SDL_Texture *tMars;
+
+void LoadContentMars();
+void UnLoadMars();
+void DrawMars();
+void UpdateMars();
+void InitMars();
+void DestroyMars();
 
 #endif

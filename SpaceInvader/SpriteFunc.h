@@ -60,20 +60,22 @@ struct ShipShootStruct {
 // #       END JOUEUR
 // ##########################
 
-typedef struct Ennemi;
-struct Ennemi {
+
+typedef struct InvaderShipStruct;
+struct InvaderShipStruct {
     SDL_Rect Position;
+    SDL_Rect Part;
     int IsAlive;
     int Speed;
     // Cet endroit doit contenir une liste de "Bullet", et donc de sprite nommé Bullet
     // (je me souviens plus encore comment on fait une liste donc wait le temps que ça revienne)
-    Init Init;
-    LoadContent LoadContent;
-    UnLoadContent UnLoadContent;
-    Draw Draw;
-    Update Update;
-    Shot Shot;
-    Dead Dead;
+    Init InitInvaderShip;
+    LoadContent LoadContentInvaderShip;
+    UnLoadContent UnLoadContentInvaderShip;
+    Draw DrawInvaderShip;
+    Update UpdateInvaderShip;
+    Shot ShotInvaderShip;
+    Dead DeadInvaderShip;
 };
 
 typedef struct Bullet;

@@ -37,6 +37,7 @@ void InitMain()
 
     InitShip();
     InitShipShoot();
+    InitInvaderShip();
 }
 
 void LoadMain()
@@ -47,6 +48,7 @@ void LoadMain()
 
     LoadContentShipShoot();
     LoadContentShip();
+    LoadContentInvaderShip();
 }
 
 void DestroyMain()
@@ -74,7 +76,9 @@ void UpdateMain()
     UpdateMars();
 
     UpdateShipShoot();  
-    UpdateShip();    
+    UpdateShip(); 
+
+    UpdateInvaderShip();
 }
 
 void UpdateMainInput()
@@ -131,6 +135,7 @@ void DrawMain(){
 
     DrawShipShoot();
     DrawShip();
+    DrawInvaderShip();
 
     SDL_RenderPresent(Renderer);
 }

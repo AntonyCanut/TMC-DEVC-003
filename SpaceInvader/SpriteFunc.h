@@ -97,4 +97,17 @@ struct BackgroundStruct {
     Destroy DestroyBackground;
 };
 
+typedef struct MarsStruct;
+struct MarsStruct {
+    SDL_Rect Position;
+    int IsAlive;
+    int Speed;
+    Init InitMars;
+    LoadContent LoadContentMars;
+    UnLoadContent UnLoadContentMars;
+    Draw DrawMars;
+    Update UpdateMars;
+    Destroy DestroyMars;
+};
+
 #endif

@@ -13,16 +13,19 @@ void InitMain()
 
     InitBackground();
     InitMoon();
+    InitMars();
 }
 
 void LoadMain()
 {
     LoadContentBackground();
     LoadContentMoon();
+    LoadContentMars();
 }
 
 void DestroyMain()
 {
+    DestroyMars();
     DestroyMoon();
     DestroyBackground();
     SDL_DestroyRenderer(Renderer);
@@ -33,13 +36,15 @@ void DestroyMain()
 void UpdateMain()
 {
     UpdateBackground();
-    UpdateMoon();    
+    UpdateMoon();
+    UpdateMars();     
 }
 
 void DrawMain(){
     SDL_RenderClear(Renderer);
 
     DrawBackground();
+    DrawMars();
     DrawMoon();
 
     SDL_RenderPresent(Renderer);

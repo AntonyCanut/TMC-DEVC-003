@@ -53,5 +53,50 @@ void UpdateBackground();
 void InitBackground();
 void DestroyBackground();
 
+/*
+*
+*       Mars
+*
+*/
+struct MarsStruct *Mars;
+SDL_Texture *tMars;
+
+void LoadContentMars();
+void UnLoadMars();
+void DrawMars();
+void UpdateMars();
+void InitMars();
+void DestroyMars();
+
+
+/*
+*       SpaceShip
+*
+*/
+struct SpaceShipStruct *SpaceShip;
+SDL_Texture *tSpaceShip;
+
+void LoadContentShip();
+void UnLoadShip();
+void DrawShip();
+void UpdateShip();
+void InitShip();
+void DestroyShip();
+
+/*
+*
+*       InvaderShip
+*
+*/
+struct InvaderShipStruct *InvaderShip;
+SDL_Texture *tInvaderShip;
+
+void LoadContentInvaderShip();
+void UnLoadInvaderShip();
+void DrawInvaderShip();
+void UpdateInvaderShip();
+void InitInvaderShip();
+void DestroyInvaderShip();
+
 
 #endif

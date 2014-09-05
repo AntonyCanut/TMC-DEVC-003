@@ -7,6 +7,8 @@
 //
 #include "header.h"
 
+int countUpdateMoon = 0;
+
 void LoadContentMoon(){
     tMoon= IMG_LoadTexture(Renderer, "img/decor/lune_3200x16000_P_3200.png");
 }
@@ -20,18 +22,35 @@ void DrawMoon(){
 }
 
 void UpdateMoon(){
-    if (Moon->Position.x < ((SCREEN_WIDTH / 2) - 150))
-    {
-            Moon->Position.x += 4;
-            Moon->Position.y -= 1;
-    }else if (Moon->Position.x > SCREEN_WIDTH + 400)
-    {
-        Moon->Position.x = -400;
-        Moon->Position.y = 400;
+    if (Moon->Position.x >= SCREEN_WIDTH + 400)
+        {
+            Moon->Position.x = -400;
+            Moon->Position.y = 650;
+            countUpdateMoon=0;
     }else{
-        Moon->Position.x += 4;
-        Moon->Position.y += 1;
+        if (countUpdateMoon%3 == 0)
+        {
+            if (Moon->Position.x < ((SCREEN_WIDTH / 2) - 150)){
+                if (Moon->Position.x < ((SCREEN_WIDTH / 4) - 150))
+                {
+                    Moon->Position.y -= 2;
+                }else
+                {
+                    Moon->Position.y -= 1;
+                }    
+            }else{
+                if (Moon->Position.x > ((3 * (SCREEN_WIDTH / 4)) - 150))
+                {           
+                    Moon->Position.y += 2;
+                }else{
+                    Moon->Position.y += 1;
+                } 
+            }
+        }
+        countUpdateMoon+=1;
+        Moon->Position.x += 1;
     }
+
 }
 
 void DeadMoon(){
@@ -50,7 +69,7 @@ void DestroyMoon(){
 void InitMoon(){
     Moon = (struct MoonStruct *) malloc(sizeof(struct MoonStruct) + 1);
     Moon->Position.x = -400;
-    Moon->Position.y = 400;
+    Moon->Position.y = 650;
     Moon->Position.w = 300;
     Moon->Position.h = 300;
 

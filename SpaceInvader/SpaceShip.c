@@ -27,7 +27,9 @@ void UpdateShip(){}
 
 void UpdateInputShip(){}
 
-void ShotShip(){}
+void ShotShip(){
+    
+}
 
 void DeadShip(){
     if(deadShip == 1){

@@ -22,6 +22,17 @@ void DrawShipShoot(){
 }
 
 void UpdateShipShoot(){
+    if (countUpdateShipShoot%3 ==0)
+    {
+        if(ShipShoot->Part.x >=360){
+            ShipShoot->Part.x = 0;
+        }else{
+            ShipShoot->Part.x += 120;
+        }
+    }
+    ShipShoot->Position.y -= 6;
+    if(ShipShoot->Position.y <= 0)
+         DestroyShipShoot();
     countUpdateShipShoot += 1;
 }
 
@@ -36,7 +47,7 @@ void DestroyShipShoot(){
 
 void InitShipShoot(){
     ShipShoot = (struct ShipShootStruct *) malloc(sizeof(struct ShipShootStruct) + 1);
-    ShipShoot->Position.x = Ship->Position.x + 23;
+    ShipShoot->Position.x = Ship->Position.x + 28;
     ShipShoot->Position.y = Ship->Position.y + 10;
     ShipShoot->Position.w = 15;
     ShipShoot->Position.h = 37;

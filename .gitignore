@@ -168,3 +168,15 @@ $RECYCLE.BIN/
 SpaceInvader/SpaceInvader
 
 
+<<<<<<< HEAD
+SpaceInvader/header.h
+
+SpaceInvader/Makefile
+
+SpaceInvader/header.h
+
+SpaceInvader/Makefile
+
+*.o
+=======
+>>>>>>> MikeBranch

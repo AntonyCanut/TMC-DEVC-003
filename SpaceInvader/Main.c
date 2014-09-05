@@ -38,6 +38,7 @@ void DestroyMain()
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
     SDL_Quit();
+    exit(0);
 }
 
 void UpdateMain()
@@ -54,7 +55,7 @@ void UpdateMainInput()
     {
         switch(e.type){
             case SDL_QUIT:
-                exit(0);
+                DestroyMain();
                 break;
             case SDL_KEYDOWN:
                 switch(e.key.keysym.sym){
@@ -63,6 +64,9 @@ void UpdateMainInput()
                         break;
                     case SDLK_LEFT:
                         left=true;
+                        break;
+                    case SDLK_SPACE:
+                        shoot=true;
                         break;
                     default:
                         break;
@@ -75,6 +79,9 @@ void UpdateMainInput()
                         break;
                     case SDLK_LEFT:
                         left=false;
+                        break;
+                    case SDLK_SPACE:
+                        shoot=false;
                         break;
                     default:
                         break;

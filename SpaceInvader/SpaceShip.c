@@ -26,10 +26,10 @@ void DrawShip(){
 void UpdateShip(){}
 
 void UpdateInputShip(){
-    if(right == true){
-        Ship->Position.x += 1;
-    }else if(left == true){
-        Ship->Position.x -= 1;
+    if(Ship->Position.x <= (SCREEN_WIDTH - 80) && right == true){
+        Ship->Position.x += 5;
+    }else if( Ship->Position.x >= 10 && left == true){
+        Ship->Position.x -= 5;
     }
     
 }

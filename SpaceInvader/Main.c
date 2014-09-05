@@ -83,7 +83,7 @@ int main()
         Uint32 toWait;
         Uint32 time = SDL_GetTicks();
         UpdateMain();
-        UpdateMainInput();
+//UpdateMainInput();
         DrawMain();
         toWait = SDL_GetTicks() - time;
         if (toWait < 16)

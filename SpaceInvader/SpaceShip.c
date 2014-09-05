@@ -9,6 +9,7 @@
 #include "header.h"
 
 int countUpdateShip = 0;
+int deadShip=0;
 
 void LoadContentShip(){
     tShip= IMG_LoadTexture(Renderer, "img/player/joueur_600x3000_P_600.png");
@@ -22,13 +23,36 @@ void DrawShip(){
     SDL_RenderCopy(Renderer, tShip, &Ship->Part, &Ship->Position);
 }
 
-void UpdateShip(){}
+void UpdateShip(){
+
+}
 
 void UpdateInputShip(){}
 
 void ShotShip(){}
 
-void DeadShip(){}
+void DeadShip(){
+    if(deadShip == 1){
+        Ship->Part.x = 600;
+        deadShip = 2;
+    }else if (deadShip == 2)
+    {
+        Ship->Part.x = 1200;
+        deadShip = 3;
+    }else if (deadShip == 3)
+    {
+        Ship->Part.x = 1800;
+        deadShip = 4;
+    }else if (deadShip == 4)
+    {
+        Ship->Part.x = 2400;
+        deadShip = 5;
+    }else if (deadShip == 5)
+    {
+        deadShip=0;
+        DestroyShip();
+    }
+}
 
 void DestroyShip(){
     UnLoadShip();

@@ -119,6 +119,8 @@ void LoadContentInvaderShip();
 void UnLoadInvaderShip();
 void DrawInvaderShip();
 void UpdateInvaderShip();
+void ShotInvaderShip();
+void DeadInvaderShip();
 void InitInvaderShip();
 void DestroyInvaderShip();
 

@@ -10,11 +10,8 @@
 #include <SDL2/SDL.h>
 #include "SpriteFunc.h"
 
-<<<<<<< HEAD
 int countUpdateShip = 0;
 int deadShip=0;
-=======
->>>>>>> FETCH_HEAD
 
 void LoadContentShip(){
     SDL_Surface *sShip;
@@ -28,19 +25,12 @@ void UnLoadContentShip(){
 
 void DrawShip();
 
-<<<<<<< HEAD
-void UpdateShip(){
-
-}
-=======
 void UpdateShip();
->>>>>>> FETCH_HEAD
 
 void UpdateInputShip();
 
 void ShotShip();
 
-<<<<<<< HEAD
 void DeadShip(){
     if(deadShip == 1){
         Ship->Part.x = 600;
@@ -63,9 +53,7 @@ void DeadShip(){
         DestroyShip();
     }
 }
-=======
-void DeadShip();
->>>>>>> FETCH_HEAD
+
 
 
 void InitShip(Coordonnees position){

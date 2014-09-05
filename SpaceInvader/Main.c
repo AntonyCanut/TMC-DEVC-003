@@ -44,21 +44,21 @@ void UpdateMain()
     UpdateShip();    
 }
 
-void UpdateMainInput()
-{
-    SDL_Event e;
+// void UpdateMainInput()
+// {
+//     SDL_Event e;
 
-    while (SDL_PollEvent(e))
-    {
-        case SDL_Quit:
-            exit(0);
-            break;
-        case SDL_KEYDOWN:
-            break;
-        default:
-            break;
-    }
-}
+//     while (SDL_PollEvent(e))
+//     {
+//         case SDL_Quit:
+//             exit(0);
+//             break;
+//         case SDL_KEYDOWN:
+//             break;
+//         default:
+//             break;
+//     }
+// }
 
 void DrawMain(){
     SDL_RenderClear(Renderer);

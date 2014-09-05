@@ -1,7 +1,7 @@
 #include "header.h"
 
 void LoadContentInvaderShip() {
-    tInvaderShip= IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
+    tInvaderShip = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
 }
 
 void UnLoadInvaderShip() {

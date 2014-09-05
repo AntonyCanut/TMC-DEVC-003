@@ -73,13 +73,16 @@ void DestroyMars();
 *       SpaceShip
 *
 */
-struct SpaceShipStruct *SpaceShip;
-SDL_Texture *tSpaceShip;
+struct ShipStruct *Ship;
+SDL_Texture *tShip;
 
 void LoadContentShip();
 void UnLoadShip();
 void DrawShip();
 void UpdateShip();
+void UpdateInputShip();
+void ShotShip();
+void DeadShip();
 void InitShip();
 void DestroyShip();
 

@@ -11,6 +11,10 @@ void InitMain()
     Window = SDL_CreateWindow("Space Invader", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     Renderer = SDL_CreateRenderer(Window, -1, 0);
 
+    right=false;
+    left=false;
+    shoot=false;
+
     InitBackground();
     InitMoon();
     InitMars();
@@ -44,21 +48,44 @@ void UpdateMain()
     UpdateShip();    
 }
 
-// void UpdateMainInput()
-// {
-//     SDL_Event e;
-
-//     while (SDL_PollEvent(e))
-//     {
-//         case SDL_Quit:
-//             exit(0);
-//             break;
-//         case SDL_KEYDOWN:
-//             break;
-//         default:
-//             break;
-//     }
-// }
+void UpdateMainInput()
+{
+    while (SDL_PollEvent(&e))
+    {
+        switch(e.type){
+            case SDL_QUIT:
+                exit(0);
+                break;
+            case SDL_KEYDOWN:
+                switch(e.key.keysym.sym){
+                    case SDLK_RIGHT:
+                        right=true;
+                        break;
+                    case SDLK_LEFT:
+                        left=true;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SDL_KEYUP:
+                switch(e.key.keysym.sym){
+                    case SDLK_RIGHT:
+                        right=false;
+                        break;
+                    case SDLK_LEFT:
+                        left=false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    UpdateInputShip();
+}
 
 void DrawMain(){
     SDL_RenderClear(Renderer);
@@ -81,9 +108,9 @@ int main()
     while(isRunning == 1)
     {
         Uint32 toWait;
-        Uint32 time = SDL_GetTicks();
+        time = SDL_GetTicks();
         UpdateMain();
-//UpdateMainInput();
+        UpdateMainInput();
         DrawMain();
         toWait = SDL_GetTicks() - time;
         if (toWait < 16)

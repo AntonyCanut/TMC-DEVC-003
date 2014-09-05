@@ -25,7 +25,14 @@ void DrawShip(){
 
 void UpdateShip(){}
 
-void UpdateInputShip(){}
+void UpdateInputShip(){
+    if(right == true){
+        Ship->Position.x += 1;
+    }else if(left == true){
+        Ship->Position.x -= 1;
+    }
+    
+}
 
 void ShotShip(){}
 

@@ -20,6 +20,12 @@
 
 SDL_Window *Window;
 SDL_Renderer *Renderer;
+SDL_Event e;
+Uint32 time;
+
+bool *right;
+bool *left;
+bool *shoot;
 
 /*
 *

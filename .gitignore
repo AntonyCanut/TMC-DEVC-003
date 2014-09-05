@@ -167,6 +167,7 @@ $RECYCLE.BIN/
 
 SpaceInvader/SpaceInvader
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 SpaceInvader/header.h
@@ -176,6 +177,8 @@ SpaceInvader/Makefile
 SpaceInvader/header.h
 
 SpaceInvader/Makefile
+=======
+>>>>>>> FETCH_HEAD
 
 *.o
 =======

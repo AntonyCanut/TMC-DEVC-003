@@ -6,31 +6,41 @@
 //  Copyright (c) 2014 Antony Canut. All rights reserved.
 //
 
-#include "header.h"
+#include <stdio.h>
+#include <SDL2/SDL.h>
+#include "SpriteFunc.h"
 
+<<<<<<< HEAD
 int countUpdateShip = 0;
 int deadShip=0;
+=======
+>>>>>>> FETCH_HEAD
 
 void LoadContentShip(){
-    tShip= IMG_LoadTexture(Renderer, "img/player/joueur_600x3000_P_600.png");
+    SDL_Surface *sShip;
+    sShip = SDL_LoadBMP("img/player/joueur_600x3000_P_600.png");
+    return sShip;
 }
 
-void UnLoadShip(){
-    SDL_DestroyTexture(tShip);
+void UnLoadContentShip(){
+    SDL_FreeSurface(LoadContentShip());
 }
 
-void DrawShip(){
-    SDL_RenderCopy(Renderer, tShip, &Ship->Part, &Ship->Position);
-}
+void DrawShip();
 
+<<<<<<< HEAD
 void UpdateShip(){
 
 }
+=======
+void UpdateShip();
+>>>>>>> FETCH_HEAD
 
-void UpdateInputShip(){}
+void UpdateInputShip();
 
-void ShotShip(){}
+void ShotShip();
 
+<<<<<<< HEAD
 void DeadShip(){
     if(deadShip == 1){
         Ship->Part.x = 600;
@@ -53,22 +63,23 @@ void DeadShip(){
         DestroyShip();
     }
 }
+=======
+void DeadShip();
+>>>>>>> FETCH_HEAD
 
-void DestroyShip(){
-    UnLoadShip();
-    free(Ship);
-}
 
-void InitShip(){
+void InitShip(Coordonnees position){
     Ship = (struct ShipStruct *) malloc(sizeof(struct ShipStruct) + 1);
-    Ship->Position.x = (SCREEN_WIDTH/2) - 35;
-    Ship->Position.y = SCREEN_HEIGHT - 200;
-    Ship->Position.w = 70;
-    Ship->Position.h = 70;
-
-    Ship->Part.x = 0;
-    Ship->Part.y = 0;
-    Ship->Part.w = 600;
-    Ship->Part.h = 600;
-
+    Ship->Position.x = 640;
+    Ship->Position.y = 20;
+    Ship->Position.w = 30;
+    Ship->Position.h = 50;
+    
+    Ship->LoadContent = LoadContentShip();
+    Ship->UnLoadContent = UnLoadContentShip();
+    Ship->Draw = DrawShip();
+    Ship->Update = UpdateShip();
+    Ship->UpdateInput = UpdateInputShip();
+    Ship->Shot = ShotShip();
+    Ship->Dead = DeadShip();
 }

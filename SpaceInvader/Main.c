@@ -1,9 +1,9 @@
 
 #include "header.h"
 
-Mix_Music *musique; 
-   Mix_Chunk *sonBackground;//Créer un pointeur pour stocker un .WAV
-   Mix_Chunk *son2;
+Mix_Music *musiqueBackground; 
+Mix_Chunk *sonBackground; //Pointeur musique background
+Mix_Chunk *son2;
 
 void InitMain()
 {
@@ -24,12 +24,13 @@ void InitMain()
         printf("%s", Mix_GetError());
     }
     
+   musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
-    sonBackground = Mix_LoadWAV("music/stage.wav"); //Charger un wav dans un pointeur
+    sonBackground = Mix_LoadWAV("music/stage.wav");
     son2 = Mix_LoadWAV("music/stage.wav");
-    Mix_VolumeChunk(sonBackground, MIX_MAX_VOLUME); //Mettre un volume pour ce wav
-    Mix_VolumeChunk(son2, MIX_MAX_VOLUME);
-    Mix_PlayChannel(2, sonBackground, -1);
+    Mix_VolumeChunk(sonBackground, MIX_MAX_VOLUME/2);
+    Mix_VolumeChunk(son2, MIX_MAX_VOLUME/2);
+    //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
     InitBackground();
     InitMoon();
     InitMars();
@@ -53,7 +54,8 @@ void DestroyMain()
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
     Mix_FreeChunk(sonBackground);//Libération du son 1
-    Mix_FreeChunk(son2);
+    Mix_FreeChunk(son2); //Libération du son 2
+    Mix_FreeMusic(musiqueBackground); //Libération de la musique
     Mix_CloseAudio(); //Fermeture de l'API
     SDL_Quit();
     exit(0);
@@ -130,6 +132,8 @@ int main()
     
     InitMain();
     LoadMain();
+     //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
+    Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)
     {
         Uint32 toWait;

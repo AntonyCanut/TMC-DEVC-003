@@ -176,3 +176,5 @@ SpaceInvader/Makefile
 SpaceInvader/header.h
 
 SpaceInvader/Makefile
+
+*.o

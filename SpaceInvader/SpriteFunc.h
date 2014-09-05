@@ -67,11 +67,9 @@ struct InvaderShipStruct {
     SDL_Rect Part;
     int IsAlive;
     int Speed;
-    // Cet endroit doit contenir une liste de "Bullet", et donc de sprite nommé Bullet
-    // (je me souviens plus encore comment on fait une liste donc wait le temps que ça revienne)
     Init InitInvaderShip;
     LoadContent LoadContentInvaderShip;
-    UnLoadContent UnLoadContentInvaderShip;
+    UnLoadContent UnLoadInvaderShip;
     Draw DrawInvaderShip;
     Update UpdateInvaderShip;
     Shot ShotInvaderShip;

@@ -24,6 +24,10 @@ SDL_Renderer *Renderer;
 SDL_Event e;
 Uint32 time;
 
+Mix_Music *musiqueBackground; 
+Mix_Chunk *sonBackground; //Pointeur musique background
+Mix_Chunk *son2;
+
 bool *right;
 bool *left;
 bool *shoot;

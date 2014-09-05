@@ -1,10 +1,6 @@
 
 #include "header.h"
 
-Mix_Music *musiqueBackground; 
-Mix_Chunk *sonBackground; //Pointeur musique background
-Mix_Chunk *son2;
-
 void InitMain()
 {
     if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0)

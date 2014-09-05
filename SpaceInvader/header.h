@@ -94,6 +94,21 @@ void InitShip();
 void DestroyShip();
 
 /*
+*       ShipShoot
+*
+*/
+struct ShipShootStruct *ShipShoot;
+SDL_Texture *tShipShoot;
+
+void LoadContentShipShoot();
+void UnLoadShipShoot();
+void DrawShipShoot();
+void UpdateShipShoot();
+void DeadShipShoot();
+void InitShipShoot();
+void DestroyShipShoot();
+
+/*
 *
 *       InvaderShip
 *

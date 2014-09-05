@@ -40,6 +40,22 @@ void UpdateMain()
     UpdateMars();     
 }
 
+void UpdateMainInput()
+{
+    SDL_Event e;
+
+    while (SDL_PollEvent(e))
+    {
+        case SDL_Quit:
+            exit(0);
+            break;
+        case SDL_KEYDOWN:
+            break;
+        default:
+            break;
+    }
+}
+
 void DrawMain(){
     SDL_RenderClear(Renderer);
 
@@ -61,6 +77,7 @@ int main()
         Uint32 toWait;
         Uint32 time = SDL_GetTicks();
         UpdateMain();
+        UpdateMainInput();
         DrawMain();
         toWait = SDL_GetTicks() - time;
         if (toWait < 16)

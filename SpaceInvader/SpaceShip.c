@@ -33,11 +33,11 @@ void DeadShip();
 
 
 void InitShip(Coordonnees position){
+    Ship = (struct ShipStruct *) malloc(sizeof(struct ShipStruct) + 1);
     Ship->Position.x = 640;
     Ship->Position.y = 20;
     Ship->Position.w = 30;
     Ship->Position.h = 50;
-
     
     Ship->LoadContent = LoadContentShip();
     Ship->UnLoadContent = UnLoadContentShip();

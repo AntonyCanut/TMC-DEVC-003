@@ -23,8 +23,8 @@ typedef void (*Destroy)(void);
 
 // La structure d'un sprite agit comme une classe en langage objet : Attributs et fonctions
 // Une structure Joueur, Ennemi, et Tir
-typedef struct Player;
-struct Player {
+typedef struct ShipStruct;
+struct ShipStruct {
     SDL_Rect Position;
     int IsAlive;
     int Speed;

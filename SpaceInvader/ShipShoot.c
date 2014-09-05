@@ -32,7 +32,7 @@ void UpdateShipShoot(){
     }
     ShipShoot->Position.y -= 6;
     if(ShipShoot->Position.y <= 0)
-         DestroyShipShoot();
+         //DestroyShipShoot();
     countUpdateShipShoot += 1;
 }
 

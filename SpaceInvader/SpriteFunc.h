@@ -9,6 +9,9 @@
 #ifndef SpaceInvader_SpriteFunc_h
 #define SpaceInvader_SpriteFunc_h
 
+typedef enum {false=0, true=1} bool;
+
+
 // Préparation des type def, on pourrait faire directement mais visuellement c'est mieux
 // La piscine c'est finit, ce qui est dégueulasse va disparaitre merci
 typedef void (*Init)(void);
@@ -21,16 +24,15 @@ typedef void (*Shot)(void);
 typedef void (*Dead)(void);
 typedef void (*Destroy)(void);
 
-// La structure d'un sprite agit comme une classe en langage objet : Attributs et fonctions
-// Une structure Joueur, Ennemi, et Tir
+// ##########################
+// #       JOUEUR
+// ##########################
 typedef struct ShipStruct;
 struct ShipStruct {
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprite
     int IsAlive;
     int Speed;
-    // Cet endroit doit contenir une liste de "Bullet", et donc de sprite nommé Bullet
-    // (je me souviens plus encore comment on fait une liste donc wait le temps que ça revienne)
     Init InitShip;
     LoadContent LoadContentShip;
     UnLoadContent UnLoadShip;
@@ -40,6 +42,23 @@ struct ShipStruct {
     Shot ShotShip;
     Dead DeadShip;
 };
+
+typedef struct ShipShootStruct;
+struct ShipShootStruct {
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprite
+    int IsAlive;
+    int Speed;
+    Init InitShipShoot;
+    LoadContent LoadContentShipShoot;
+    UnLoadContent UnLoadShipShoot;
+    Draw DrawShipShoot;
+    Update UpdateShipShoot;
+    Dead DeadShipShoot;
+};
+// ##########################
+// #       END JOUEUR
+// ##########################
 
 typedef struct Ennemi;
 struct Ennemi {

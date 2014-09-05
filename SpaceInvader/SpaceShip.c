@@ -23,32 +23,44 @@ void DrawShip(){
     SDL_RenderCopy(Renderer, tShip, &Ship->Part, &Ship->Position);
 }
 
-void UpdateShip(){}
-
-void UpdateInputShip(){}
-
-void ShotShip(){
+void UpdateShip(){
     
+    // if (countUpdateShip==30)
+    // {
+    //     deadShip=1;
+    // }
+    if (shoot==true)
+    {
+        ShotShip();
+    }
+    //DeadShip();
+    countUpdateShip += 1;
 }
 
+void UpdateInputShip(){
+    if(Ship->Position.x <= (SCREEN_WIDTH - 80) && right == true){
+        Ship->Position.x += 5;
+    }else if( Ship->Position.x >= 10 && left == true){
+        Ship->Position.x -= 5;
+    }  
+}
+
+void ShotShip(){}
+
 void DeadShip(){
-    if(deadShip == 1){
+    if(countUpdateShip%5==0 && deadShip == 1){
         Ship->Part.x = 600;
         deadShip = 2;
-    }else if (deadShip == 2)
-    {
+    }else if(countUpdateShip%5==0 && deadShip == 2){
         Ship->Part.x = 1200;
         deadShip = 3;
-    }else if (deadShip == 3)
-    {
+    }else if(countUpdateShip%5==0 && deadShip == 3){
         Ship->Part.x = 1800;
         deadShip = 4;
-    }else if (deadShip == 4)
-    {
+    }else if(countUpdateShip%5==0 && deadShip == 4){
         Ship->Part.x = 2400;
         deadShip = 5;
-    }else if (deadShip == 5)
-    {
+    }else if(countUpdateShip%5==0 && deadShip == 5){
         deadShip=0;
         DestroyShip();
     }

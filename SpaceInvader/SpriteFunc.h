@@ -109,12 +109,12 @@ struct BackgroundStruct {
     SDL_Rect PositionEarth;
     int IsAlive;
     int Speed;
-    Init InitBackground;
-    LoadContent LoadContentBackground;
-    UnLoadContent UnLoadContentBackground;
-    Draw DrawBackground;
-    Update UpdateBackground;
-    Destroy DestroyBackground;
+    Init Init;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
 };
 
 typedef struct MarsStruct;

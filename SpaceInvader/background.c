@@ -49,8 +49,9 @@ void InitBackground(){
     Background->PositionEarth.w = SCREEN_WIDTH;
     Background->PositionEarth.h = SCREEN_HEIGHT;
 
-    // Background->LoadContent = LoadContentBackground();
-    // Background->UnLoadContent = UnLoadContentBackground();
-    // Background->Draw = DrawBackground();
-    // Background->Update = UpdateBackground();
+    Background->Load = LoadContentBackground;
+    Background->UnLoad = UnLoadBackground;
+    Background->Draw = DrawBackground;
+    Background->Update = UpdateBackground;
+    Background->Destroy = DestroyBackground;
 }

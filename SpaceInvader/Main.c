@@ -20,7 +20,7 @@ void InitMain()
         printf("%s", Mix_GetError());
     }
     
-   musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
+    musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
     sonBackground = Mix_LoadWAV("music/stage.wav");
     son2 = Mix_LoadWAV("music/stage.wav");
@@ -38,7 +38,7 @@ void InitMain()
 
 void LoadMain()
 {
-    LoadContentBackground();
+    Background->Load();
     LoadContentMoon();
     LoadContentMars();
 
@@ -54,7 +54,7 @@ void DestroyMain()
 
     DestroyMars();
     DestroyMoon();
-    DestroyBackground();
+    Background->Destroy();
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
     Mix_FreeChunk(sonBackground);//Libération du son 1
@@ -67,7 +67,7 @@ void DestroyMain()
 
 void UpdateMain()
 {
-    UpdateBackground();
+    Background->Update();
     UpdateMoon();
     UpdateMars();
 
@@ -125,7 +125,7 @@ void UpdateMainInput()
 void DrawMain(){
     SDL_RenderClear(Renderer);
 
-    DrawBackground();
+    Background->Draw();
     DrawMars();
     DrawMoon();
 

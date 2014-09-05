@@ -1,6 +1,6 @@
 CC	= gcc
 
-SRC = Main.c Moon.c Mars.c background.c ~/Library/Frameworks/SDL2.framework/SDL2 ~/Library/Frameworks/SDL2_image.framework/SDL2_image
+SRC = Main.c Moon.c mars.c background.c ~/Library/Frameworks/SDL2.framework/SDL2 ~/Library/Frameworks/SDL2_image.framework/SDL2_image
 
 
  NAME = SpaceInvader

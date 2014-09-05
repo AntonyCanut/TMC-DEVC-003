@@ -14,6 +14,7 @@ void InitMain()
     InitBackground();
     InitMoon();
     InitMars();
+    InitShip();
 }
 
 void LoadMain()
@@ -21,10 +22,12 @@ void LoadMain()
     LoadContentBackground();
     LoadContentMoon();
     LoadContentMars();
+    LoadContentShip();
 }
 
 void DestroyMain()
 {
+    DestroyShip();
     DestroyMars();
     DestroyMoon();
     DestroyBackground();
@@ -37,7 +40,8 @@ void UpdateMain()
 {
     UpdateBackground();
     UpdateMoon();
-    UpdateMars();     
+    UpdateMars();  
+    UpdateShip();    
 }
 
 void UpdateMainInput()
@@ -62,6 +66,8 @@ void DrawMain(){
     DrawBackground();
     DrawMars();
     DrawMoon();
+
+    DrawShip();
 
     SDL_RenderPresent(Renderer);
 }

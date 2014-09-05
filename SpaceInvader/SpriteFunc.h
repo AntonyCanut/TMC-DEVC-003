@@ -26,18 +26,19 @@ typedef void (*Destroy)(void);
 typedef struct ShipStruct;
 struct ShipStruct {
     SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprite
     int IsAlive;
     int Speed;
     // Cet endroit doit contenir une liste de "Bullet", et donc de sprite nommé Bullet
     // (je me souviens plus encore comment on fait une liste donc wait le temps que ça revienne)
-    Init Init;
-    LoadContent LoadContent;
-    UnLoadContent UnLoadContent;
-    Draw Draw;
-    Update Update;
-    UpdateInput UpdateInput;
-    Shot Shot;
-    Dead Dead;
+    Init InitShip;
+    LoadContent LoadContentShip;
+    UnLoadContent UnLoadShip;
+    Draw DrawShip;
+    Update UpdateShip;
+    UpdateInput UpdateInputShip;
+    Shot ShotShip;
+    Dead DeadShip;
 };
 
 typedef struct Ennemi;

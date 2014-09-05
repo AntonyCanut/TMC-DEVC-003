@@ -23,11 +23,11 @@ void DrawBackground(){
 }
 
 void UpdateBackground(){
-    if (Background->PositionEarth.y < 600)
+    if (Background->PositionEarth.y < SCREEN_HEIGHT - 200)
     {
         Background->PositionEarth.y += 1;
     }else{
-        Background->PositionEarth.y = 0;
+        Background->PositionEarth.y = -2061;
     }
 }
 
@@ -45,9 +45,9 @@ void InitBackground(){
     Background->PositionStar.h = SCREEN_HEIGHT;
 
     Background->PositionEarth.x = 0;
-    Background->PositionEarth.y = 0;
+    Background->PositionEarth.y = -2061;
     Background->PositionEarth.w = SCREEN_WIDTH;
-    Background->PositionEarth.h = SCREEN_HEIGHT;
+    Background->PositionEarth.h = 2861;
 
     Background->Load = LoadContentBackground;
     Background->UnLoad = UnLoadBackground;

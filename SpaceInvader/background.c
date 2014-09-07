@@ -12,7 +12,7 @@ void LoadContentBackground(){
     tStar = IMG_LoadTexture(Renderer, "img/decor/fond_1920x1080.png");
 }
 
-void UnLoadBackground(){
+void UnLoadContentBackground(){
     SDL_DestroyTexture(tStar);
     SDL_DestroyTexture(tEarth);
 }
@@ -23,16 +23,16 @@ void DrawBackground(){
 }
 
 void UpdateBackground(){
-    if (Background->PositionEarth.y < 600)
+    if (Background->PositionEarth.y < SCREEN_HEIGHT - 200)
     {
         Background->PositionEarth.y += 1;
     }else{
-        Background->PositionEarth.y = 0;
+        Background->PositionEarth.y = -2061;
     }
 }
 
 void DestroyBackground(){
-    UnLoadBackground();
+    Background->UnLoad();
     free(Background);
 }
 
@@ -45,12 +45,13 @@ void InitBackground(){
     Background->PositionStar.h = SCREEN_HEIGHT;
 
     Background->PositionEarth.x = 0;
-    Background->PositionEarth.y = 0;
+    Background->PositionEarth.y = -2061;
     Background->PositionEarth.w = SCREEN_WIDTH;
-    Background->PositionEarth.h = SCREEN_HEIGHT;
+    Background->PositionEarth.h = 2861;
 
-    // Background->LoadContent = LoadContentBackground();
-    // Background->UnLoadContent = UnLoadContentBackground();
-    // Background->Draw = DrawBackground();
-    // Background->Update = UpdateBackground();
+    Background->Load = LoadContentBackground;
+    Background->UnLoad = UnLoadContentBackground;
+    Background->Draw = DrawBackground;
+    Background->Update = UpdateBackground;
+    Background->Destroy = DestroyBackground;
 }

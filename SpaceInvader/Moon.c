@@ -61,7 +61,7 @@ void DeadMoon(){
 }
 
 void DestroyMoon(){
-    UnLoadMoon();
+    Moon->UnLoad();
     free(Moon);
 }
 
@@ -78,9 +78,10 @@ void InitMoon(){
     Moon->Part.w = 3200;
     Moon->Part.h = 3200;
 
-    // Moon->LoadContent = LoadContentMoon();
-    // Moon->UnLoadContent = UnLoadContentMoon();
-    // Moon->Draw = DrawMoon();
-    // Moon->Update = UpdateMoon();
-    // Moon->Dead = DeadMoon();
+    Moon->Load = LoadContentMoon;
+    Moon->UnLoad = UnLoadMoon;
+    Moon->Draw = DrawMoon;
+    Moon->Update = UpdateMoon;
+    Moon->Dead = DeadMoon;
+    Moon->Destroy = DestroyMoon;
 }

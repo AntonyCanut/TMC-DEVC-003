@@ -12,7 +12,7 @@ void LoadContentBackground(){
     tStar = IMG_LoadTexture(Renderer, "img/decor/fond_1920x1080.png");
 }
 
-void UnLoadBackground(){
+void UnLoadContentBackground(){
     SDL_DestroyTexture(tStar);
     SDL_DestroyTexture(tEarth);
 }
@@ -32,7 +32,7 @@ void UpdateBackground(){
 }
 
 void DestroyBackground(){
-    UnLoadBackground();
+    Background->UnLoad();
     free(Background);
 }
 
@@ -50,7 +50,7 @@ void InitBackground(){
     Background->PositionEarth.h = 2861;
 
     Background->Load = LoadContentBackground;
-    Background->UnLoad = UnLoadBackground;
+    Background->UnLoad = UnLoadContentBackground;
     Background->Draw = DrawBackground;
     Background->Update = UpdateBackground;
     Background->Destroy = DestroyBackground;

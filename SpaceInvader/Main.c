@@ -32,29 +32,36 @@ void InitMain()
     InitMars();
 
     InitShip();
+    // Dépendant du vaisseau, a ne faire qu'au tir
     InitShipShoot();
-    InitInvaderShip();
+    // Faire une liste
+    InitInvader();
 }
 
 void LoadMain()
 {
     Background->Load();
-    LoadContentMoon();
-    LoadContentMars();
-
-    LoadContentShipShoot();
-    LoadContentShip();
-    LoadContentInvaderShip();
+    Moon->Load();
+    Mars->Load();
+    Ship->Load();
+    // Les tirs sont dépendant du vaisseau.
+    ShipShoot->Load();
+    // Les ennemis sont nombreux, boucle pour parcourire la liste.
+    Invader->Load();
 }
 
 void DestroyMain()
 {
-    DestroyShip();
-    DestroyShipShoot();
-
-    DestroyMars();
-    DestroyMoon();
+    Ship->Destroy();
+    Mars->Destroy();
+    Moon->Destroy();
     Background->Destroy();
+    // Les tirs ne doivent pas être détruit ici mais a leur extinction durant la partie, seuls les tirs restant 
+    // (fin de partie alors que des tirs sont en cours doivent être détuuit)
+    ShipShoot->Destroy();
+    // Les ennemis doivent aussi être détruit de la même façon via la liste d'invader
+    Invader->Destroy();
+    // /!\ Je met une reserve mais je pense qu'il faudra ajouter une destruction des structures et des listes /!\
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
     Mix_FreeChunk(sonBackground);//Libération du son 1
@@ -68,13 +75,12 @@ void DestroyMain()
 void UpdateMain()
 {
     Background->Update();
-    UpdateMoon();
-    UpdateMars();
-
-    UpdateShipShoot();  
-    UpdateShip(); 
-
-    UpdateInvaderShip();
+    Moon->Update();
+    Mars->Update();
+    Ship->Update();
+    // Traitement a faire dans les listes
+    ShipShoot->Update();
+    Invader->Update();
 }
 
 void UpdateMainInput()
@@ -119,20 +125,19 @@ void UpdateMainInput()
                 break;
         }
     }
-    UpdateInputShip();
+    Ship->UpdateInput();
 }
 
 void DrawMain(){
     SDL_RenderClear(Renderer);
 
     Background->Draw();
-    DrawMars();
-    DrawMoon();
-
-    DrawShipShoot();
-    DrawShip();
-    DrawInvaderShip();
-
+    Mars->Draw();
+    Moon->Draw();
+    Ship->Draw();
+    // Dépendance aux listes
+    ShipShoot->Draw();
+    Invader->Draw();
     SDL_RenderPresent(Renderer);
 }
 

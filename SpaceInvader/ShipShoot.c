@@ -13,7 +13,7 @@ void LoadContentShipShoot(){
     tShipShoot= IMG_LoadTexture(Renderer, "img/player/joueur_tire_300x480_P_120.png");
 }
 
-void UnLoadShipShoot(){
+void UnLoadContentShipShoot(){
     SDL_DestroyTexture(tShipShoot);
 }
 
@@ -41,7 +41,7 @@ void DeadShipShoot(){
 }
 
 void DestroyShipShoot(){
-    UnLoadShipShoot();
+    ShipShoot->UnLoad();
     free(ShipShoot);
 }
 
@@ -56,4 +56,11 @@ void InitShipShoot(){
     ShipShoot->Part.y = 0;
     ShipShoot->Part.w = 120;
     ShipShoot->Part.h = 300;
+
+    ShipShoot->Load = LoadContentShipShoot;
+    ShipShoot->UnLoad = UnLoadContentShipShoot;
+    ShipShoot->Draw = DrawShipShoot;
+    ShipShoot->Update = UpdateShipShoot;
+    ShipShoot->Dead = DeadShipShoot;
+    ShipShoot->Destroy = DestroyShipShoot;
 }

@@ -13,7 +13,7 @@ void LoadContentMars(){
     tMars= IMG_LoadTexture(Renderer, "img/decor/mars_1200x1200.png");
 }
 
-void UnLoadMars(){
+void UnLoadContentMars(){
     SDL_DestroyTexture(tMars);
 }
 
@@ -42,7 +42,7 @@ void UpdateMars(){
 }
 
 void DestroyMars(){
-    UnLoadMars();
+    Mars->UnLoad();
     free(Mars);
 }
 
@@ -53,4 +53,10 @@ void InitMars(){
     Mars->Position.y = 250;
     Mars->Position.w = 70;
     Mars->Position.h = 70;
+
+    Mars->Load = LoadContentMars;
+    Mars->UnLoad = UnLoadContentMars;
+    Mars->Draw = DrawMars;
+    Mars->Update = UpdateMars;
+    Mars->Destroy = DestroyMars;
 }

@@ -4,19 +4,19 @@ int countUpdateInvader = 0;
 int deadInvader        = 0;
 bool *rightInvader;
 
-void LoadContentInvader() {
-    tInvader = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
+void LoadContentInvader(InvaderStruct *Invader) {
+    Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
 }
 
-void UnLoadContentInvader() {
-    SDL_DestroyTexture(tInvader);
+void UnLoadContentInvader(InvaderStruct *Invader) {
+    SDL_DestroyTexture(Invader->Texture);
 }
 
-void DrawInvader() {
-    SDL_RenderCopy(Renderer, tInvader, &Invader->Part, &Invader->Position);
+void DrawInvader(InvaderStruct *Invader) {
+    SDL_RenderCopy(Renderer, Invader->Texture, &Invader->Part, &Invader->Position);
 }
 
-void UpdateInvader() {
+void UpdateInvader(InvaderStruct *Invader) {
     if (countUpdateInvader % 17 == 0) {
         if (Invader->Part.x <= 0) {
             Invader->Part.x = 600;
@@ -51,9 +51,9 @@ void UpdateInvader() {
     countUpdateInvader += 1;
 }
 
-void ShotInvader() {}
+void ShotInvader(InvaderStruct *Invader) {}
 
-void DeadInvader() {
+void DeadInvader(InvaderStruct *Invader) {
     if (countUpdateInvader % 5 == 0 && deadInvader == 1) {
         Invader->Part.x = 1200;
         deadInvader     = 2;
@@ -68,19 +68,20 @@ void DeadInvader() {
         deadInvader     = 5;
     } else if (countUpdateInvader % 5 == 0 && deadInvader == 5) {
         deadInvader = 0;
-        Invader->Destroy();
+        Invader->Destroy(Invader);
     }
 }
     
-void DestroyInvader() {
-    Invader->UnLoad();
+void DestroyInvader(InvaderStruct *Invader) {
+    Invader->UnLoad(Invader);
     free(Invader);
 }
 
 
-void InitInvader() {
-    Invader = (struct InvaderStruct *) malloc(sizeof(struct InvaderStruct) + 1);
-    Invader->Position.x = 11;
+InvaderStruct *InitInvader(int x) {
+    InvaderStruct *Invader;
+    Invader = malloc(sizeof(*Invader));
+    Invader->Position.x = x;
     Invader->Position.y = 5;
     Invader->Position.w = 70;
     Invader->Position.h = 70;
@@ -99,4 +100,6 @@ void InitInvader() {
     Invader->Shot = ShotInvader;
     Invader->Dead = DeadInvader;
     Invader->Destroy = DestroyInvader;
+    Invader->Load(Invader);
+    return (Invader);
 }

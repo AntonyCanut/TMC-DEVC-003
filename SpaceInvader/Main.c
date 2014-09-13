@@ -35,7 +35,8 @@ void InitMain()
     // Dépendant du vaisseau, a ne faire qu'au tir
     InitShipShoot();
     // Faire une liste
-    InitInvader();
+    MyInvader = InitInvader(11);
+    MyInvader2 = InitInvader(91);
 }
 
 void LoadMain()
@@ -47,7 +48,7 @@ void LoadMain()
     // Les tirs sont dépendant du vaisseau.
     ShipShoot->Load();
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
-    Invader->Load();
+    // MyInvader->Load();
 }
 
 void DestroyMain()
@@ -60,7 +61,8 @@ void DestroyMain()
     // (fin de partie alors que des tirs sont en cours doivent être détuuit)
     ShipShoot->Destroy();
     // Les ennemis doivent aussi être détruit de la même façon via la liste d'invader
-    Invader->Destroy();
+    MyInvader->Destroy(MyInvader);
+    MyInvader2->Destroy(MyInvader2);
     // /!\ Je met une reserve mais je pense qu'il faudra ajouter une destruction des structures et des listes /!\
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
@@ -80,7 +82,8 @@ void UpdateMain()
     Ship->Update();
     // Traitement a faire dans les listes
     ShipShoot->Update();
-    Invader->Update();
+    MyInvader->Update(MyInvader);
+    MyInvader2->Update(MyInvader2);
 }
 
 void UpdateMainInput()
@@ -137,7 +140,8 @@ void DrawMain(){
     Ship->Draw();
     // Dépendance aux listes
     ShipShoot->Draw();
-    Invader->Draw();
+    MyInvader->Draw(MyInvader);
+    MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);
 }
 

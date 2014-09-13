@@ -34,7 +34,7 @@ Mix_Chunk *son2;
 bool *right;
 bool *left;
 bool *shoot;
-struct ShipShootElementList *ShipShootList;
+
 
 struct MoonStruct *Moon;
 SDL_Texture *tMoon;

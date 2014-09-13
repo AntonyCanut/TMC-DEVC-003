@@ -54,13 +54,6 @@ struct ShipShootStruct {
     Destroy Destroy;
 };
 
-struct ShipShootElement
-{
-    struct ShipShootStruct val;
-    struct ShipShootElement *nxt;
-};
- 
-typedef struct ShipShootElement* ShipShootElementList;
 // ##########################
 // #       END JOUEUR
 // ##########################

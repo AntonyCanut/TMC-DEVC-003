@@ -46,14 +46,7 @@ void UpdateInputShip(){
 }
 
 void ShotShip(){
-    // /* On crée un nouvel élément */
-    // ShipShootElement* newShoot = (struct ShipShootStruct *) malloc(sizeof(struct ShipShootStruct) + 1);
- 
-    //  On assigne la valeur au nouvel élément 
-    // newShoot->val = InitShipShoot();
- 
-    // /* On assigne l'adresse de l'élément suivant au nouvel élément */
-    // newShoot->nxt = ShipShootList;
+
 }
 
 void DeadShip(){

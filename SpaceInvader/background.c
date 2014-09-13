@@ -27,7 +27,7 @@ void UpdateBackground(){
     {
         Background->PositionEarth.y += 1;
     }else{
-        Background->PositionEarth.y = -2061;
+        Background->PositionEarth.y = -2062;
     }
 }
 
@@ -45,9 +45,9 @@ void InitBackground(){
     Background->PositionStar.h = SCREEN_HEIGHT;
 
     Background->PositionEarth.x = 0;
-    Background->PositionEarth.y = -2061;
+    Background->PositionEarth.y = -2062;
     Background->PositionEarth.w = SCREEN_WIDTH;
-    Background->PositionEarth.h = 2861;
+    Background->PositionEarth.h = 2862;
 
     Background->Load = LoadContentBackground;
     Background->UnLoad = UnLoadContentBackground;

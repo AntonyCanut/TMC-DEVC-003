@@ -53,6 +53,12 @@ SDL_Texture *tStarMenu;
 struct TitreStruct *Titre;
 SDL_Texture *tTitre;
 
+struct TitreStruct *Play;
+SDL_Texture *tPlay;
+
+struct TitreStruct *Quit;
+SDL_Texture *tQuit;
+
 struct MarsStruct *Mars;
 SDL_Texture *tMars;
 

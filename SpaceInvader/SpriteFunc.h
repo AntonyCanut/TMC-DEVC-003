@@ -131,6 +131,30 @@ struct TitreStruct {
     Destroy Destroy;
 };
 
+struct PlayStruct {
+    SDL_Rect Play;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
+struct QuitStruct {
+    SDL_Rect Quit;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
 struct MenuStruct {
     SDL_Rect PositionStarMenu;
     int IsAlive;

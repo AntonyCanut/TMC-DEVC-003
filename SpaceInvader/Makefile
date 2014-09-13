@@ -7,6 +7,7 @@ SRC = Main.c\
 	  Ship.c\
 	  ShipShoot.c\
 	  Invader.c\
+	  Utilitaire.c
 
 RM = rm -rf
 NAME = SpaceInvader

@@ -31,9 +31,9 @@ Mix_Music *musiqueBackground;
 Mix_Chunk *sonBackground; //Pointeur musique background
 Mix_Chunk *son2;
 
-bool *right;
-bool *left;
-bool *shoot;
+int *right;
+int *left;
+int *shoot;
 
 
 struct MoonStruct *Moon;
@@ -61,5 +61,7 @@ void InitMars();
 void InitShip();
 void InitShipShoot();
 void InitInvader();
+
+char collision(SDL_Rect, SDL_Rect);
 
 #endif

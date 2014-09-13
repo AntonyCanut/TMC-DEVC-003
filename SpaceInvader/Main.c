@@ -77,7 +77,11 @@ void UpdateMain()
     Background->Update();
     Moon->Update();
     Mars->Update();
-    Ship->Update();
+    if (Ship->IsAlive < 10)
+    {
+        Ship->Update();
+    }
+    
     // Traitement a faire dans les listes
     ShipShoot->Update();
     Invader->Update();
@@ -134,7 +138,10 @@ void DrawMain(){
     Background->Draw();
     Mars->Draw();
     Moon->Draw();
-    Ship->Draw();
+    if (Ship->IsAlive < 6)
+    {
+        Ship->Draw();
+    }
     // Dépendance aux listes
     ShipShoot->Draw();
     Invader->Draw();

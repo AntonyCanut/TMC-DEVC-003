@@ -19,7 +19,7 @@ SDL2_mixer = ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
 
 $(NAME):	
 			$(CC) $(SRC) $(SDL2) $(SDL2_image) $(SDL2_mixer) -o $(NAME)
-			# rm *.o
+			#rm *.o
 			# ./$(NAME)
 
 clean:

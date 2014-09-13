@@ -82,7 +82,6 @@ void InitMars();
 void InitShip();
 void InitShipShoot();
 
-void InitInvader();
 void InitLife();
 
 InvaderStruct *InitInvader(int x);

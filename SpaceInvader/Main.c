@@ -97,7 +97,6 @@ void UpdateMain()
     // Traitement a faire dans les listes
     ShipShoot->Update();
 
-    Invader->Update();
     Life->Update();
 
     MyInvader->Update(MyInvader);
@@ -218,7 +217,6 @@ void DrawMain(){
     }
     // Dépendance aux listes
     ShipShoot->Draw();
-    Invader->Draw();
     Life->Draw();
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);

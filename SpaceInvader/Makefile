@@ -7,12 +7,9 @@ SRC = Main.c\
 	  Ship.c\
 	  ShipShoot.c\
 	  Invader.c\
-<<<<<<< HEAD
 	  Menu.c\
 	  Titre.c\
-=======
 	  Utilitaire.c
->>>>>>> FETCH_HEAD
 
 RM = rm -rf
 NAME = SpaceInvader

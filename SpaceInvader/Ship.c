@@ -11,7 +11,7 @@
 int countUpdateShip = 0;
 
 void LoadContentShip(){
-    tShip= IMG_LoadTexture(Renderer, "img/player/joueur_600x3000_P_600.png");
+    tShip= IMG_LoadTexture(Renderer, "img/player/joueur_800x3800_P_600_bonus_P_800.png");
 }
 
 void UnLoadContentShip(){
@@ -24,14 +24,25 @@ void DrawShip(){
 
 void UpdateShip(){
     
-    // if (countUpdateShip==30)
-    // {
-    //     Ship->IsAlive=1;
-    // }
+    if (countUpdateShip==30)
+    {
+        Ship->Shield=1;
+    }
     if (shoot==true)
     {
         Ship->Shot();
     }
+    if (Ship->Shield == 1)
+    {
+        Ship->Part.x = 3000;
+        Ship->Part.h = 800;
+        Ship->Part.w = 800;
+    }else{
+        Ship->Part.x = 0;
+        Ship->Part.h = 600;
+        Ship->Part.w = 600;
+    }
+
     Ship->Dead();
     countUpdateShip += 1;
 }
@@ -100,6 +111,7 @@ void InitShip(){
     Ship->Part.h = 600;
     Ship->IsAlive = 0;
     Ship->Life = 3;
+    Ship->Shield = 0;
 
     Ship->Draw = DrawShip;
     Ship->Update = UpdateShip;

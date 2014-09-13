@@ -44,6 +44,7 @@ struct ShipStruct {
     int IsAlive;
     int Life;
     int Speed;
+    int Shield;
     LoadContent Load;
     UnLoadContent UnLoad;
     Draw Draw;

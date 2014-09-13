@@ -10,8 +10,8 @@ SRC = Main.c \
 	  Menu.c \
 	  Titre.c \
 	  Play.c \
-	  Quit.c
-	  Utilitaire.c\
+	  Quit.c \
+	  Utilitaire.c \
 	  Life.c\
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \
 	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \

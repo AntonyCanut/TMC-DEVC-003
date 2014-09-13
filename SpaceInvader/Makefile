@@ -2,7 +2,7 @@ CC	= gcc
 
 SRC = Main.c \
 	  Moon.c \
-	  mars.c \
+	  Mars.c \
 	  background.c \
 	  Ship.c \
 	  ShipShoot.c \

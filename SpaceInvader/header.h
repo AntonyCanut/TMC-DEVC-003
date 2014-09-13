@@ -14,12 +14,12 @@
 #define SCREEN_HEIGHT 800
 
 #include <stdio.h>
-// #include <SDL2.framework/Headers/SDL.h>
-// #include <SDL2_image.framework/Headers/SDL_image.h>
-// #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
-#include "/usr/local/include/SDL2/SDL.h"
-#include "/usr/local/include/SDL2/SDL_image.h"
-#include "/usr/local/include/SDL2/SDL_mixer.h"
+#include <SDL2.framework/Headers/SDL.h>
+#include <SDL2_image.framework/Headers/SDL_image.h>
+#include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+// #include "/usr/local/include/SDL2/SDL.h"
+// #include "/usr/local/include/SDL2/SDL_image.h"
+// #include "/usr/local/include/SDL2/SDL_mixer.h"
 #include "SpriteFunc.h"
 
 SDL_Window *Window;

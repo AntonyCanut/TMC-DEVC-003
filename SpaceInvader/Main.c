@@ -218,13 +218,10 @@ void DrawMain(){
     }
     // Dépendance aux listes
     ShipShoot->Draw();
-<<<<<<< HEAD
     Invader->Draw();
     Life->Draw();
-=======
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
->>>>>>> FETCH_HEAD
     SDL_RenderPresent(Renderer);
 }
 

@@ -40,6 +40,7 @@ struct ShipStruct {
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
+    int Life;
     int Speed;
     LoadContent Load;
     UnLoadContent UnLoad;
@@ -64,13 +65,6 @@ struct ShipShootStruct {
     Destroy Destroy;
 };
 
-struct ShipShootElement
-{
-    struct ShipShootStruct val;
-    struct ShipShootElement *nxt;
-};
- 
-typedef struct ShipShootElement* ShipShootElementList;
 // ##########################
 // #       END JOUEUR
 // ##########################
@@ -134,6 +128,52 @@ struct MarsStruct {
     UnLoadContent UnLoad;
     Draw Draw;
     Update Update;
+    Destroy Destroy;
+};
+
+struct TitreStruct {
+    SDL_Rect Titre;
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
+struct PlayStruct {
+    SDL_Rect Play;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
+struct QuitStruct {
+    SDL_Rect Quit;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
+struct MenuStruct {
+    SDL_Rect PositionStarMenu;
+    int IsAlive;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    UpdateInput UpdateInput;
     Destroy Destroy;
 };
 

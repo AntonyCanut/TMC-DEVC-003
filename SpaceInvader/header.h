@@ -34,7 +34,11 @@ Mix_Chunk *son2;
 bool *right;
 bool *left;
 bool *shoot;
-struct ShipShootElementList *ShipShootList;
+bool *play;
+bool *quit;
+bool *menu;
+
+
 
 struct MoonStruct *Moon;
 SDL_Texture *tMoon;
@@ -42,6 +46,18 @@ SDL_Texture *tMoon;
 struct BackgroundStruct *Background;
 SDL_Texture *tStar;
 SDL_Texture *tEarth;
+
+struct MenuStruct *Menu;
+SDL_Texture *tStarMenu;
+
+struct TitreStruct *Titre;
+SDL_Texture *tTitre;
+
+struct TitreStruct *Play;
+SDL_Texture *tPlay;
+
+struct TitreStruct *Quit;
+SDL_Texture *tQuit;
 
 struct MarsStruct *Mars;
 SDL_Texture *tMars;
@@ -55,11 +71,15 @@ SDL_Texture *tShipShoot;
 InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
 
+void InitTitre();
+void InitMenu();
 void InitBackground();
 void InitMoon();
 void InitMars();
 void InitShip();
 void InitShipShoot();
 InvaderStruct *InitInvader(int x);
+
+char collision(SDL_Rect, SDL_Rect);
 
 #endif

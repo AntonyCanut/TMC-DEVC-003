@@ -14,6 +14,7 @@ void InitMain()
     right=false;
     left=false;
     shoot=false;
+    menu = true;
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
@@ -27,6 +28,8 @@ void InitMain()
     Mix_VolumeChunk(sonBackground, MIX_MAX_VOLUME/2);
     Mix_VolumeChunk(son2, MIX_MAX_VOLUME/2);
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
+    InitMenu();
+    InitTitre();
     InitBackground();
     InitMoon();
     InitMars();
@@ -35,12 +38,19 @@ void InitMain()
     // Dépendant du vaisseau, a ne faire qu'au tir
     InitShipShoot();
     // Faire une liste
+<<<<<<< HEAD
     MyInvader = InitInvader(11);
     MyInvader2 = InitInvader(91);
+=======
+    InitInvader();
+
+>>>>>>> FETCH_HEAD
 }
 
 void LoadMain()
 {
+    Menu->Load();
+    Titre->Load();
     Background->Load();
     Moon->Load();
     Mars->Load();
@@ -53,6 +63,8 @@ void LoadMain()
 
 void DestroyMain()
 {
+    Titre->Destroy();
+    Menu->Destroy();
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
@@ -79,11 +91,57 @@ void UpdateMain()
     Background->Update();
     Moon->Update();
     Mars->Update();
-    Ship->Update();
+    if (Ship->IsAlive < 10)
+    {
+        Ship->Update();
+    }
+    
     // Traitement a faire dans les listes
     ShipShoot->Update();
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
+}
+
+void UpdateTheMenu()
+{
+    Menu->Update();
+}
+
+void UpdateTheMenuInput()
+{
+     while (SDL_PollEvent(&e))
+    {
+        switch(e.type){
+            case SDL_QUIT:
+                DestroyMain();
+                break;
+            case SDL_KEYDOWN:
+                switch(e.key.keysym.sym){
+                    case SDLK_ESCAPE:
+                        quit=true;
+                        break;
+                    case SDLK_p:
+                        menu = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SDL_KEYUP:
+                switch(e.key.keysym.sym){
+                    case SDLK_ESCAPE:
+                        quit=true;
+                        break;
+                    case SDLK_p:
+                        menu = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+    }
+    Menu->UpdateInput();
 }
 
 void UpdateMainInput()
@@ -105,6 +163,9 @@ void UpdateMainInput()
                     case SDLK_SPACE:
                         shoot=true;
                         break;
+                    case SDLK_ESCAPE:
+                        quit=true;
+                        break;
                     default:
                         break;
                 }
@@ -120,6 +181,9 @@ void UpdateMainInput()
                     case SDLK_SPACE:
                         shoot=false;
                         break;
+                    case SDLK_ESCAPE:
+                        quit=true;
+                        break;
                     default:
                         break;
                 }
@@ -131,13 +195,24 @@ void UpdateMainInput()
     Ship->UpdateInput();
 }
 
+void DrawTheMenu()
+{
+    SDL_RenderClear(Renderer);
+    Menu->Draw();
+    Titre->Draw();
+    SDL_RenderPresent(Renderer);
+}
+
 void DrawMain(){
     SDL_RenderClear(Renderer);
 
     Background->Draw();
     Mars->Draw();
     Moon->Draw();
-    Ship->Draw();
+    if (Ship->IsAlive < 6)
+    {
+        Ship->Draw();
+    }
     // Dépendance aux listes
     ShipShoot->Draw();
     MyInvader->Draw(MyInvader);
@@ -147,19 +222,38 @@ void DrawMain(){
 
 int main()
 {
-    int isRunning = 1;
-    
+
     InitMain();
     LoadMain();
+    int isRunning = 1;
+
+
      //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
     Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)
     {
         Uint32 toWait;
         time = SDL_GetTicks();
-        UpdateMain();
-        UpdateMainInput();
-        DrawMain();
+        if (menu == true)
+        {
+            UpdateTheMenu();
+            UpdateTheMenuInput();
+            DrawTheMenu();  
+            if (quit == true)
+            {
+                isRunning = 0;
+            }
+        }
+        else 
+        {
+            UpdateMain();
+            UpdateMainInput();
+            DrawMain();
+            if (quit == true)
+            {
+                isRunning = 0;
+            }
+        }
         toWait = SDL_GetTicks() - time;
         if (toWait < 16)
             SDL_Delay(16 - toWait);

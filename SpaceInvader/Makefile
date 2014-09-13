@@ -2,14 +2,16 @@ CC	= gcc
 
 SRC = Main.c \
 	  Moon.c \
-	  Mars.c \
+	  mars.c \
 	  background.c \
 	  Ship.c \
 	  ShipShoot.c \
 	  Invader.c \
 	  Menu.c \
 	  Titre.c \
-	  Utilitaire.c
+	  Utilitaire.c \
+	  Play.c \
+	  Quit.c
 
 RM = rm -rf
 NAME = SpaceInvader

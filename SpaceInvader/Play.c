@@ -17,7 +17,7 @@ void UnLoadPlay(){
 }
 
 void DrawPlay(){
-    SDL_RenderCopy(Renderer, tPlay, 0, &Play->Play);
+    SDL_RenderCopy(Renderer, tPlay, &Play->Part, &Play->Play);
 }
 
 void UpdatePlay(){
@@ -29,17 +29,32 @@ void DestroyPlay(){
     free(Play);
 }
 
+void SelectedPlay(){
+    Play->Part.x = 1000;
+}
+
+void DeselectedPlay()
+{
+     Play->Part.x = 0;
+}
 
 void InitPlay(){
     Play = (struct PlayStruct *) malloc(sizeof(struct PlayStruct) + 1);
-    Play->Play.x = 400;
-    Play->Play.y = 0;
-    Play->Play.w = 500;
-    Play->Play.h = 500;
+    Play->Play.x = 525;
+    Play->Play.y = 500;
+    Play->Play.w = 250;
+    Play->Play.h = 125;
+
+    Play->Part.x = 1000;
+    Play->Part.y = 0;
+    Play->Part.w = 1000;
+    Play->Part.h = 500;
 
     Play->Load = LoadContentPlay;
     Play->UnLoad = UnLoadPlay;
     Play->Draw = DrawPlay;
     Play->Update = UpdatePlay;
     Play->Destroy = DestroyPlay;
+    Play->Selected = SelectedPlay;
+    Play->Deselected = DeselectedPlay;
 }

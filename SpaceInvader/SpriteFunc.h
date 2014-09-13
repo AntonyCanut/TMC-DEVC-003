@@ -22,6 +22,8 @@ typedef void (*UpdateInput)(void);
 typedef void (*Shot)(void);
 typedef void (*Dead)(void);
 typedef void (*Destroy)(void);
+typedef void (*Deselected)(void);
+typedef void (*Selected)(void);
 
 // ##########################
 // #       JOUEUR
@@ -141,6 +143,8 @@ struct PlayStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
+    Selected Selected;
+    Deselected Deselected;
 };
 
 struct QuitStruct {
@@ -153,6 +157,8 @@ struct QuitStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
+    Selected Selected;
+    Deselected Deselected;
 };
 
 struct MenuStruct {

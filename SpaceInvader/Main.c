@@ -30,6 +30,8 @@ void InitMain()
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
     InitMenu();
     InitTitre();
+    InitPlay();
+    InitQuit();
     InitBackground();
     InitMoon();
     InitMars();
@@ -46,6 +48,8 @@ void LoadMain()
 {
     Menu->Load();
     Titre->Load();
+    Play->Load();
+    Quit->Load();
     Background->Load();
     Moon->Load();
     Mars->Load();
@@ -59,6 +63,8 @@ void LoadMain()
 void DestroyMain()
 {
     Titre->Destroy();
+    Quit->Destroy();
+    Play->Destroy();
     Menu->Destroy();
     Ship->Destroy();
     Mars->Destroy();
@@ -98,6 +104,9 @@ void UpdateMain()
 void UpdateTheMenu()
 {
     Menu->Update();
+    Play->Update();
+    Quit->Update();
+    Titre->Update();
 }
 
 void UpdateTheMenuInput()
@@ -193,6 +202,8 @@ void DrawTheMenu()
     SDL_RenderClear(Renderer);
     Menu->Draw();
     Titre->Draw();
+    Quit->Draw();
+    Play->Draw();
     SDL_RenderPresent(Renderer);
 }
 
@@ -228,8 +239,8 @@ int main()
         time = SDL_GetTicks();
         if (menu == true)
         {
-            UpdateTheMenu();
             UpdateTheMenuInput();
+            UpdateTheMenu();
             DrawTheMenu();  
             if (quit == true)
             {

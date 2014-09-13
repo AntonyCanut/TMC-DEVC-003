@@ -53,10 +53,10 @@ SDL_Texture *tStarMenu;
 struct TitreStruct *Titre;
 SDL_Texture *tTitre;
 
-struct TitreStruct *Play;
+struct PlayStruct *Play;
 SDL_Texture *tPlay;
 
-struct TitreStruct *Quit;
+struct QuitStruct *Quit;
 SDL_Texture *tQuit;
 
 struct MarsStruct *Mars;
@@ -72,6 +72,8 @@ struct InvaderStruct *Invader;
 SDL_Texture *tInvader;
 
 void InitTitre();
+void InitPlay();
+void InitQuit();
 void InitMenu();
 void InitBackground();
 void InitMoon();

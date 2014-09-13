@@ -38,13 +38,8 @@ void InitMain()
     // Dépendant du vaisseau, a ne faire qu'au tir
     InitShipShoot();
     // Faire une liste
-<<<<<<< HEAD
     MyInvader = InitInvader(11);
     MyInvader2 = InitInvader(91);
-=======
-    InitInvader();
-
->>>>>>> FETCH_HEAD
 }
 
 void LoadMain()

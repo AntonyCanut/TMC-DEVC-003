@@ -1,14 +1,17 @@
 CC	= gcc
 
-SRC = Main.c\
-	  Moon.c\
-	  Mars.c\
-	  Background.c\
-	  Ship.c\
-	  ShipShoot.c\
-	  Invader.c\
-	  ~/Library/Frameworks/SDL2.framework/SDL2\
-	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image\
+SRC = Main.c \
+	  Moon.c \
+	  Mars.c \
+	  background.c \
+	  Ship.c \
+	  ShipShoot.c \
+	  Invader.c \
+	  Menu.c \
+	  Titre.c \
+	  Utilitaire.c \
+	  ~/Library/Frameworks/SDL2.framework/SDL2 \
+	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
 	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
 
 RM = rm -rf
@@ -19,10 +22,16 @@ SDL2 = /usr/local/lib/libSDL2.a
 SDL2_image = /usr/local/lib/libSDL2_image.a
 SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
 
+all:		$(NAME)
+
 $(NAME):	$(OBJS)
 			$(CC) $(OBJS) $(SDL2) $(SDL2_image) $(SDL2_mixer) -o $(NAME)
 			rm *.o
-			$(NAME)
 
 clean:
-			rm *.o
+		$(RM) $(OBJ)
+
+fclean:		clean
+		$(RM) $(NAME)
+
+re:		fclean all

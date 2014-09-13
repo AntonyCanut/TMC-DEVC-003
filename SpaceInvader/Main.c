@@ -35,6 +35,7 @@ void InitMain()
     InitMars();
 
     InitShip();
+    InitLife();
     // Dépendant du vaisseau, a ne faire qu'au tir
     InitShipShoot();
     // Faire une liste
@@ -50,6 +51,7 @@ void LoadMain()
     Moon->Load();
     Mars->Load();
     Ship->Load();
+    Life->Load();
     // Les tirs sont dépendant du vaisseau.
     ShipShoot->Load();
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
@@ -60,6 +62,7 @@ void DestroyMain()
 {
     Titre->Destroy();
     Menu->Destroy();
+    Life->Destroy();
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
@@ -93,6 +96,7 @@ void UpdateMain()
     // Traitement a faire dans les listes
     ShipShoot->Update();
     Invader->Update();
+    Life->Update();
 }
 
 void UpdateTheMenu()
@@ -209,6 +213,7 @@ void DrawMain(){
     // Dépendance aux listes
     ShipShoot->Draw();
     Invader->Draw();
+    Life->Draw();
     SDL_RenderPresent(Renderer);
 }
 

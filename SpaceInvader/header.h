@@ -71,6 +71,9 @@ SDL_Texture *tShipShoot;
 struct InvaderStruct *Invader;
 SDL_Texture *tInvader;
 
+struct LifeStruct *Life;
+SDL_Texture *tLife;
+
 void InitTitre();
 void InitMenu();
 void InitBackground();
@@ -79,6 +82,7 @@ void InitMars();
 void InitShip();
 void InitShipShoot();
 void InitInvader();
+void InitLife();
 
 char collision(SDL_Rect, SDL_Rect);
 

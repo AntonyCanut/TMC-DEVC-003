@@ -54,6 +54,18 @@ struct ShipShootStruct {
     Dead Dead;
     Destroy Destroy;
 };
+struct LifeStruct {
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
 
 // ##########################
 // #       END JOUEUR

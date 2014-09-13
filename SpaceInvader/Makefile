@@ -9,7 +9,8 @@ SRC = Main.c \
 	  Invader.c \
 	  Menu.c \
 	  Titre.c \
-	  Utilitaire.c
+	  Utilitaire.c\
+	  Life.c
 
 RM = rm -rf
 NAME = SpaceInvader

@@ -24,10 +24,10 @@ void DrawShip(){
 
 void UpdateShip(){
     
-    if (countUpdateShip==30)
-    {
-        Ship->IsAlive=1;
-    }
+    // if (countUpdateShip==30)
+    // {
+    //     Ship->IsAlive=1;
+    // }
     if (shoot==true)
     {
         Ship->Shot();

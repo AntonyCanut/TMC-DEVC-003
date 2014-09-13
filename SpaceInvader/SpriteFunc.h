@@ -119,4 +119,26 @@ struct MarsStruct {
     Destroy Destroy;
 };
 
+struct TitreStruct {
+    SDL_Rect Titre;
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
+struct MenuStruct {
+    SDL_Rect PositionStarMenu;
+    int IsAlive;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    UpdateInput UpdateInput;
+    Destroy Destroy;
+};
+
 #endif

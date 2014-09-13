@@ -75,8 +75,8 @@ void InitMoon(){
 
     Moon->Part.x = 0;
     Moon->Part.y = 0;
-    Moon->Part.w = 3200;
-    Moon->Part.h = 3200;
+    Moon->Part.w = 500;
+    Moon->Part.h = 2000;
 
     Moon->Load = LoadContentMoon;
     Moon->UnLoad = UnLoadMoon;

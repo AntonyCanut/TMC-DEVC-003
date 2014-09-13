@@ -14,12 +14,12 @@
 #define SCREEN_HEIGHT 800
 
 #include <stdio.h>
-// #include <SDL2.framework/Headers/SDL.h>
-// #include <SDL2_image.framework/Headers/SDL_image.h>
-// #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
-#include "/usr/local/include/SDL2/SDL.h"
-#include "/usr/local/include/SDL2/SDL_image.h"
-#include "/usr/local/include/SDL2/SDL_mixer.h"
+#include <SDL2.framework/Headers/SDL.h>
+#include <SDL2_image.framework/Headers/SDL_image.h>
+#include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+// #include "/usr/local/include/SDL2/SDL.h"
+// #include "/usr/local/include/SDL2/SDL_image.h"
+// #include "/usr/local/include/SDL2/SDL_mixer.h"
 #include "SpriteFunc.h"
 
 SDL_Window *Window;
@@ -51,10 +51,10 @@ SDL_Texture *tStarMenu;
 struct TitreStruct *Titre;
 SDL_Texture *tTitre;
 
-struct TitreStruct *Play;
+struct PlayStruct *Play;
 SDL_Texture *tPlay;
 
-struct TitreStruct *Quit;
+struct QuitStruct *Quit;
 SDL_Texture *tQuit;
 
 struct MarsStruct *Mars;
@@ -68,14 +68,27 @@ BulletStruct *MyBullet;
 InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
 
+struct LifeStruct *Life;
+SDL_Texture *tLife;
+
 void InitTitre();
+void InitPlay();
+void InitQuit();
 void InitMenu();
 void InitBackground();
 void InitMoon();
 void InitMars();
 void InitShip();
+<<<<<<< HEAD
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
+=======
+void InitShipShoot();
+
+void InitLife();
+
+>>>>>>> FETCH_HEAD
 InvaderStruct *InitInvader(int x);
+
 
 char collision(SDL_Rect, SDL_Rect);
 

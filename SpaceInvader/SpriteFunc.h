@@ -22,6 +22,8 @@ typedef void (*UpdateInput)(void);
 typedef void (*Shot)(void);
 typedef void (*Dead)(void);
 typedef void (*Destroy)(void);
+typedef void (*Deselected)(void);
+typedef void (*Selected)(void);
 
 typedef struct sInvaderStruct InvaderStruct;
 
@@ -53,6 +55,7 @@ struct ShipStruct {
     int IsAlive;
     int Life;
     int Speed;
+    int Shield;
     LoadContent Load;
     UnLoadContent UnLoad;
     Draw Draw;
@@ -68,6 +71,7 @@ typedef struct sBullet {
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
     int Speed;
+<<<<<<< HEAD
     int Direction;
     SDL_Texture *Texture;
     LoadContent3 Load;
@@ -77,6 +81,27 @@ typedef struct sBullet {
     Dead3 Dead;
     Destroy3 Destroy;
 } BulletStruct;
+=======
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Dead Dead;
+    Destroy Destroy;
+};
+struct LifeStruct {
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+};
+
+>>>>>>> FETCH_HEAD
 
 // ##########################
 // #       END JOUEUR
@@ -165,6 +190,8 @@ struct PlayStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
+    Selected Selected;
+    Deselected Deselected;
 };
 
 struct QuitStruct {
@@ -177,6 +204,8 @@ struct QuitStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
+    Selected Selected;
+    Deselected Deselected;
 };
 
 struct MenuStruct {

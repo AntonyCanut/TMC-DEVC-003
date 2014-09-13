@@ -2,25 +2,29 @@ CC	= gcc
 
 SRC = Main.c \
 	  Moon.c \
-	  Mars.c \
+	  mars.c \
 	  background.c \
 	  Ship.c \
 	  Bullet.c \
 	  Invader.c \
 	  Menu.c \
 	  Titre.c \
+	  Play.c \
+	  Quit.c \
 	  Utilitaire.c \
+	  Life.c\
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \
 	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
 	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
+
 
 RM = rm -rf
 NAME = SpaceInvader
 OBJS = $(SRC:%.c=%.o)
 # CFLAGS	= -W -Wall -Werror
-SDL2 = /usr/local/lib/libSDL2.a
-SDL2_image = /usr/local/lib/libSDL2_image.a
-SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
+# SDL2 = /usr/local/lib/libSDL2.a
+# SDL2_image = /usr/local/lib/libSDL2_image.a
+# SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
 
 all:		$(NAME)
 

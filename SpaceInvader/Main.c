@@ -30,11 +30,14 @@ void InitMain()
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
     InitMenu();
     InitTitre();
+    InitPlay();
+    InitQuit();
     InitBackground();
     InitMoon();
     InitMars();
 
     InitShip();
+    InitLife();
     // Dépendant du vaisseau, a ne faire qu'au tir
     MyBullet = InitBullet(&Ship->Position, 0);
 
@@ -47,10 +50,13 @@ void LoadMain()
 {
     Menu->Load();
     Titre->Load();
+    Play->Load();
+    Quit->Load();
     Background->Load();
     Moon->Load();
     Mars->Load();
     Ship->Load();
+    Life->Load();
     // Les tirs sont dépendant du vaisseau.
     // MyBullet->Load(MyBullet);
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
@@ -60,7 +66,10 @@ void LoadMain()
 void DestroyMain()
 {
     Titre->Destroy();
+    Quit->Destroy();
+    Play->Destroy();
     Menu->Destroy();
+    Life->Destroy();
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
@@ -93,14 +102,25 @@ void UpdateMain()
     }
     
     // Traitement a faire dans les listes
+<<<<<<< HEAD
     MyBullet->Update(MyBullet);
+=======
+    ShipShoot->Update();
+
+    Life->Update();
+
+>>>>>>> FETCH_HEAD
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
+
 }
 
 void UpdateTheMenu()
 {
     Menu->Update();
+    Play->Update();
+    Quit->Update();
+    Titre->Update();
 }
 
 void UpdateTheMenuInput()
@@ -196,6 +216,8 @@ void DrawTheMenu()
     SDL_RenderClear(Renderer);
     Menu->Draw();
     Titre->Draw();
+    Quit->Draw();
+    Play->Draw();
     SDL_RenderPresent(Renderer);
 }
 
@@ -210,7 +232,12 @@ void DrawMain(){
         Ship->Draw();
     }
     // Dépendance aux listes
+<<<<<<< HEAD
     MyBullet->Draw(MyBullet);
+=======
+    ShipShoot->Draw();
+    Life->Draw();
+>>>>>>> FETCH_HEAD
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);
@@ -232,8 +259,8 @@ int main()
         time = SDL_GetTicks();
         if (menu == true)
         {
-            UpdateTheMenu();
             UpdateTheMenuInput();
+            UpdateTheMenu();
             DrawTheMenu();  
             if (quit == true)
             {

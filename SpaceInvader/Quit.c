@@ -9,7 +9,7 @@
 
 
 void LoadContentQuit(){
-    tQuit= IMG_LoadTexture(Renderer, "img/decor/Quit_500x2000_P_1000.png");
+    tQuit= IMG_LoadTexture(Renderer, "img/decor/exit_500x2000_P_1000.png");
 }
 
 void UnLoadQuit(){
@@ -17,7 +17,7 @@ void UnLoadQuit(){
 }
 
 void DrawQuit(){
-    SDL_RenderCopy(Renderer, tQuit, 0, &Quit->Quit);
+    SDL_RenderCopy(Renderer, tQuit, &Quit->Part, &Quit->Quit);
 }
 
 void UpdateQuit(){
@@ -29,13 +29,28 @@ void DestroyQuit(){
     free(Quit);
 }
 
+void SelectedQuit(){
+    Quit->Part.x = 1000;
+}
+
+void DeselectedQuit()
+{
+     Quit->Part.x = 0;
+}
+
 
 void InitQuit(){
     Quit = (struct QuitStruct *) malloc(sizeof(struct QuitStruct) + 1);
-    Quit->Quit.x = 400;
-    Quit->Quit.y = 0;
-    Quit->Quit.w = 500;
-    Quit->Quit.h = 500;
+    Quit->Quit.x = 525;
+    Quit->Quit.y = 630;
+    Quit->Quit.w = 250;
+    Quit->Quit.h = 125;
+
+    Quit->Part.x = 0;
+    Quit->Part.y = 0;
+    Quit->Part.w = 1000;
+    Quit->Part.h = 500;
+
 
     Quit->Load = LoadContentQuit;
     Quit->UnLoad = UnLoadQuit;

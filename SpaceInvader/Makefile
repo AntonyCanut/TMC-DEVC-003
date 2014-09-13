@@ -7,8 +7,12 @@ SRC = Main.c\
 	  Ship.c\
 	  ShipShoot.c\
 	  Invader.c\
+<<<<<<< HEAD
 	  Menu.c\
 	  Titre.c\
+=======
+	  Utilitaire.c
+>>>>>>> FETCH_HEAD
 
 RM = rm -rf
 NAME = SpaceInvader
@@ -20,7 +24,7 @@ SDL2_mixer = ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
 
 $(NAME):	
 			$(CC) $(SRC) $(SDL2) $(SDL2_image) $(SDL2_mixer) -o $(NAME)
-			# rm *.o
+			#rm *.o
 			# ./$(NAME)
 
 clean:

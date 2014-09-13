@@ -30,6 +30,7 @@ struct ShipStruct {
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
+    int Life;
     int Speed;
     LoadContent Load;
     UnLoadContent UnLoad;

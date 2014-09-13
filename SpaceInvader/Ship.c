@@ -9,7 +9,6 @@
 #include "header.h"
 
 int countUpdateShip = 0;
-int deadShip=0;
 
 void LoadContentShip(){
     tShip= IMG_LoadTexture(Renderer, "img/player/joueur_600x3000_P_600.png");
@@ -25,15 +24,15 @@ void DrawShip(){
 
 void UpdateShip(){
     
-    // if (countUpdateShip==30)
-    // {
-    //     deadShip=1;
-    // }
+    if (countUpdateShip==30)
+    {
+        Ship->IsAlive=1;
+    }
     if (shoot==true)
     {
         Ship->Shot();
     }
-    //DeadShip();
+    Ship->Dead();
     countUpdateShip += 1;
 }
 
@@ -42,29 +41,44 @@ void UpdateInputShip(){
         Ship->Position.x += 5;
     }else if( Ship->Position.x >= 10 && left == true){
         Ship->Position.x -= 5;
-    }  
+    } 
+
+    if(countUpdateShip%5==0 && Ship->IsAlive == 6){
+        Ship->Part.x = 0;
+        Ship->IsAlive = 0;
+    }
 }
 
 void ShotShip(){
-
+    // /* On crée un nouvel élément */
+    // ShipShootElement* newShoot = (struct ShipShootStruct *) malloc(sizeof(struct ShipShootStruct) + 1);
+ 
+    //  On assigne la valeur au nouvel élément 
+    // newShoot->val = InitShipShoot();
+ 
+    // /* On assigne l'adresse de l'élément suivant au nouvel élément */
+    // newShoot->nxt = ShipShootList;
 }
 
 void DeadShip(){
-    if(countUpdateShip%5==0 && deadShip == 1){
+    if(countUpdateShip%5==0 && Ship->IsAlive == 1){
         Ship->Part.x = 600;
-        deadShip = 2;
-    }else if(countUpdateShip%5==0 && deadShip == 2){
+        Ship->IsAlive = 2;
+    }else if(countUpdateShip%5==0 && Ship->IsAlive== 2){
         Ship->Part.x = 1200;
-        deadShip = 3;
-    }else if(countUpdateShip%5==0 && deadShip == 3){
+        Ship->IsAlive = 3;
+    }else if(countUpdateShip%5==0 && Ship->IsAlive == 3){
         Ship->Part.x = 1800;
-        deadShip = 4;
-    }else if(countUpdateShip%5==0 && deadShip == 4){
+        Ship->IsAlive = 4;
+    }else if(countUpdateShip%5==0 && Ship->IsAlive == 4){
         Ship->Part.x = 2400;
-        deadShip = 5;
-    }else if(countUpdateShip%5==0 && deadShip == 5){
-        deadShip=0;
-        Ship->Destroy();
+        Ship->IsAlive = 5;
+    }else if(countUpdateShip%5==0 && Ship->IsAlive == 5){
+        Ship->Life -= 1;
+        if(Ship->Life <= 0){
+            Ship->IsAlive=10;
+        }
+        Ship->IsAlive=6;
     }
 }
 
@@ -84,6 +98,8 @@ void InitShip(){
     Ship->Part.y = 0;
     Ship->Part.w = 600;
     Ship->Part.h = 600;
+    Ship->IsAlive = 0;
+    Ship->Life = 3;
 
     Ship->Draw = DrawShip;
     Ship->Update = UpdateShip;

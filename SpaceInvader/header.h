@@ -68,8 +68,11 @@ SDL_Texture *tShip;
 struct ShipShootStruct *ShipShoot;
 SDL_Texture *tShipShoot;
 
-struct InvaderStruct *Invader;
-SDL_Texture *tInvader;
+InvaderStruct *MyInvader;
+InvaderStruct *MyInvader2;
+
+struct LifeStruct *Life;
+SDL_Texture *tLife;
 
 void InitTitre();
 void InitPlay();
@@ -80,7 +83,11 @@ void InitMoon();
 void InitMars();
 void InitShip();
 void InitShipShoot();
-void InitInvader();
+
+void InitLife();
+
+InvaderStruct *InitInvader(int x);
+
 
 char collision(SDL_Rect, SDL_Rect);
 

@@ -38,8 +38,6 @@ bool *play;
 bool *quit;
 bool *menu;
 
-
-
 struct MoonStruct *Moon;
 SDL_Texture *tMoon;
 
@@ -65,8 +63,7 @@ SDL_Texture *tMars;
 struct ShipStruct *Ship;
 SDL_Texture *tShip;
 
-struct ShipShootStruct *ShipShoot;
-SDL_Texture *tShipShoot;
+BulletStruct *MyBullet;
 
 InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
@@ -77,7 +74,7 @@ void InitBackground();
 void InitMoon();
 void InitMars();
 void InitShip();
-void InitShipShoot();
+BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 InvaderStruct *InitInvader(int x);
 
 char collision(SDL_Rect, SDL_Rect);

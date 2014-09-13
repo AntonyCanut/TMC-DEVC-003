@@ -5,7 +5,7 @@ SRC = Main.c \
 	  Mars.c \
 	  background.c \
 	  Ship.c \
-	  ShipShoot.c \
+	  Bullet.c \
 	  Invader.c \
 	  Menu.c \
 	  Titre.c \

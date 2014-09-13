@@ -33,6 +33,17 @@ typedef void (*Shot2)(InvaderStruct *Invader);
 typedef void (*Dead2)(InvaderStruct *Invader);
 typedef void (*Destroy2)(InvaderStruct *Invader);
 
+
+typedef struct sBullet BulletStruct;
+
+typedef void (*LoadContent3)(BulletStruct *Bullet);
+typedef void (*UnLoadContent3)(BulletStruct *Bullet);
+typedef void (*Draw3)(BulletStruct *Bullet);
+typedef void (*Update3)(BulletStruct *Bullet);
+typedef void (*Shot3)(BulletStruct *Bullet);
+typedef void (*Dead3)(BulletStruct *Bullet);
+typedef void (*Destroy3)(BulletStruct *Bullet);
+
 // ##########################
 // #       JOUEUR
 // ##########################
@@ -52,18 +63,20 @@ struct ShipStruct {
     Destroy Destroy;
 };
 
-struct ShipShootStruct {
+typedef struct sBullet {
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
     int Speed;
-    LoadContent Load;
-    UnLoadContent UnLoad;
-    Draw Draw;
-    Update Update;
-    Dead Dead;
-    Destroy Destroy;
-};
+    int Direction;
+    SDL_Texture *Texture;
+    LoadContent3 Load;
+    UnLoadContent3 UnLoad;
+    Draw3 Draw;
+    Update3 Update;
+    Dead3 Dead;
+    Destroy3 Destroy;
+} BulletStruct;
 
 // ##########################
 // #       END JOUEUR

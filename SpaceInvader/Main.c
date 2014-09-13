@@ -36,7 +36,8 @@ void InitMain()
 
     InitShip();
     // Dépendant du vaisseau, a ne faire qu'au tir
-    InitShipShoot();
+    MyBullet = InitBullet(&Ship->Position, 0);
+
     // Faire une liste
     MyInvader = InitInvader(11);
     MyInvader2 = InitInvader(91);
@@ -51,7 +52,7 @@ void LoadMain()
     Mars->Load();
     Ship->Load();
     // Les tirs sont dépendant du vaisseau.
-    ShipShoot->Load();
+    // MyBullet->Load(MyBullet);
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
     // MyInvader->Load();
 }
@@ -66,7 +67,7 @@ void DestroyMain()
     Background->Destroy();
     // Les tirs ne doivent pas être détruit ici mais a leur extinction durant la partie, seuls les tirs restant 
     // (fin de partie alors que des tirs sont en cours doivent être détuuit)
-    ShipShoot->Destroy();
+    MyBullet->Destroy(MyBullet);
     // Les ennemis doivent aussi être détruit de la même façon via la liste d'invader
     MyInvader->Destroy(MyInvader);
     MyInvader2->Destroy(MyInvader2);
@@ -92,7 +93,7 @@ void UpdateMain()
     }
     
     // Traitement a faire dans les listes
-    ShipShoot->Update();
+    MyBullet->Update(MyBullet);
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
 }
@@ -209,7 +210,7 @@ void DrawMain(){
         Ship->Draw();
     }
     // Dépendance aux listes
-    ShipShoot->Draw();
+    MyBullet->Draw(MyBullet);
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);

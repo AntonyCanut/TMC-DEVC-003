@@ -37,6 +37,7 @@ bool *shoot;
 bool *play;
 bool *quit;
 bool *menu;
+bool *isUp;
 
 struct MoonStruct *Moon;
 SDL_Texture *tMoon;

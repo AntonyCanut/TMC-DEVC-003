@@ -21,7 +21,16 @@ void DrawPlay(){
 }
 
 void UpdatePlay(){
-
+    if (isUp == true)
+    {
+        Play->Selected();
+        Quit->Deselected();
+    }
+    else
+    {
+        Play->Deselected();
+        Quit->Selected();
+    }
 }
 
 void DestroyPlay(){

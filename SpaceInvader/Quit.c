@@ -21,7 +21,16 @@ void DrawQuit(){
 }
 
 void UpdateQuit(){
-
+    if (isUp == true)
+    {
+        Play->Selected();
+        Quit->Deselected();
+    }
+    else
+    {
+        Play->Deselected();
+        Quit->Selected();
+    }
 }
 
 void DestroyQuit(){
@@ -57,4 +66,6 @@ void InitQuit(){
     Quit->Draw = DrawQuit;
     Quit->Update = UpdateQuit;
     Quit->Destroy = DestroyQuit;
+    Quit->Selected = SelectedQuit;
+    Quit->Deselected = DeselectedQuit;
 }

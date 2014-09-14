@@ -11,10 +11,11 @@ void InitMain()
     Window = SDL_CreateWindow("Space Invader", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     Renderer = SDL_CreateRenderer(Window, -1, 0);
 
-    right=false;
-    left=false;
-    shoot=false;
+    right = false;
+    left = false;
+    shoot = false;
     menu = true;
+    isUp = true;
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
@@ -133,8 +134,27 @@ void UpdateTheMenuInput()
                     case SDLK_ESCAPE:
                         quit=true;
                         break;
-                    case SDLK_p:
-                        menu = false;
+                    case SDLK_RETURN:
+                        if (isUp == true)
+                        {
+                            menu = false;                            
+                        }
+                        else
+                        {
+                            quit = true;
+                        }
+                        break;
+                    case SDLK_DOWN:
+                        if (isUp == true)
+                        {
+                            isUp = false;
+                        }
+                        break;
+                    case SDLK_UP:
+                        if (isUp == false)
+                        {
+                            isUp = true;
+                        }
                         break;
                     default:
                         break;
@@ -145,8 +165,27 @@ void UpdateTheMenuInput()
                     case SDLK_ESCAPE:
                         quit=true;
                         break;
-                    case SDLK_p:
-                        menu = false;
+                    case SDLK_RETURN:
+                        if (isUp == true)
+                        {
+                            menu = false;                            
+                        }
+                        else
+                        {
+                            quit = true;
+                        }
+                        break;
+                    case SDLK_DOWN:
+                        if (isUp == true)
+                        {
+                            isUp = false;
+                        }
+                        break;
+                    case SDLK_UP:
+                        if (isUp == false)
+                        {
+                            isUp = true;
+                        }
                         break;
                     default:
                         break;
@@ -176,8 +215,8 @@ void UpdateMainInput()
                     case SDLK_SPACE:
                         shoot=true;
                         break;
-                    case SDLK_ESCAPE:
-                        quit=true;
+                    case SDLK_LALT:
+                        menu=true;
                         break;
                     default:
                         break;
@@ -194,8 +233,8 @@ void UpdateMainInput()
                     case SDLK_SPACE:
                         shoot=false;
                         break;
-                    case SDLK_ESCAPE:
-                        quit=true;
+                    case SDLK_LALT:
+                        menu=true;
                         break;
                     default:
                         break;

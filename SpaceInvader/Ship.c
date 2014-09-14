@@ -23,7 +23,7 @@ void DrawShip(){
 }
 
 void UpdateShip(){
-    
+    // test 
     if (countUpdateShip==180)
     {
         Ship->Shield=1;
@@ -36,6 +36,7 @@ void UpdateShip(){
     {
         Ship->Life += 1;
     }
+    // fin test
 
     if (Ship->Shield == 1)
     {

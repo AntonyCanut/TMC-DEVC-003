@@ -24,23 +24,37 @@ void DrawShip(){
 
 void UpdateShip(){
     
-    if (countUpdateShip==300)
+    if (countUpdateShip==180)
     {
         Ship->Shield=1;
     }
-    if (shoot==true)
+    if (countUpdateShip==70 || countUpdateShip==370)
     {
-        Ship->Shot();
+        Ship->IsAlive = 1;
     }
+    if (countUpdateShip==270)
+    {
+        Ship->Life += 1;
+    }
+
     if (Ship->Shield == 1)
     {
+        Ship->Position.w = 94;
+        Ship->Position.h = 94;
         Ship->Part.x = 3000;
         Ship->Part.h = 800;
         Ship->Part.w = 800;
-    }else{
+    }else if (Ship->IsAlive == 0 && Ship->Shield == 0)
+    {
+        Ship->Position.w = 70;
+        Ship->Position.h = 70;
         Ship->Part.x = 0;
         Ship->Part.h = 600;
         Ship->Part.w = 600;
+    }
+
+    if(countUpdateShip%5==0 && Ship->IsAlive == 6){
+        Ship->IsAlive = 0;
     }
 
     Ship->Dead();
@@ -52,11 +66,10 @@ void UpdateInputShip(){
         Ship->Position.x += 5;
     }else if( Ship->Position.x >= 10 && left == true){
         Ship->Position.x -= 5;
-    } 
-
-    if(countUpdateShip%5==0 && Ship->IsAlive == 6){
-        Ship->Part.x = 0;
-        Ship->IsAlive = 0;
+    }
+    if (shoot==true)
+    {
+        Ship->Shot();
     }
 }
 
@@ -72,6 +85,12 @@ void ShotShip(){
 }
 
 void DeadShip(){
+    if ( Ship->Shield == 1 && Ship->IsAlive == 1 )
+    {
+        Ship->Shield = 0;
+        Ship->IsAlive = 0;
+    }
+
     if(countUpdateShip%5==0 && Ship->IsAlive == 1){
         Ship->Part.x = 600;
         Ship->IsAlive = 2;

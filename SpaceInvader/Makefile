@@ -2,8 +2,8 @@ CC	= gcc
 
 SRC = Main.c \
 	  Moon.c \
-	  mars.c \
-	  background.c \
+	  Mars.c \
+	  Background.c \
 	  Ship.c \
 	  Bullet.c \
 	  Invader.c \

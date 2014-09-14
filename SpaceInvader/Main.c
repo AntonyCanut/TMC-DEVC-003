@@ -102,14 +102,11 @@ void UpdateMain()
     }
     
     // Traitement a faire dans les listes
-<<<<<<< HEAD
+
     MyBullet->Update(MyBullet);
-=======
-    ShipShoot->Update();
 
     Life->Update();
 
->>>>>>> FETCH_HEAD
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
 
@@ -232,12 +229,11 @@ void DrawMain(){
         Ship->Draw();
     }
     // Dépendance aux listes
-<<<<<<< HEAD
+
     MyBullet->Draw(MyBullet);
-=======
-    ShipShoot->Draw();
+
     Life->Draw();
->>>>>>> FETCH_HEAD
+    
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);

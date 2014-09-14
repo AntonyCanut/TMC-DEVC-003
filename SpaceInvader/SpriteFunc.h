@@ -71,7 +71,6 @@ typedef struct sBullet {
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
     int Speed;
-<<<<<<< HEAD
     int Direction;
     SDL_Texture *Texture;
     LoadContent3 Load;
@@ -81,14 +80,7 @@ typedef struct sBullet {
     Dead3 Dead;
     Destroy3 Destroy;
 } BulletStruct;
-=======
-    LoadContent Load;
-    UnLoadContent UnLoad;
-    Draw Draw;
-    Update Update;
-    Dead Dead;
-    Destroy Destroy;
-};
+
 struct LifeStruct {
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
@@ -100,8 +92,6 @@ struct LifeStruct {
     Update Update;
     Destroy Destroy;
 };
-
->>>>>>> FETCH_HEAD
 
 // ##########################
 // #       END JOUEUR

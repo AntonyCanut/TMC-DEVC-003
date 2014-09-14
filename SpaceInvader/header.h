@@ -79,14 +79,12 @@ void InitBackground();
 void InitMoon();
 void InitMars();
 void InitShip();
-<<<<<<< HEAD
+
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
-=======
-void InitShipShoot();
+
 
 void InitLife();
 
->>>>>>> FETCH_HEAD
 InvaderStruct *InitInvader(int x);
 
 

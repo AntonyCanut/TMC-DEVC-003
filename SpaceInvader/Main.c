@@ -131,9 +131,6 @@ void UpdateTheMenuInput()
                 break;
             case SDL_KEYDOWN:
                 switch(e.key.keysym.sym){
-                    case SDLK_ESCAPE:
-                        quit=true;
-                        break;
                     case SDLK_RETURN:
                         if (isUp == true)
                         {
@@ -162,9 +159,6 @@ void UpdateTheMenuInput()
                 break;
             case SDL_KEYUP:
                 switch(e.key.keysym.sym){
-                    case SDLK_ESCAPE:
-                        quit=true;
-                        break;
                     case SDLK_RETURN:
                         if (isUp == true)
                         {
@@ -215,7 +209,7 @@ void UpdateMainInput()
                     case SDLK_SPACE:
                         shoot=true;
                         break;
-                    case SDLK_LALT:
+                    case SDLK_ESCAPE:
                         menu=true;
                         break;
                     default:
@@ -233,7 +227,7 @@ void UpdateMainInput()
                     case SDLK_SPACE:
                         shoot=false;
                         break;
-                    case SDLK_LALT:
+                    case SDLK_ESCAPE:
                         menu=true;
                         break;
                     default:

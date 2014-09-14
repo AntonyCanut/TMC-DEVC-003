@@ -24,7 +24,7 @@ void DrawShip(){
 
 void UpdateShip(){
     
-    if (countUpdateShip==30)
+    if (countUpdateShip==300)
     {
         Ship->Shield=1;
     }

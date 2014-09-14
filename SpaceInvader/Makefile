@@ -1,18 +1,23 @@
 CC	= gcc
 
-SRC = Main.c \
-	  Moon.c \
-	  Mars.c \
-	  Background.c \
-	  Ship.c \
-	  Bullet.c \
-	  Invader.c \
-	  Menu.c \
-	  Titre.c \
-	  Play.c \
-	  Quit.c \
-	  Utilitaire.c \
-	  Life.c\
+# les nom de vos fichier doivent etre en minuscule si il ne sont pas bon renomer les mais ne toucher pas au Makefile
+# les autre nom sont:
+#				- Makefile qui garde la majuscule
+#				- spritefunc.h en minuscule
+#				- SampleStructureSprite.c garde sont nom car je sais pas ou c'est apeller 
+SRC = main.c \
+	  moon.c \
+	  mars.c \
+	  background.c \
+	  ship.c \
+	  bullet.c \
+	  invader.c \
+	  menu.c \
+	  titre.c \
+	  play.c \
+	  quit.c \
+	  utilitaire.c \
+	  life.c\
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \
 	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
 	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer

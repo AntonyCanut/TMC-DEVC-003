@@ -20,7 +20,7 @@
 // #include "/usr/local/include/SDL2/SDL.h"
 // #include "/usr/local/include/SDL2/SDL_image.h"
 // #include "/usr/local/include/SDL2/SDL_mixer.h"
-#include "SpriteFunc.h"
+#include "spritefunc.h"
 
 SDL_Window *Window;
 SDL_Renderer *Renderer;

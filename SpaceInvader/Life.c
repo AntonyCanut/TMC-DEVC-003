@@ -18,6 +18,13 @@ void UnLoadContentLife(){
 }
 
 void DrawLife(){
+    if (Ship->Shield == 1){
+        Life->Part.x = 0;
+        Life->Position.x = SCREEN_WIDTH - 280;
+        SDL_RenderCopy(Renderer, tLife, &Life->Part, &Life->Position);
+        Life->Part.x = 800;
+    }
+
 	if(Ship->Life >= 3){
 		Life->Position.x = SCREEN_WIDTH - 210;
 		SDL_RenderCopy(Renderer, tLife, &Life->Part, &Life->Position);

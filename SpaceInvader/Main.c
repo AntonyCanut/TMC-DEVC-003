@@ -233,7 +233,7 @@ void DrawMain(){
     MyBullet->Draw(MyBullet);
 
     Life->Draw();
-    
+
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);
@@ -246,8 +246,7 @@ int main()
     LoadMain();
     int isRunning = 1;
 
-
-     //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
+    //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
     Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)
     {

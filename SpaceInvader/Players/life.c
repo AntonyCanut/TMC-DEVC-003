@@ -27,7 +27,7 @@ void DrawLife(){
         if(Ship->Life < 2){
             Life->Position.x = SCREEN_WIDTH - 140;
         }
-        SDL_RenderCopy(Renderer, tLife, &Life->Part, &Life->Position);
+        SDL_RenderCopy(Renderer, Life->Texture, &Life->Part, &Life->Position);
         Life->Part.x = 800;
     }
 

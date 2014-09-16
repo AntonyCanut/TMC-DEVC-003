@@ -82,12 +82,8 @@ typedef struct sBullet {
     Destroy3 Destroy;
 } BulletStruct;
 
-<<<<<<< HEAD:SpaceInvader/Headers/spriteFunc.h
 typedef struct sLifeStruct {
     SDL_Texture *Texture;
-=======
-struct LifeStruct {
->>>>>>> FETCH_HEAD:SpaceInvader/SpriteFunc.h
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
@@ -97,11 +93,7 @@ struct LifeStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
-<<<<<<< HEAD:SpaceInvader/Headers/spriteFunc.h
 } LifeStruct;
-=======
-};
->>>>>>> FETCH_HEAD:SpaceInvader/SpriteFunc.h
 
 // ##########################
 // #       END JOUEUR

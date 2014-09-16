@@ -4,6 +4,7 @@ CC	= gcc
 # les autre nom sont:
 #				- Makefile qui garde la majuscule
 #				- spritefunc.h en minuscule
+<<<<<<< HEAD
 #				- SampleStructureSprite.c est un exemple de code de Sprite, il ne fait qu'expliquer le role de chaque partie. Si compris alors peut être retiré
 SRC = main.c \
 	  Layout/moon.c \
@@ -18,6 +19,22 @@ SRC = main.c \
 	  Menu/quit.c \
 	  utilitaire.c \
 	  Players/life.c\
+=======
+#				- SampleStructureSprite.c garde sont nom car je sais pas ou c'est apeller 
+SRC = main.c \
+	  moon.c \
+	  mars.c \
+	  background.c \
+	  ship.c \
+	  bullet.c \
+	  invader.c \
+	  menu.c \
+	  titre.c \
+	  play.c \
+	  quit.c \
+	  utilitaire.c \
+	  life.c\
+>>>>>>> FETCH_HEAD
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \
 	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
 	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer

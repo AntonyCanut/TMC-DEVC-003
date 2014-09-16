@@ -14,6 +14,7 @@
 #define SCREEN_HEIGHT 800
 
 #include <stdio.h>
+<<<<<<< HEAD:SpaceInvader/Headers/header.h
 // #include <SDL2.framework/Headers/SDL.h>
 // #include <SDL2_image.framework/Headers/SDL_image.h>
 // #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
@@ -21,6 +22,15 @@
 #include "/usr/local/include/SDL2/SDL_image.h"
 #include "/usr/local/include/SDL2/SDL_mixer.h"
 #include "spriteFunc.h"
+=======
+#include <SDL2.framework/Headers/SDL.h>
+#include <SDL2_image.framework/Headers/SDL_image.h>
+#include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+// #include "/usr/local/include/SDL2/SDL.h"
+// #include "/usr/local/include/SDL2/SDL_image.h"
+// #include "/usr/local/include/SDL2/SDL_mixer.h"
+#include "spritefunc.h"
+>>>>>>> FETCH_HEAD:SpaceInvader/header.h
 
 SDL_Window *Window;
 SDL_Renderer *Renderer;
@@ -39,6 +49,7 @@ bool *quit;
 bool *menu;
 bool *isUp;
 
+<<<<<<< HEAD:SpaceInvader/Headers/header.h
 MoonStruct *Moon;
 BackgroundStruct *Background;
 MenuStruct *Menu;
@@ -47,6 +58,33 @@ PlayStruct *Play;
 QuitStruct *Quit;
 MarsStruct *Mars;
 ShipStruct *Ship;
+=======
+struct MoonStruct *Moon;
+SDL_Texture *tMoon;
+
+struct BackgroundStruct *Background;
+SDL_Texture *tStar;
+SDL_Texture *tEarth;
+
+struct MenuStruct *Menu;
+SDL_Texture *tStarMenu;
+
+struct TitreStruct *Titre;
+SDL_Texture *tTitre;
+
+struct PlayStruct *Play;
+SDL_Texture *tPlay;
+
+struct QuitStruct *Quit;
+SDL_Texture *tQuit;
+
+struct MarsStruct *Mars;
+SDL_Texture *tMars;
+
+struct ShipStruct *Ship;
+SDL_Texture *tShip;
+
+>>>>>>> FETCH_HEAD:SpaceInvader/header.h
 BulletStruct *MyBullet;
 InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
@@ -60,8 +98,17 @@ void InitBackground();
 void InitMoon();
 void InitMars();
 void InitShip();
+<<<<<<< HEAD:SpaceInvader/Headers/header.h
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
+=======
+
+BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
+
+
+void InitLife();
+
+>>>>>>> FETCH_HEAD:SpaceInvader/header.h
 InvaderStruct *InitInvader(int x);
 
 

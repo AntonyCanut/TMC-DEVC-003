@@ -69,4 +69,6 @@ void InitQuit(){
     Quit->Draw = DrawQuit;
     Quit->Update = UpdateQuit;
     Quit->Destroy = DestroyQuit;
+    Quit->Selected = SelectedQuit;
+    Quit->Deselected = DeselectedQuit;
 }

@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 Antony Canut. All rights reserved.
 //
 
-#include "header.h"
+#include "../Headers/header.h"
 
 int countUpdateShip = 0;
 
 void LoadContentShip(){
-    tShip= IMG_LoadTexture(Renderer, "img/player/joueur_800x3800_P_600_bonus_P_800.png");
+    Ship->Texture = IMG_LoadTexture(Renderer, "img/player/joueur_800x3800_P_600_bonus_P_800.png");
 }
 
 void UnLoadContentShip(){
-    SDL_DestroyTexture(tShip);
+    SDL_DestroyTexture(Ship->Texture);
 }
 
 void DrawShip(){
-    SDL_RenderCopy(Renderer, tShip, &Ship->Part, &Ship->Position);
+    SDL_RenderCopy(Renderer, Ship->Texture, &Ship->Part, &Ship->Position);
 }
 
 void UpdateShip(){
@@ -99,7 +99,7 @@ void DestroyShip(){
 }
 
 void InitShip(){
-    Ship = (struct ShipStruct *) malloc(sizeof(struct ShipStruct) + 1);
+    Ship = malloc(sizeof(*Ship));
     Ship->Position.x = (SCREEN_WIDTH/2) - 35;
     Ship->Position.y = SCREEN_HEIGHT - 200;
     Ship->Position.w = 70;

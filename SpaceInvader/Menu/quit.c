@@ -5,23 +5,32 @@
 //  Created by Camille Pire on 20/08/14.
 //  Copyright (c) 2014 Antony Canut. All rights reserved.
 //
-#include "header.h"
+#include "../Headers/header.h"
 
 
 void LoadContentQuit(){
-    tQuit= IMG_LoadTexture(Renderer, "img/decor/exit_500x2000_P_1000.png");
+    Quit->Texture = IMG_LoadTexture(Renderer, "img/decor/exit_500x2000_P_1000.png");
 }
 
 void UnLoadQuit(){
-    SDL_DestroyTexture(tQuit);
+    SDL_DestroyTexture(Quit->Texture);
 }
 
 void DrawQuit(){
-    SDL_RenderCopy(Renderer, tQuit, &Quit->Part, &Quit->Quit);
+    SDL_RenderCopy(Renderer, Quit->Texture, &Quit->Part, &Quit->Quit);
 }
 
 void UpdateQuit(){
-
+    if (isUp == true)
+    {
+        Play->Selected();
+        Quit->Deselected();
+    }
+    else
+    {
+        Play->Deselected();
+        Quit->Selected();
+    }
 }
 
 void DestroyQuit(){
@@ -39,8 +48,9 @@ void DeselectedQuit()
 }
 
 
+
 void InitQuit(){
-    Quit = (struct QuitStruct *) malloc(sizeof(struct QuitStruct) + 1);
+    Quit = malloc(sizeof(*Quit));
     Quit->Quit.x = 525;
     Quit->Quit.y = 630;
     Quit->Quit.w = 250;
@@ -54,6 +64,8 @@ void InitQuit(){
 
     Quit->Load = LoadContentQuit;
     Quit->UnLoad = UnLoadQuit;
+    Quit->Selected = SelectedQuit;
+    Quit->Deselected = DeselectedQuit;
     Quit->Draw = DrawQuit;
     Quit->Update = UpdateQuit;
     Quit->Destroy = DestroyQuit;

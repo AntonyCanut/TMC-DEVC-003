@@ -1,5 +1,5 @@
 
-#include "header.h"
+#include "Headers/header.h"
 
 void InitMain()
 {
@@ -11,10 +11,11 @@ void InitMain()
     Window = SDL_CreateWindow("Space Invader", 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     Renderer = SDL_CreateRenderer(Window, -1, 0);
 
-    right=false;
-    left=false;
-    shoot=false;
+    right = false;
+    left = false;
+    shoot = false;
     menu = true;
+    isUp = true;
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
@@ -102,14 +103,11 @@ void UpdateMain()
     }
     
     // Traitement a faire dans les listes
-<<<<<<< HEAD
+
     MyBullet->Update(MyBullet);
-=======
-    ShipShoot->Update();
 
     Life->Update();
 
->>>>>>> FETCH_HEAD
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
 
@@ -133,11 +131,27 @@ void UpdateTheMenuInput()
                 break;
             case SDL_KEYDOWN:
                 switch(e.key.keysym.sym){
-                    case SDLK_ESCAPE:
-                        quit=true;
+                    case SDLK_RETURN:
+                        if (isUp == true)
+                        {
+                            menu = false;                            
+                        }
+                        else
+                        {
+                            quit = true;
+                        }
                         break;
-                    case SDLK_p:
-                        menu = false;
+                    case SDLK_DOWN:
+                        if (isUp == true)
+                        {
+                            isUp = false;
+                        }
+                        break;
+                    case SDLK_UP:
+                        if (isUp == false)
+                        {
+                            isUp = true;
+                        }
                         break;
                     default:
                         break;
@@ -145,11 +159,27 @@ void UpdateTheMenuInput()
                 break;
             case SDL_KEYUP:
                 switch(e.key.keysym.sym){
-                    case SDLK_ESCAPE:
-                        quit=true;
+                    case SDLK_RETURN:
+                        if (isUp == true)
+                        {
+                            menu = false;                            
+                        }
+                        else
+                        {
+                            quit = true;
+                        }
                         break;
-                    case SDLK_p:
-                        menu = false;
+                    case SDLK_DOWN:
+                        if (isUp == true)
+                        {
+                            isUp = false;
+                        }
+                        break;
+                    case SDLK_UP:
+                        if (isUp == false)
+                        {
+                            isUp = true;
+                        }
                         break;
                     default:
                         break;
@@ -180,7 +210,7 @@ void UpdateMainInput()
                         shoot=true;
                         break;
                     case SDLK_ESCAPE:
-                        quit=true;
+                        menu=true;
                         break;
                     default:
                         break;
@@ -198,7 +228,7 @@ void UpdateMainInput()
                         shoot=false;
                         break;
                     case SDLK_ESCAPE:
-                        quit=true;
+                        menu=true;
                         break;
                     default:
                         break;
@@ -232,12 +262,11 @@ void DrawMain(){
         Ship->Draw();
     }
     // Dépendance aux listes
-<<<<<<< HEAD
+
     MyBullet->Draw(MyBullet);
-=======
-    ShipShoot->Draw();
+
     Life->Draw();
->>>>>>> FETCH_HEAD
+
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);
@@ -250,8 +279,7 @@ int main()
     LoadMain();
     int isRunning = 1;
 
-
-     //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
+    //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
     Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)
     {

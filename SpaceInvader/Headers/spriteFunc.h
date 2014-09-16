@@ -49,7 +49,8 @@ typedef void (*Destroy3)(BulletStruct *Bullet);
 // ##########################
 // #       JOUEUR
 // ##########################
-struct ShipStruct {
+typedef struct sShipStruct {
+    SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
@@ -64,16 +65,15 @@ struct ShipStruct {
     Shot Shot;
     Dead Dead;
     Destroy Destroy;
-};
+} ShipStruct;
 
 typedef struct sBullet {
+    SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
     int Speed;
-<<<<<<< HEAD
     int Direction;
-    SDL_Texture *Texture;
     LoadContent3 Load;
     UnLoadContent3 UnLoad;
     Draw3 Draw;
@@ -81,15 +81,9 @@ typedef struct sBullet {
     Dead3 Dead;
     Destroy3 Destroy;
 } BulletStruct;
-=======
-    LoadContent Load;
-    UnLoadContent UnLoad;
-    Draw Draw;
-    Update Update;
-    Dead Dead;
-    Destroy Destroy;
-};
-struct LifeStruct {
+
+typedef struct sLifeStruct {
+    SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
@@ -99,20 +93,18 @@ struct LifeStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
-};
-
->>>>>>> FETCH_HEAD
+} LifeStruct;
 
 // ##########################
 // #       END JOUEUR
 // ##########################
 
 typedef struct sInvaderStruct {
+    SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;
     int IsAlive;
     int Speed;
-    SDL_Texture *Texture;
     LoadContent2 Load;
     UnLoadContent2 UnLoad;
     Draw2 Draw;
@@ -122,18 +114,8 @@ typedef struct sInvaderStruct {
     Destroy2 Destroy;
 } InvaderStruct;
 
-struct Bullet {
-    SDL_Rect Position;
-    int IsAlive;
-    int Speed;
-    LoadContent Load;
-    UnLoadContent UnLoad;
-    Draw Draw;
-    Update Update;
-    Destroy Destroy;
-};
-
-struct MoonStruct {
+typedef struct sMoonStruct {
+    SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
@@ -144,9 +126,11 @@ struct MoonStruct {
     Update Update;
     Dead Dead;
     Destroy Destroy;
-};
+} MoonStruct;
 
-struct BackgroundStruct {
+typedef struct sBackgroundStruct {
+    SDL_Texture *TextureStar;
+    SDL_Texture *TextureEarth;
     SDL_Rect PositionStar;
     SDL_Rect PositionEarth;
     int IsAlive;
@@ -156,9 +140,10 @@ struct BackgroundStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
-};
+} BackgroundStruct;
 
-struct MarsStruct {
+typedef struct sMarsStruct {
+    SDL_Texture *Texture;
     SDL_Rect Position;
     int IsAlive;
     int Speed;
@@ -167,9 +152,10 @@ struct MarsStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
-};
+} MarsStruct;
 
-struct TitreStruct {
+typedef struct sTitreStruct {
+    SDL_Texture *Texture;
     SDL_Rect Titre;
     int IsAlive;
     int Speed;
@@ -178,9 +164,10 @@ struct TitreStruct {
     Draw Draw;
     Update Update;
     Destroy Destroy;
-};
+} TitreStruct;
 
-struct PlayStruct {
+typedef struct sPlayStruct {
+    SDL_Texture *Texture;
     SDL_Rect Play;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
@@ -192,9 +179,10 @@ struct PlayStruct {
     Destroy Destroy;
     Selected Selected;
     Deselected Deselected;
-};
+} PlayStruct;
 
-struct QuitStruct {
+typedef struct sQuitStruct {
+    SDL_Texture *Texture;
     SDL_Rect Quit;
     SDL_Rect Part;// gestion des sprites
     int IsAlive;
@@ -206,9 +194,10 @@ struct QuitStruct {
     Destroy Destroy;
     Selected Selected;
     Deselected Deselected;
-};
+} QuitStruct;
 
-struct MenuStruct {
+typedef struct sMenuStruct {
+    SDL_Texture *Texture;
     SDL_Rect PositionStarMenu;
     int IsAlive;
     LoadContent Load;
@@ -217,6 +206,6 @@ struct MenuStruct {
     Update Update;
     UpdateInput UpdateInput;
     Destroy Destroy;
-};
+} MenuStruct;
 
 #endif

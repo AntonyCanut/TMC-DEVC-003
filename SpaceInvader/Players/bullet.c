@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Antony Canut. All rights reserved.
 //
 
-#include "header.h"
+#include "../Headers/header.h"
 int countUpdateShipShoot = 0;
 
 void LoadContentBullet(BulletStruct *Bullet){

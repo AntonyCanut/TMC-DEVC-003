@@ -7,7 +7,7 @@
 ** Started on  Wed Feb 12 11:12:19 2014 PIRE Camille
 ** Last update Wed Mar 19 19:48:37 2014 camille pire
 */
-#include "header.h"
+#include "Headers/header.h"
 
 char collision(SDL_Rect a, SDL_Rect b)
     {

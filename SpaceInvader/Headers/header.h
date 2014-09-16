@@ -14,13 +14,13 @@
 #define SCREEN_HEIGHT 800
 
 #include <stdio.h>
-#include <SDL2.framework/Headers/SDL.h>
-#include <SDL2_image.framework/Headers/SDL_image.h>
-#include <SDL2_mixer.framework/Headers/SDL_mixer.h>
-// #include "/usr/local/include/SDL2/SDL.h"
-// #include "/usr/local/include/SDL2/SDL_image.h"
-// #include "/usr/local/include/SDL2/SDL_mixer.h"
-#include "SpriteFunc.h"
+// #include <SDL2.framework/Headers/SDL.h>
+// #include <SDL2_image.framework/Headers/SDL_image.h>
+// #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+#include "/usr/local/include/SDL2/SDL.h"
+#include "/usr/local/include/SDL2/SDL_image.h"
+#include "/usr/local/include/SDL2/SDL_mixer.h"
+#include "spriteFunc.h"
 
 SDL_Window *Window;
 SDL_Renderer *Renderer;
@@ -37,39 +37,20 @@ bool *shoot;
 bool *play;
 bool *quit;
 bool *menu;
+bool *isUp;
 
-struct MoonStruct *Moon;
-SDL_Texture *tMoon;
-
-struct BackgroundStruct *Background;
-SDL_Texture *tStar;
-SDL_Texture *tEarth;
-
-struct MenuStruct *Menu;
-SDL_Texture *tStarMenu;
-
-struct TitreStruct *Titre;
-SDL_Texture *tTitre;
-
-struct PlayStruct *Play;
-SDL_Texture *tPlay;
-
-struct QuitStruct *Quit;
-SDL_Texture *tQuit;
-
-struct MarsStruct *Mars;
-SDL_Texture *tMars;
-
-struct ShipStruct *Ship;
-SDL_Texture *tShip;
-
+MoonStruct *Moon;
+BackgroundStruct *Background;
+MenuStruct *Menu;
+TitreStruct *Titre;
+PlayStruct *Play;
+QuitStruct *Quit;
+MarsStruct *Mars;
+ShipStruct *Ship;
 BulletStruct *MyBullet;
-
 InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
-
-struct LifeStruct *Life;
-SDL_Texture *tLife;
+LifeStruct *Life;
 
 void InitTitre();
 void InitPlay();
@@ -79,14 +60,8 @@ void InitBackground();
 void InitMoon();
 void InitMars();
 void InitShip();
-<<<<<<< HEAD
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
-=======
-void InitShipShoot();
-
 void InitLife();
-
->>>>>>> FETCH_HEAD
 InvaderStruct *InitInvader(int x);
 
 

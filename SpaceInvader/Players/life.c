@@ -6,29 +6,29 @@
 //  Copyright (c) 2014 Antony Canut. All rights reserved.
 //
 
-#include "header.h"
+#include "../Headers/header.h"
 
 
 void LoadContentLife(){
-    tLife= IMG_LoadTexture(Renderer, "img/player/bonus_800x3200_P_800.png");
+    Life->Texture = IMG_LoadTexture(Renderer, "img/player/bonus_800x3200_P_800.png");
 }
 
 void UnLoadContentLife(){
-    SDL_DestroyTexture(tLife);
+    SDL_DestroyTexture(Life->Texture);
 }
 
 void DrawLife(){
 	if(Ship->Life >= 3){
 		Life->Position.x = SCREEN_WIDTH - 210;
-		SDL_RenderCopy(Renderer, tLife, &Life->Part, &Life->Position);
+		SDL_RenderCopy(Renderer, Life->Texture, &Life->Part, &Life->Position);
 	}
 	if(Ship->Life >= 2){
 		Life->Position.x = SCREEN_WIDTH - 140;
-		SDL_RenderCopy(Renderer, tLife, &Life->Part, &Life->Position);
+		SDL_RenderCopy(Renderer, Life->Texture, &Life->Part, &Life->Position);
 	}
 	if(Ship->Life>= 1){
 		Life->Position.x = SCREEN_WIDTH - 70;
-		SDL_RenderCopy(Renderer, tLife, &Life->Part, &Life->Position);
+		SDL_RenderCopy(Renderer, Life->Texture, &Life->Part, &Life->Position);
 	}
 }
 
@@ -42,7 +42,7 @@ void DestroyLife(){
 }
 
 void InitLife(){
-    Life = (struct LifeStruct *) malloc(sizeof(struct LifeStruct) + 1);
+    Life = malloc(sizeof(*Life));
     Life->Position.x = SCREEN_WIDTH - 70;
     Life->Position.y = 0;
     Life->Position.w = 70;

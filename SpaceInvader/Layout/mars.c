@@ -5,20 +5,20 @@
 //  Created by Camille Pire on 20/08/14.
 //  Copyright (c) 2014 Antony Canut. All rights reserved.
 //
-#include "header.h"
+#include "../Headers/header.h"
 
 int countUpdateMars = 0;
 
 void LoadContentMars(){
-    tMars= IMG_LoadTexture(Renderer, "img/decor/mars_1200x1200.png");
+    Mars->Texture = IMG_LoadTexture(Renderer, "img/decor/mars_1200x1200.png");
 }
 
 void UnLoadContentMars(){
-    SDL_DestroyTexture(tMars);
+    SDL_DestroyTexture(Mars->Texture);
 }
 
 void DrawMars(){
-    SDL_RenderCopy(Renderer, tMars, 0, &Mars->Position);
+    SDL_RenderCopy(Renderer, Mars->Texture, 0, &Mars->Position);
 }
 
 void UpdateMars(){
@@ -48,7 +48,7 @@ void DestroyMars(){
 
 
 void InitMars(){
-    Mars = (struct MarsStruct *) malloc(sizeof(struct MarsStruct) + 1);
+    Mars = malloc(sizeof(*Mars));
     Mars->Position.x = SCREEN_WIDTH + 200;
     Mars->Position.y = 250;
     Mars->Position.w = 70;

@@ -16,6 +16,7 @@ SRC = main.c \
 	  Menu/titre.c \
 	  Menu/play.c \
 	  Menu/quit.c \
+	  Menu/pause.c \
 	  utilitaire.c \
 	  Players/life.c\
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \

@@ -208,4 +208,16 @@ typedef struct sMenuStruct {
     Destroy Destroy;
 } MenuStruct;
 
+typedef struct sPauseStruct {
+    SDL_Texture *Texture;
+    SDL_Rect PauseMenu;
+    int IsAlive;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    UpdateInput UpdateInput;
+    Destroy Destroy;
+} PauseStruct;
+
 #endif

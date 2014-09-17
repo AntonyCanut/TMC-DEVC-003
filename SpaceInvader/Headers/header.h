@@ -38,7 +38,9 @@ bool *play;
 bool *quit;
 bool *menu;
 bool *isUp;
+bool *pause;
 
+PauseStruct *Pause;
 MoonStruct *Moon;
 BackgroundStruct *Background;
 MenuStruct *Menu;
@@ -52,6 +54,7 @@ InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
 LifeStruct *Life;
 
+void InitPause();
 void InitTitre();
 void InitPlay();
 void InitQuit();

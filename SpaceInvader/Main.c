@@ -16,6 +16,7 @@ void InitMain()
     shoot = false;
     menu = true;
     isUp = true;
+    pause = false;
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
@@ -29,6 +30,7 @@ void InitMain()
     Mix_VolumeChunk(sonBackground, MIX_MAX_VOLUME/2);
     Mix_VolumeChunk(son2, MIX_MAX_VOLUME/2);
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
+    InitPause();
     InitMenu();
     InitTitre();
     InitPlay();
@@ -49,6 +51,7 @@ void InitMain()
 
 void LoadMain()
 {
+    Pause->Load();
     Menu->Load();
     Titre->Load();
     Play->Load();
@@ -66,6 +69,7 @@ void LoadMain()
 
 void DestroyMain()
 {
+    Pause->Destroy();
     Titre->Destroy();
     Quit->Destroy();
     Play->Destroy();
@@ -101,6 +105,10 @@ void UpdateMain()
     {
         Ship->Update();
     }
+    if (pause == true)
+    {
+        Pause->Update();
+    }
     
     // Traitement a faire dans les listes
 
@@ -119,6 +127,37 @@ void UpdateTheMenu()
     Play->Update();
     Quit->Update();
     Titre->Update();
+}
+
+void UpdateThePauseInput()
+{
+ while (SDL_PollEvent(&e))
+    {
+        switch(e.type){
+            case SDL_QUIT:
+                DestroyMain();
+                break;
+            case SDL_KEYDOWN:
+                switch(e.key.keysym.sym){
+                    case SDLK_o:
+                        pause = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SDL_KEYUP:
+                switch(e.key.keysym.sym){
+                    case SDLK_o:
+                        pause = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+    }
+    Pause->UpdateInput();
 }
 
 void UpdateTheMenuInput()
@@ -212,6 +251,9 @@ void UpdateMainInput()
                     case SDLK_ESCAPE:
                         menu=true;
                         break;
+                    case SDLK_p:
+                        pause = true;
+                        break;
                     default:
                         break;
                 }
@@ -229,6 +271,9 @@ void UpdateMainInput()
                         break;
                     case SDLK_ESCAPE:
                         menu=true;
+                        break;
+                    case SDLK_p:
+                        pause = true;
                         break;
                     default:
                         break;
@@ -251,18 +296,22 @@ void DrawTheMenu()
     SDL_RenderPresent(Renderer);
 }
 
+
 void DrawMain(){
     SDL_RenderClear(Renderer);
 
     Background->Draw();
     Mars->Draw();
     Moon->Draw();
+    if (pause == true)
+    {
+        Pause->Draw();
+    }
     if (Ship->IsAlive < 6)
     {
         Ship->Draw();
     }
     // Dépendance aux listes
-
     MyBullet->Draw(MyBullet);
 
     Life->Draw();
@@ -271,6 +320,8 @@ void DrawMain(){
     MyInvader2->Draw(MyInvader2);
     SDL_RenderPresent(Renderer);
 }
+
+
 
 int main()
 {
@@ -295,8 +346,18 @@ int main()
                 isRunning = 0;
             }
         }
-        else 
+        else if (pause == true)
         {
+                Mix_PauseMusic();
+                UpdateThePauseInput();
+                DrawMain();
+        }
+        else
+        {
+            if(Mix_PausedMusic() == 1)//Si la musique est en pause
+            {
+                Mix_ResumeMusic(); //Reprendre la musique
+            }
             UpdateMain();
             UpdateMainInput();
             DrawMain();

@@ -27,9 +27,9 @@ RM = rm -rf
 NAME = SpaceInvader
 OBJS = $(SRC:%.c=%.o)
 # CFLAGS	= -W -Wall -Werror
-SDL2 = /usr/local/lib/libSDL2.a
-SDL2_image = /usr/local/lib/libSDL2_image.a
-SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
+#SDL2 = /usr/local/lib/libSDL2.a
+#SDL2_image = /usr/local/lib/libSDL2_image.a
+#SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
 
 all:		$(NAME)
 

@@ -9,6 +9,7 @@ SRC = main.c \
 	  Layout/moon.c \
 	  Layout/mars.c \
 	  Layout/background.c \
+	  Layout/layout.c \
 	  Players/ship.c \
 	  Players/bullet.c \
 	  Players/invader.c \

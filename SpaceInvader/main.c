@@ -43,6 +43,7 @@ void InitGame()
     InitBackground();
     InitMoon();
     InitMars();
+    InitLayout();
     InitShip();
     InitLife();
     // Dépendant du vaisseau, a ne faire qu'au tir
@@ -54,10 +55,8 @@ void InitGame()
 
 void LoadGame()
 {
-    Pause->Load();   
-    Background->Load();
-    Moon->Load();
-    Mars->Load();
+    Pause->Load();
+    Layout->Load();
     Ship->Load();
     Life->Load();
     // Les tirs sont dépendant du vaisseau.
@@ -95,10 +94,7 @@ void DestroyMain()
     Play->Destroy();
     Menu->Destroy();
     Life->Destroy();
-    Ship->Destroy();
-    Mars->Destroy();
-    Moon->Destroy();
-    Background->Destroy();
+    Layout->Destroy();
     // Les tirs ne doivent pas être détruit ici mais a leur extinction durant la partie, seuls les tirs restant 
     // (fin de partie alors que des tirs sont en cours doivent être détuuit)
     MyBullet->Destroy(MyBullet);
@@ -117,9 +113,7 @@ void DestroyMain()
 
 void UpdateMain()
 {
-    Background->Update();
-    Moon->Update();
-    Mars->Update();
+    Layout->Update();
     if (Ship->IsAlive < 10)
     {
         Ship->Update();
@@ -253,13 +247,13 @@ void UpdateMainInput()
             case SDL_KEYDOWN:
                 switch(e.key.keysym.sym){
                     case SDLK_RIGHT:
-                        right=true;
+                        right = true;
                         break;
                     case SDLK_LEFT:
-                        left=true;
+                        left = true;
                         break;
                     case SDLK_SPACE:
-                        shoot=true;
+                        shoot = true;
                         break;
                     case SDLK_ESCAPE:
                         menu=true;
@@ -276,13 +270,13 @@ void UpdateMainInput()
             case SDL_KEYUP:
                 switch(e.key.keysym.sym){
                     case SDLK_RIGHT:
-                        right=false;
+                        right = false;
                         break;
                     case SDLK_LEFT:
-                        left=false;
+                        left = false;
                         break;
                     case SDLK_SPACE:
-                        shoot=false;
+                        shoot = false;
                         break;
                     case SDLK_ESCAPE:
                         menu=true;
@@ -316,9 +310,8 @@ void DrawTheMenu()
 
 void DrawMain(){
     SDL_RenderClear(Renderer);
-    Background->Draw();
-    Mars->Draw();
-    Moon->Draw();
+    
+    Layout->Draw();
     if (Ship->IsAlive < 6)
     {
         Ship->Draw();

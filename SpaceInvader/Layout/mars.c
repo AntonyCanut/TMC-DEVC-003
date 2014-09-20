@@ -10,7 +10,7 @@
 int countUpdateMars = 0;
 
 void LoadContentMars(){
-    Mars->Texture = IMG_LoadTexture(Renderer, "img/decor/mars_1200x1200.png");
+    Mars->Texture = IMG_LoadTexture(Renderer, "/img/decor/mars_1200x1200.png");
 }
 
 void UnLoadContentMars(){
@@ -23,20 +23,22 @@ void DrawMars(){
 
 void UpdateMars(){
     if (Mars->Position.x <= - 1000)
+    {
+        Mars->Position.x = SCREEN_WIDTH + 200;
+        Mars->Position.y = 250;
+        countUpdateMars = 0;
+    }
+    else
+    {
+        if (countUpdateMars % 3 == 0)
         {
-            Mars->Position.x = SCREEN_WIDTH + 200;
-            Mars->Position.y = 250;
-            countUpdateMars=0;
-    }else{
-        if (countUpdateMars%3 == 0)
-        {
-           Mars->Position.x -= 2;
+            Mars->Position.x -= 2;
         }
-        if (countUpdateMars%7 == 0)
+        if (countUpdateMars % 7 == 0)
         {
             Mars->Position.y += 1;
         }
-        countUpdateMars+=1;
+        countUpdateMars++;
     }
 
 }

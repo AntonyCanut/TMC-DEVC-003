@@ -14,12 +14,15 @@
 #define SCREEN_HEIGHT 800
 
 #include <stdio.h>
- #include <SDL2.framework/Headers/SDL.h>
+#include <stdbool.h>
+
+#include <SDL2.framework/Headers/SDL.h>
 #include <SDL2_image.framework/Headers/SDL_image.h>
- #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+#include <SDL2_mixer.framework/Headers/SDL_mixer.h>
 //#include "/usr/local/include/SDL2/SDL.h"
 //#include "/usr/local/include/SDL2/SDL_image.h"
 //#include "/usr/local/include/SDL2/SDL_mixer.h"
+
 #include "spriteFunc.h"
 
 SDL_Window *Window;
@@ -30,24 +33,24 @@ Uint32 time;
 Mix_Music *musiqueBackground; 
 Mix_Chunk *sonMenu;
 
-bool *right;
-bool *left;
-bool *shoot;
-bool *play;
-bool *quit;
-bool *menu;
-bool *isUp;
-bool *pause;
-bool *destroy;
+bool right;
+bool left;
+bool shoot;
+bool play;
+bool quit;
+bool menu;
+bool isUp;
+bool destroy;
 
 PauseStruct *Pause;
 MoonStruct *Moon;
 BackgroundStruct *Background;
+MarsStruct *Mars;
+LayoutStruct *Layout;
 MenuStruct *Menu;
 TitreStruct *Titre;
 PlayStruct *Play;
 QuitStruct *Quit;
-MarsStruct *Mars;
 ShipStruct *Ship;
 BulletStruct *MyBullet;
 InvaderStruct *MyInvader;
@@ -65,6 +68,7 @@ void InitMenu();
 void InitBackground();
 void InitMoon();
 void InitMars();
+void InitLayout();
 void InitShip();
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();

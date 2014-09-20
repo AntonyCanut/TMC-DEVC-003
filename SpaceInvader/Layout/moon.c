@@ -10,7 +10,7 @@
 int countUpdateMoon = 0;
 
 void LoadContentMoon(){
-    Moon->Texture = IMG_LoadTexture(Renderer, "img/decor/lune_3200x16000_P_3200.png");
+    Moon->Texture = IMG_LoadTexture(Renderer, "/img/decor/lune_3200x16000_P_3200.png");
 }
 
 void UnLoadMoon(){
@@ -23,31 +23,39 @@ void DrawMoon(){
 
 void UpdateMoon(){
     if (Moon->Position.x >= SCREEN_WIDTH + 400)
+    {
+        Moon->Position.x = -400;
+        Moon->Position.y = 650;
+        countUpdateMoon = 0;
+    }
+    else
+    {
+        if (countUpdateMoon % 3 == 0)
         {
-            Moon->Position.x = -400;
-            Moon->Position.y = 650;
-            countUpdateMoon=0;
-    }else{
-        if (countUpdateMoon%3 == 0)
-        {
-            if (Moon->Position.x < ((SCREEN_WIDTH / 2) - 150)){
+            if (Moon->Position.x < ((SCREEN_WIDTH / 2) - 150))
+            {
                 if (Moon->Position.x < ((SCREEN_WIDTH / 4) - 150))
                 {
                     Moon->Position.y -= 2;
-                }else
+                }
+                else
                 {
                     Moon->Position.y -= 1;
                 }    
-            }else{
+            }
+            else
+            {
                 if (Moon->Position.x > ((3 * (SCREEN_WIDTH / 4)) - 150))
                 {           
                     Moon->Position.y += 2;
-                }else{
+                }
+                else
+                {
                     Moon->Position.y += 1;
                 } 
             }
         }
-        countUpdateMoon+=1;
+        countUpdateMoon++;
         Moon->Position.x += 1;
     }
 

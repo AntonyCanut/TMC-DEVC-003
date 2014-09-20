@@ -59,6 +59,7 @@ InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
 LifeStruct *Life;
 
+void DestroyMain();
 void InitGame();
 void LoadGame();
 void DestroyGame();

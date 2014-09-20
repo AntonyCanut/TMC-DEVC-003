@@ -6,6 +6,7 @@ CC	= gcc
 #				- spritefunc.h en minuscule
 #				- SampleStructureSprite.c est un exemple de code de Sprite, il ne fait qu'expliquer le role de chaque partie. Si compris alors peut être retiré
 SRC = main.c \
+	  game.c \
 	  Layout/moon.c \
 	  Layout/mars.c \
 	  Layout/background.c \

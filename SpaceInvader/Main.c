@@ -299,14 +299,9 @@ void DrawTheMenu()
 
 void DrawMain(){
     SDL_RenderClear(Renderer);
-
     Background->Draw();
     Mars->Draw();
     Moon->Draw();
-    if (pause == true)
-    {
-        Pause->Draw();
-    }
     if (Ship->IsAlive < 6)
     {
         Ship->Draw();
@@ -318,6 +313,10 @@ void DrawMain(){
 
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
+    if (pause == true)
+    {
+        Pause->Draw();
+    }
     SDL_RenderPresent(Renderer);
 }
 

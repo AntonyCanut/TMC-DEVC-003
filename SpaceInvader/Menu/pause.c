@@ -8,7 +8,7 @@
 #include "../Headers/header.h"
 
 void LoadContentPause(){
-    Pause->Texture = IMG_LoadTexture(Renderer, "img/decor/titre_1500x2800.png");
+    Pause->Texture = IMG_LoadTexture(Renderer, "img/decor/pause_500x1000.png");
 }
 
 void UnLoadContentPause(){

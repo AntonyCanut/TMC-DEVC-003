@@ -40,6 +40,7 @@ bool play;
 bool quit;
 bool menu;
 bool isUp;
+bool paused;
 bool destroy;
 
 PauseStruct *Pause;

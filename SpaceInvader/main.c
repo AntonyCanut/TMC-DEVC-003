@@ -16,7 +16,7 @@ void InitMain()
     shoot = false;
     menu = true;
     isUp = true;
-    pause = false;
+    paused = false;
     play = false;
     destroy = false;
 
@@ -145,7 +145,7 @@ void UpdateThePauseInput()
             case SDL_KEYDOWN:
                 switch(e.key.keysym.sym){
                     case SDLK_o:
-                        pause = false;
+                        paused = false;
                         break;
                     default:
                         break;
@@ -154,7 +154,7 @@ void UpdateThePauseInput()
             case SDL_KEYUP:
                 switch(e.key.keysym.sym){
                     case SDLK_o:
-                        pause = false;
+                        paused = false;
                         break;
                     default:
                         break;
@@ -261,7 +261,7 @@ void UpdateMainInput()
                         play = false;
                         break;
                     case SDLK_p:
-                        pause = true;
+                        paused = true;
                         break;
                     default:
                         break;
@@ -284,7 +284,7 @@ void UpdateMainInput()
                         play = false;
                         break;
                     case SDLK_p:
-                        pause = true;
+                        paused = true;
                         break;
                     default:
                         break;
@@ -323,7 +323,7 @@ void DrawMain(){
 
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
-    if (pause == true)
+    if (paused == true)
     {
         Pause->Draw();
     }
@@ -372,7 +372,7 @@ int main()
                 }
             }
         }
-        else if (pause == true)
+        else if (paused == true)
         {
                 Mix_PauseMusic();
                 UpdateThePauseInput();

@@ -9,6 +9,7 @@ SRC = main.c \
 	  Layout/moon.c \
 	  Layout/mars.c \
 	  Layout/background.c \
+	  Layout/layout.c \
 	  Players/ship.c \
 	  Players/bullet.c \
 	  Players/invader.c \
@@ -19,6 +20,7 @@ SRC = main.c \
 	  Menu/pause.c \
 	  utilitaire.c \
 	  Players/life.c\
+	  Players/boss.c\
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \
 	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
 	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer

@@ -9,7 +9,7 @@
 #ifndef SpaceInvader_SpriteFunc_h
 #define SpaceInvader_SpriteFunc_h
 
-typedef enum {false=(int)0, true=(int)1} bool;
+// typedef enum {false=(int)0, true=(int)1} bool;
 
 // Préparation des type def, on pourrait faire directement mais visuellement c'est mieux
 // La piscine c'est finit, ce qui est dégueulasse va disparaitre merci
@@ -46,6 +46,7 @@ typedef void (*Shot3)(BulletStruct *Bullet);
 typedef void (*Dead3)(BulletStruct *Bullet);
 typedef void (*Destroy3)(BulletStruct *Bullet);
 
+
 // ##########################
 // #       JOUEUR
 // ##########################
@@ -67,7 +68,7 @@ typedef struct sShipStruct {
     Destroy Destroy;
 } ShipStruct;
 
-typedef struct sBullet {
+struct sBullet {
     SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;// gestion des sprites
@@ -80,7 +81,7 @@ typedef struct sBullet {
     Update3 Update;
     Dead3 Dead;
     Destroy3 Destroy;
-} BulletStruct;
+};
 
 typedef struct sLifeStruct {
     SDL_Texture *Texture;
@@ -117,7 +118,7 @@ typedef struct sBossStruct {
     Shot Shot;
     Dead Dead;
     Destroy Destroy;
-} ShipStruct;
+} BossStruct;
 
 typedef struct sBossLazer {
     SDL_Texture *Texture;
@@ -132,14 +133,14 @@ typedef struct sBossLazer {
     Update3 Update;
     Dead3 Dead;
     Destroy3 Destroy;
-} BulletStruct;
+} BossLazerStruct;
 
 // ##########################
 // #       END BOSS
 // ##########################
 
 
-typedef struct sInvaderStruct {
+struct sInvaderStruct {
     SDL_Texture *Texture;
     SDL_Rect Position;
     SDL_Rect Part;
@@ -152,7 +153,7 @@ typedef struct sInvaderStruct {
     Shot2 Shot;
     Dead2 Dead;
     Destroy2 Destroy;
-} InvaderStruct;
+};
 
 typedef struct sMoonStruct {
     SDL_Texture *Texture;
@@ -193,6 +194,14 @@ typedef struct sMarsStruct {
     Update Update;
     Destroy Destroy;
 } MarsStruct;
+
+typedef struct sLayoutStruct {
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+} LayoutStruct;
 
 typedef struct sTitreStruct {
     SDL_Texture *Texture;

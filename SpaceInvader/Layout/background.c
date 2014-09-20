@@ -8,8 +8,8 @@
 #include "../Headers/header.h"
 
 void LoadContentBackground(){
-    Background->TextureEarth = IMG_LoadTexture(Renderer, "img/decor/earth_1700x3800.png");
-    Background->TextureStar = IMG_LoadTexture(Renderer, "img/decor/fond_1920x1080.png");
+    Background->TextureEarth = IMG_LoadTexture(Renderer, "/img/decor/earth_1700x3800.png");
+    Background->TextureStar = IMG_LoadTexture(Renderer, "/img/decor/fond_1920x1080.png");
 }
 
 void UnLoadContentBackground(){
@@ -26,7 +26,9 @@ void UpdateBackground(){
     if (Background->PositionEarth.y < SCREEN_HEIGHT - 200)
     {
         Background->PositionEarth.y += 1;
-    }else{
+    }
+    else
+    {
         Background->PositionEarth.y = -2062;
     }
 }
@@ -54,5 +56,4 @@ void InitBackground(){
     Background->Draw = DrawBackground;
     Background->Update = UpdateBackground;
     Background->Destroy = DestroyBackground;
-    Background->Load();
 }

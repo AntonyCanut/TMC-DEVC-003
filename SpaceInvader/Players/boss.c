@@ -23,12 +23,13 @@ void DrawBoss(){
 }
 
 void UpdateBoss(){
-	if(countUpdateBoss%11==0 && Boss->Part.x == 0){}
+	if(countUpdateBoss%17==0 && Boss->Part.x == 0){
 		Boss->Part.x = 1200;
-	}else if(countUpdateBoss%11==0 &&Boss->Part.x == 1200){}
+	}else if(countUpdateBoss%17==0 &&Boss->Part.x == 1200){
 		Boss->Part.x = 0;
 	}
 
+    countUpdateBoss+=1;
 }
 
 void ShotBoss(){
@@ -71,10 +72,10 @@ void DestroyBoss(){
 
 void InitBoss(){
     Boss = malloc(sizeof(*Boss));
-    Boss->Position.x = (SCREEN_WIDTH/2) - 120;
+    Boss->Position.x = (SCREEN_WIDTH/2) - 110;
     Boss->Position.y = 20;
-    Boss->Position.w = 120;
-    Boss->Position.h = 120;
+    Boss->Position.w = 220;
+    Boss->Position.h = 220;
     
     Boss->Part.x = 0;
     Boss->Part.y = 0;

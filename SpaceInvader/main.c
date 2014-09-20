@@ -37,8 +37,6 @@ void InitMain()
     InitQuit();
 }
 
-
-
 void LoadMain()
 {
     Menu->Load();
@@ -46,6 +44,7 @@ void LoadMain()
     Play->Load();
     Quit->Load();
 }
+
 
 void DestroyMain()
 {
@@ -56,6 +55,7 @@ void DestroyMain()
     Menu->Destroy();
     Life->Destroy();
     Layout->Destroy();
+        Boss->Destroy();
     // Les tirs ne doivent pas être détruit ici mais a leur extinction durant la partie, seuls les tirs restant 
     // (fin de partie alors que des tirs sont en cours doivent être détuuit)
     MyBullet->Destroy(MyBullet);
@@ -71,7 +71,6 @@ void DestroyMain()
     SDL_Quit();
     exit(0);
 }
-
 
 void UpdateTheMenu()
 {
@@ -193,7 +192,6 @@ void DrawTheMenu()
     Play->Draw();
     SDL_RenderPresent(Renderer);
 }
-
 
 int main()
 {

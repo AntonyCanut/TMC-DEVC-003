@@ -16,6 +16,7 @@ void InitGame()
     InitMars();
     InitShip();
     InitLife();
+    InitBoss();
     InitLayout();
     // Dépendant du vaisseau, a ne faire qu'au tir
     MyBullet = InitBullet(&Ship->Position, 0);
@@ -32,6 +33,7 @@ void LoadGame()
     Mars->Load();
     Ship->Load();
     Life->Load();
+    Boss->Load();
     Layout->Load();
     // Les tirs sont dépendant du vaisseau.
     // MyBullet->Load(MyBullet);
@@ -45,6 +47,7 @@ void DestroyGame()
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
+    Boss->Destroy();
     Background->Destroy();
     MyBullet->Destroy(MyBullet);
     MyInvader->Destroy(MyInvader);
@@ -61,6 +64,7 @@ void UpdateGame()
     // Traitement a faire dans les listes
     MyBullet->Update(MyBullet);
     Life->Update();
+    Boss->Update();
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
 
@@ -79,7 +83,7 @@ void DrawGame(){
     MyBullet->Draw(MyBullet);
 
     Life->Draw();
-
+    Boss->Draw();
     MyInvader->Draw(MyInvader);
     MyInvader2->Draw(MyInvader2);
     if (paused == true)

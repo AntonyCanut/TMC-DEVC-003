@@ -24,6 +24,7 @@
 //#include "/usr/local/include/SDL2/SDL_mixer.h"
 
 #include "spriteFunc.h"
+#include "listFormat.h"
 
 SDL_Window *Window;
 SDL_Renderer *Renderer;

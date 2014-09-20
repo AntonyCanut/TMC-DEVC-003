@@ -17,41 +17,36 @@ void InitMain()
     menu = true;
     isUp = true;
     pause = false;
+    play = false;
+    destroy = false;
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
         printf("%s", Mix_GetError());
     }
     
-    musiqueMenu = Mix_LoadMUS("music/menu.wav");
     musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
-    sonBackground = Mix_LoadWAV("music/stage.wav");
-    son2 = Mix_LoadWAV("music/stage.wav");
-    Mix_VolumeChunk(sonBackground, MIX_MAX_VOLUME/2);
-    Mix_VolumeChunk(son2, MIX_MAX_VOLUME/2);
+    sonMenu = Mix_LoadWAV("music/menu.wav");
+    Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
+
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
-
-
     InitMenu();
     InitTitre();
     InitPlay();
     InitQuit();
-
 }
 
-void initGame()
+void InitGame()
 {
     InitPause();
     InitBackground();
     InitMoon();
     InitMars();
-
     InitShip();
     InitLife();
     // Dépendant du vaisseau, a ne faire qu'au tir
     MyBullet = InitBullet(&Ship->Position, 0);
-
     // Faire une liste
     MyInvader = InitInvader(11);
     MyInvader2 = InitInvader(91);
@@ -81,11 +76,14 @@ void LoadMain()
 
 void DestroyGame()
 {
-     Life->Destroy();
+    Life->Destroy();
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
     Background->Destroy();
+    MyBullet->Destroy(MyBullet);
+    MyInvader->Destroy(MyInvader);
+    MyInvader2->Destroy(MyInvader2);
 }
 
 
@@ -110,9 +108,7 @@ void DestroyMain()
     // /!\ Je met une reserve mais je pense qu'il faudra ajouter une destruction des structures et des listes /!\
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
-    Mix_FreeChunk(sonBackground);//Libération du son 1
-    Mix_FreeChunk(son2); //Libération du son 2
-    Mix_FreeMusic(musiqueMenu);
+    Mix_FreeChunk(sonMenu); //Libération du son 2
     Mix_FreeMusic(musiqueBackground); //Libération de la musique
     Mix_CloseAudio(); //Fermeture de l'API
     SDL_Quit();
@@ -128,17 +124,9 @@ void UpdateMain()
     {
         Ship->Update();
     }
-    if (pause == true)
-    {
-        Pause->Update();
-    }
-    
     // Traitement a faire dans les listes
-
     MyBullet->Update(MyBullet);
-
     Life->Update();
-
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
 
@@ -196,7 +184,8 @@ void UpdateTheMenuInput()
                     case SDLK_RETURN:
                         if (isUp == true)
                         {
-                            menu = false;                            
+                            menu = false;  
+                            play = true;                          
                         }
                         else
                         {
@@ -224,7 +213,8 @@ void UpdateTheMenuInput()
                     case SDLK_RETURN:
                         if (isUp == true)
                         {
-                            menu = false;                            
+                            menu = false;  
+                            play = true;                          
                         }
                         else
                         {
@@ -273,6 +263,8 @@ void UpdateMainInput()
                         break;
                     case SDLK_ESCAPE:
                         menu=true;
+                        destroy = true;
+                        play = false;
                         break;
                     case SDLK_p:
                         pause = true;
@@ -294,6 +286,8 @@ void UpdateMainInput()
                         break;
                     case SDLK_ESCAPE:
                         menu=true;
+                        destroy = true;
+                        play = false;
                         break;
                     case SDLK_p:
                         pause = true;
@@ -350,18 +344,24 @@ int main()
 
     InitMain();
     LoadMain();
+    InitGame();
+    LoadGame();
     int isRunning = 1;
+   
 
-    //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
-    Mix_FadeInMusic(musiqueMenu, -1, 10000);
+    Mix_PlayChannel(1, sonMenu, -1);
     Mix_FadeInMusic(musiqueBackground, -1, 10000);
+    //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
+    //Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)
     {
         Uint32 toWait;
         time = SDL_GetTicks();
         if (menu == true)
         {
-
+            Mix_RewindMusic();
+            Mix_PauseMusic();
+            Mix_Volume(1, MIX_MAX_VOLUME);;
             UpdateTheMenuInput();
             UpdateTheMenu();
             DrawTheMenu();  
@@ -371,8 +371,12 @@ int main()
             }
             if (play == true)
             {
-                InitMain();
-                LoadMain();
+                if (destroy == true)
+                {
+                    DestroyGame();
+                    InitGame();
+                    LoadGame();
+                }
             }
         }
         else if (pause == true)
@@ -383,6 +387,7 @@ int main()
         }
         else
         {
+            Mix_Volume(1, 0);
             if(Mix_PausedMusic() == 1)//Si la musique est en pause
             {
                 Mix_ResumeMusic(); //Reprendre la musique

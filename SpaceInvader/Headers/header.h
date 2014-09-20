@@ -28,8 +28,7 @@ SDL_Event e;
 Uint32 time;
 
 Mix_Music *musiqueBackground; 
-Mix_Chunk *sonBackground; //Pointeur musique background
-Mix_Chunk *son2;
+Mix_Chunk *sonMenu;
 
 bool *right;
 bool *left;
@@ -39,6 +38,7 @@ bool *quit;
 bool *menu;
 bool *isUp;
 bool *pause;
+bool *destroy;
 
 PauseStruct *Pause;
 MoonStruct *Moon;
@@ -54,6 +54,9 @@ InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
 LifeStruct *Life;
 
+void InitGame();
+void LoadGame();
+void DestroyGame();
 void InitPause();
 void InitTitre();
 void InitPlay();
@@ -66,6 +69,7 @@ void InitShip();
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
 InvaderStruct *InitInvader(int x);
+
 
 
 char collision(SDL_Rect, SDL_Rect);

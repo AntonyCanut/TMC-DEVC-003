@@ -49,6 +49,7 @@ void initGame()
 
     InitShip();
     InitLife();
+    InitBoss();
     // Dépendant du vaisseau, a ne faire qu'au tir
     MyBullet = InitBullet(&Ship->Position, 0);
 
@@ -65,6 +66,7 @@ void LoadGame()
     Mars->Load();
     Ship->Load();
     Life->Load();
+    Boss->Load();
     // Les tirs sont dépendant du vaisseau.
     // MyBullet->Load(MyBullet);
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
@@ -81,7 +83,8 @@ void LoadMain()
 
 void DestroyGame()
 {
-     Life->Destroy();
+    Boss->Destroy();
+    Life->Destroy();
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
@@ -141,6 +144,7 @@ void UpdateMain()
 
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
+    Boss->Update();
 
 }
 

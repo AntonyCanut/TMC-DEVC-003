@@ -99,6 +99,46 @@ typedef struct sLifeStruct {
 // #       END JOUEUR
 // ##########################
 
+// ##########################
+// #       BOSS
+// ##########################
+
+typedef struct sBossStruct {
+    SDL_Texture *Texture;
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Life;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Shot Shot;
+    Dead Dead;
+    Destroy Destroy;
+} ShipStruct;
+
+typedef struct sBossLazer {
+    SDL_Texture *Texture;
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    int Direction;
+    LoadContent3 Load;
+    UnLoadContent3 UnLoad;
+    Draw3 Draw;
+    Update3 Update;
+    Dead3 Dead;
+    Destroy3 Destroy;
+} BulletStruct;
+
+// ##########################
+// #       END BOSS
+// ##########################
+
+
 typedef struct sInvaderStruct {
     SDL_Texture *Texture;
     SDL_Rect Position;

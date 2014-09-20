@@ -23,6 +23,7 @@ void InitMain()
         printf("%s", Mix_GetError());
     }
     
+    musiqueMenu = Mix_LoadMUS("music/menu.wav");
     musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
     sonBackground = Mix_LoadWAV("music/stage.wav");
@@ -30,11 +31,18 @@ void InitMain()
     Mix_VolumeChunk(sonBackground, MIX_MAX_VOLUME/2);
     Mix_VolumeChunk(son2, MIX_MAX_VOLUME/2);
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
-    InitPause();
+
+
     InitMenu();
     InitTitre();
     InitPlay();
     InitQuit();
+
+}
+
+void initGame()
+{
+    InitPause();
     InitBackground();
     InitMoon();
     InitMars();
@@ -49,13 +57,9 @@ void InitMain()
     MyInvader2 = InitInvader(91);
 }
 
-void LoadMain()
+void LoadGame()
 {
-    Pause->Load();
-    Menu->Load();
-    Titre->Load();
-    Play->Load();
-    Quit->Load();
+    Pause->Load();   
     Background->Load();
     Moon->Load();
     Mars->Load();
@@ -66,6 +70,24 @@ void LoadMain()
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
     // MyInvader->Load();
 }
+
+void LoadMain()
+{
+    Menu->Load();
+    Titre->Load();
+    Play->Load();
+    Quit->Load();
+}
+
+void DestroyGame()
+{
+     Life->Destroy();
+    Ship->Destroy();
+    Mars->Destroy();
+    Moon->Destroy();
+    Background->Destroy();
+}
+
 
 void DestroyMain()
 {
@@ -90,6 +112,7 @@ void DestroyMain()
     SDL_DestroyWindow(Window);
     Mix_FreeChunk(sonBackground);//Libération du son 1
     Mix_FreeChunk(son2); //Libération du son 2
+    Mix_FreeMusic(musiqueMenu);
     Mix_FreeMusic(musiqueBackground); //Libération de la musique
     Mix_CloseAudio(); //Fermeture de l'API
     SDL_Quit();
@@ -330,6 +353,7 @@ int main()
     int isRunning = 1;
 
     //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
+    Mix_FadeInMusic(musiqueMenu, -1, 10000);
     Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)
     {
@@ -337,12 +361,18 @@ int main()
         time = SDL_GetTicks();
         if (menu == true)
         {
+
             UpdateTheMenuInput();
             UpdateTheMenu();
             DrawTheMenu();  
             if (quit == true)
             {
                 isRunning = 0;
+            }
+            if (play == true)
+            {
+                InitMain();
+                LoadMain();
             }
         }
         else if (pause == true)

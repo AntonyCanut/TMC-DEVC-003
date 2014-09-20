@@ -32,6 +32,9 @@ Uint32 time;
 
 Mix_Music *musiqueBackground; 
 Mix_Chunk *sonMenu;
+Mix_Chunk *sonTir;
+Mix_Chunk *sonExplosion;
+Mix_Chunk *sonLaser;
 
 bool right;
 bool left;

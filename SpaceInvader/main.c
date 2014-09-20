@@ -28,6 +28,9 @@ void InitMain()
     musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
     sonMenu = Mix_LoadWAV("music/menu.wav");
+    sonTir = Mix_LoadWAV("sounds/tirShip.wav");
+    sonExplosion = Mix_LoadWAV("sounds/explosionShip.wav");
+    sonLazer = Mix_LoadWAV("sounds/lazor.wav")
     Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
 
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
@@ -55,7 +58,7 @@ void DestroyMain()
     Menu->Destroy();
     Life->Destroy();
     Layout->Destroy();
-        Boss->Destroy();
+    Boss->Destroy();
     // Les tirs ne doivent pas être détruit ici mais a leur extinction durant la partie, seuls les tirs restant 
     // (fin de partie alors que des tirs sont en cours doivent être détuuit)
     MyBullet->Destroy(MyBullet);

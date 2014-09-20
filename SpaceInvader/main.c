@@ -30,7 +30,7 @@ void InitMain()
     sonMenu = Mix_LoadWAV("music/menu.wav");
     sonTir = Mix_LoadWAV("sounds/tirShip.wav");
     sonExplosion = Mix_LoadWAV("sounds/explosionShip.wav");
-    sonLazer = Mix_LoadWAV("sounds/lazor.wav")
+    sonLaser = Mix_LoadWAV("sounds/lazor.wav");
     Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
 
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 

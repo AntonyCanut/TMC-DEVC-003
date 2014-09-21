@@ -20,7 +20,7 @@ SRC = main.c \
 	  Menu/quit.c \
 	  Menu/pause.c \
 	  utilitaire.c \
-	  Function/listFunctions.c \
+	  Function/listFunctionsBullet.c \
 	  Players/life.c\
 	  Players/boss.c\
 

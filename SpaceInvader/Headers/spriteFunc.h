@@ -35,7 +35,6 @@ typedef void (*Shot2)(InvaderStruct *Invader);
 typedef void (*Dead2)(InvaderStruct *Invader);
 typedef void (*Destroy2)(InvaderStruct *Invader);
 
-
 typedef struct sBullet BulletStruct;
 
 typedef void (*LoadContent3)(BulletStruct *Bullet);

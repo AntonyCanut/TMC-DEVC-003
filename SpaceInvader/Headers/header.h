@@ -16,17 +16,20 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+
 #include <SDL2.framework/Headers/SDL.h>
 #include <SDL2_image.framework/Headers/SDL_image.h>
 #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
-#include <avcodec.h>
-#include <avformat.h>
-#include <SDL2.framework/Headers/SDL_ffmpeg.h>
+// #include <avcodec.h>
+// #include <avformat.h>
+// #include <SDL2.framework/Headers/SDL_ffmpeg.h>
 //#include "/usr/local/include/SDL2/SDL.h"
 //#include "/usr/local/include/SDL2/SDL_image.h"
 //#include "/usr/local/include/SDL2/SDL_mixer.h"
 
+
 #include "spriteFunc.h"
+#include "listFormat.h"
 
 SDL_Window *Window;
 SDL_Renderer *Renderer;

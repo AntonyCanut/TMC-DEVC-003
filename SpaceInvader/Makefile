@@ -27,7 +27,6 @@ SRC = main.c \
 RM = rm -rf
 NAME = SpaceInvader
 OBJS = $(SRC:%.c=%.o)
-<<<<<<< HEAD
 CFLAGS	= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/lib -lSDL2
 LDFLAGS = -lSDLmain -lSDL -Wl,-framework,Cocoa
 SDL2_Path =	~/Library/Frameworks/SDL2.framework/SDL2 \
@@ -36,12 +35,6 @@ SDL2_Path =	~/Library/Frameworks/SDL2.framework/SDL2 \
 SDL2 = /usr/local/lib/libSDL2.a
 SDL2_image = /usr/local/lib/libSDL2_image.a
 SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
-=======
-# CFLAGS	= -W -Wall -Werror
-# SDL2 = /usr/local/lib/libSDL2.a
-# SDL2_image = /usr/local/lib/libSDL2_image.a
-# SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
->>>>>>> FETCH_HEAD
 
 all:		$(NAME)
 

@@ -2,7 +2,6 @@
 
 int countUpdateInvader = 0;
 int deadInvader        = 0;
-bool *rightInvader;
 
 void LoadContentInvader(InvaderStruct *Invader) {
     Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");

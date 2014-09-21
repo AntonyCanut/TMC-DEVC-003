@@ -1,18 +1,18 @@
 #include "../Headers/header.h"
 
-ListBullet *AddAtFrontBulletList(ListBullet *list, BulletStruct value)
+Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value)
 {
-	ListBullet* newElement = malloc(sizeof(ListBullet));
+	Bullets* newElement = InitBulletList();
 	newElement->Current = value;
 	newElement->Next = list;
     return (newElement);
 }
 
-ListBullet *DeleteAtFrontBulletList(ListBullet *list)
+Bullets *DeleteAtFrontBulletList(Bullets *list)
 {
     if(list != NULL)
     {
-        ListBullet* toReturn = list->Next;
+        Bullets* toReturn = list->Next;
         free(list);
         return (toReturn);
     }
@@ -20,16 +20,15 @@ ListBullet *DeleteAtFrontBulletList(ListBullet *list)
         return (NULL);
 }
 
-ListBullet *AddAtEndBulletList(ListBullet *list, BulletStruct value)
+Bullets *AddAtEndBulletList(Bullets *list, BulletStruct *value)
 {
-    ListBullet* newElement = malloc(sizeof(ListBullet));
+    Bullets* newElement = InitBulletList();
  	newElement->Current = value;
- 	newElement->Next = NULL;
     if(list == NULL)
     	return (newElement);
     else
     {
-    	ListBullet* temp=list;
+    	Bullets* temp=list;
         while(temp->Next != NULL)
         {
             temp = temp->Next;
@@ -39,11 +38,11 @@ ListBullet *AddAtEndBulletList(ListBullet *list, BulletStruct value)
     }
 }
 
-ListBullet *DeleteAtEndBulletList(ListBullet *list)
+Bullets *DeleteAtEndBulletList(Bullets *list)
 {
     if(list != NULL)
     {
-        ListBullet* toReturn = list->Next;
+        Bullets* toReturn = list->Next;
         free(list);
         return (toReturn);
     }
@@ -51,19 +50,7 @@ ListBullet *DeleteAtEndBulletList(ListBullet *list)
         return (NULL);
 }
 
-// ListBullet *SearchInBulletList(ListBullet *list, BulletStruct value)
-// {
-//     ListBullet *tmp=list;
-//     while(tmp != NULL)
-//     {
-//         if(tmp->Current == value)
-//         	return (tmp);
-//         tmp = tmp->Next;
-//     }
-//     return (NULL);
-// }
-
-ListBullet *ElementiBulletList(ListBullet *list, int item)
+Bullets *ElementiBulletList(Bullets *list, int item)
 {
     int i;
     
@@ -82,65 +69,43 @@ ListBullet *ElementiBulletList(ListBullet *list, int item)
     }
 }
 
-// ListBullet *DeleteElementBulletList(ListBullet *list, BulletStruct value)
-// {
-//     if(list == NULL)
-//         return (NULL);
- 
-//     if(list->Current == value)
-//     {
-//         ListBullet* tmp = list->Next;
-//         free(list);
-//         tmp = deleteElement(tmp, value);
-//         return (tmp);
-//     }
-//     else
-//     {
-//         list->Next = deleteElement(list->Next, value);
-//         return (list);
-//     }
-// }
-
-ListBullet *EraseBulletList(ListBullet *list)
+Bullets *EraseBulletList(Bullets *list)
 {
     if(list == NULL)
     	return (NULL);
     else
     {
-        ListBullet *tmp;
+        Bullets *tmp;
         tmp = list->Next;
         free(list);
         return (EraseBulletList(tmp));
     }
 }
 
-int IsEmptyBulletList(ListBullet *list)
+int IsEmptyBulletList(Bullets *list)
 {
     return ((list == NULL)? 1 : 0);
 }
 
-// Obtenu grace a l'exemple web potentiellement inutile
-// void PrintBulletList(ListBullet *list)
-// {
-//     ListBullet *tmp = list;
-//     while(tmp != NULL)
-//     {
-//     	printf("%d ", tmp->Current);
-//         tmp = tmp->Next;
-//     }
-// }
+int CountBulletList(Bullets *list)
+{
+    if(list == NULL)
+        return 0;
+    return (CountBulletList(list->Next)+1);
+}
 
-void InitBulletList()
+Bullets *InitBulletList()
 {
 	Bullets *listOfBullets;
     listOfBullets = malloc(sizeof(*listOfBullets));
 	listOfBullets->AddAtFront = AddAtFrontBulletList;
-    listOfBullets->Add = AddAtFrontBulletList;
+    listOfBullets->Add = AddAtEndBulletList;
     listOfBullets->DeleteAtEnd = DeleteAtEndBulletList;
     listOfBullets->DeleteAtFront = DeleteAtFrontBulletList;
     listOfBullets->Clear = EraseBulletList;
-    // listOfBullets->Search = SearchInBulletList;
     listOfBullets->ReturnIElement = ElementiBulletList;
-    // listOfBullets->DeleteItem = DeleteElementBulletList;
+    listOfBullets->Count = CountBulletList;
     listOfBullets->IsEmpty = IsEmptyBulletList;
+    listOfBullets->Next = NULL;
+    return (listOfBullets);
 }

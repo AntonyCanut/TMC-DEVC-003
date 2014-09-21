@@ -23,15 +23,15 @@ SRC = main.c \
 	  Function/listFunctions.c \
 	  Players/life.c\
 	  Players/boss.c\
-	  ~/Library/Frameworks/SDL2.framework/SDL2 \
-	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
-	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
-
 
 RM = rm -rf
 NAME = SpaceInvader
 OBJS = $(SRC:%.c=%.o)
-# CFLAGS	= -W -Wall -Werror
+CFLAGS	= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/lib -lSDL2
+LDFLAGS = -lSDLmain -lSDL -Wl,-framework,Cocoa
+SDL2_Path =	~/Library/Frameworks/SDL2.framework/SDL2 \
+			~/Library/Frameworks/SDL2_image.framework/SDL2_image \
+			~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
 SDL2 = /usr/local/lib/libSDL2.a
 SDL2_image = /usr/local/lib/libSDL2_image.a
 SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
@@ -39,8 +39,8 @@ SDL2_mixer = /usr/local/lib/libSDL2_mixer.a
 all:		$(NAME)
 
 $(NAME):	$(OBJS)
-			$(CC) $(OBJS) $(SDL2) $(SDL2_image) $(SDL2_mixer) -o $(NAME)
-			rm *.o
+			$(CC) $(OBJS) $(SDL2_Path) $(SDL2) $(SDL2_image) $(SDL2_mixer) -o $(NAME)
+			rm $(OBJS)
 
 clean:
 		$(RM) $(OBJ)

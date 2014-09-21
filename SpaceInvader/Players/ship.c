@@ -1,4 +1,4 @@
-  //
+//
 //  SpaceShip.c
 //  SpaceInvader
 //
@@ -76,7 +76,8 @@ void UpdateInputShip(){
 
 void ShotShip(){
     // /* On crée un nouvel élément */
-    // ShipShootElement* newShoot = (struct ShipShootStruct *) malloc(sizeof(struct ShipShootStruct) + 1);
+    BulletStruct *MyBullet = InitBullet(&Ship->Position, 0);
+    ShipShootList->Add(ShipShootList, MyBullet);
  
     //  On assigne la valeur au nouvel élément 
     // newShoot->val = InitShipShoot();

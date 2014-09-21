@@ -59,9 +59,6 @@ void DestroyMain()
     Life->Destroy();
     Layout->Destroy();
     Boss->Destroy();
-    // Les tirs ne doivent pas être détruit ici mais a leur extinction durant la partie, seuls les tirs restant 
-    // (fin de partie alors que des tirs sont en cours doivent être détuuit)
-    MyBullet->Destroy(MyBullet);
     // Les ennemis doivent aussi être détruit de la même façon via la liste d'invader
     MyInvader->Destroy(MyInvader);
     MyInvader2->Destroy(MyInvader2);

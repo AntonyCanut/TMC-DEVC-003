@@ -86,6 +86,7 @@ void InitBoss();
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
 InvaderStruct *InitInvader(int x);
+Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value);
 Bullets *InitBulletList();
 char collision(SDL_Rect, SDL_Rect);
 

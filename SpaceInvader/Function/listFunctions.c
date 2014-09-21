@@ -2,7 +2,7 @@
 
 Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value)
 {
-	Bullets* newElement = InitBulletList();
+	Bullets *newElement = InitBulletList();
 	newElement->Current = value;
 	newElement->Next = list;
     return (newElement);
@@ -99,7 +99,7 @@ Bullets *InitBulletList()
 	Bullets *listOfBullets;
     listOfBullets = malloc(sizeof(*listOfBullets));
 	listOfBullets->AddAtFront = AddAtFrontBulletList;
-    listOfBullets->Add = AddAtEndBulletList;
+    listOfBullets->Add = AddAtFrontBulletList;
     listOfBullets->DeleteAtEnd = DeleteAtEndBulletList;
     listOfBullets->DeleteAtFront = DeleteAtFrontBulletList;
     listOfBullets->Clear = EraseBulletList;

@@ -25,7 +25,8 @@ SRC = main.c \
 	  Players/boss.c\
 	  ~/Library/Frameworks/SDL2.framework/SDL2 \
 	  ~/Library/Frameworks/SDL2_image.framework/SDL2_image \
-	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer
+	  ~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer 
+
 
 
 RM = rm -rf

@@ -20,8 +20,12 @@
 #include <SDL2.framework/Headers/SDL.h>
 #include <SDL2_image.framework/Headers/SDL_image.h>
 #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
-// #include <avcodec.h>
-// #include <avformat.h>
+
+// #include <libavcodec/avcodec.h>
+// #include <libavformat/avformat.h>
+// #include <libswscale/swscale.h>
+ // #include </usr/local/Cellar/ffmpeg/2.3.2/include/libavcodec/avcodec.h>
+ // #include </usr/local/Cellar/ffmpeg/2.3.2/include/libavformat/avformat.h>
 // #include <SDL2.framework/Headers/SDL_ffmpeg.h>
 //#include "/usr/local/include/SDL2/SDL.h"
 //#include "/usr/local/include/SDL2/SDL_image.h"

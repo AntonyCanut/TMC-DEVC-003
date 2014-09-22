@@ -28,8 +28,8 @@ SRC = main.c \
 RM = rm -rf
 NAME = SpaceInvader
 OBJS = $(SRC:%.c=%.o)
-CFLAGS	= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/lib -lSDL2
-LDFLAGS = -lSDLmain -lSDL -Wl,-framework,Cocoa
+# CFLAGS	= -I/usr/local/include/SDL2 -D_THREAD_SAFE -L/usr/local/lib -lSDL2
+# LDFLAGS = -lSDLmain -lSDL -Wl,-framework,Cocoa
 SDL2_Path =	~/Library/Frameworks/SDL2.framework/SDL2 \
 			~/Library/Frameworks/SDL2_image.framework/SDL2_image \
 			~/Library/Frameworks/SDL2_mixer.framework/SDL2_mixer

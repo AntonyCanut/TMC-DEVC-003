@@ -71,6 +71,7 @@ void UpdateInputShip(){
     if (shoot==true)
     {
         Ship->Shot();
+        Mix_PlayChannel(4, sonTir, 0);
     }
 }
 

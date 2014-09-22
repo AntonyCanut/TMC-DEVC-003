@@ -25,7 +25,7 @@ void InitMain()
         printf("%s", Mix_GetError());
     }
     
-    musiqueBackground = Mix_LoadMUS("music/stage.wav"); //Chargement de la musique
+    musiqueBackground = Mix_LoadMUS("music/stage.mp3"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
     sonMenu = Mix_LoadWAV("music/menu.wav");
     sonTir = Mix_LoadWAV("sounds/tirShip.wav");

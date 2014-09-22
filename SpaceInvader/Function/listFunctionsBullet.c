@@ -53,7 +53,6 @@ Bullets *DeleteAtEndBulletList(Bullets *list)
 Bullets *ElementiBulletList(Bullets *list, int item)
 {
     int i;
-    
     for(i=0; i<item && list != NULL; i++)
     {
         list = list->Next;

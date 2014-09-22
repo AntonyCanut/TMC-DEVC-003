@@ -21,6 +21,7 @@ SRC = main.c \
 	  Menu/pause.c \
 	  utilitaire.c \
 	  Function/listFunctionsBullet.c \
+	  Function/listFunctionsInvader.c \
 	  Players/life.c\
 	  Players/boss.c\
 

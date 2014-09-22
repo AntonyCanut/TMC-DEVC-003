@@ -65,10 +65,9 @@ PlayStruct *Play;
 QuitStruct *Quit;
 ShipStruct *Ship;
 BossStruct *Boss;
-InvaderStruct *MyInvader;
-InvaderStruct *MyInvader2;
 LifeStruct *Life;
 Bullets *ShipShootList;
+Invaders *InvaderList;
 
 void DestroyMain();
 void InitGame();
@@ -92,7 +91,9 @@ BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
 InvaderStruct *InitInvader(int x);
 Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value);
+Invaders *AddAtFrontInvaderList(Invaders *list, InvaderStruct *value);
 Bullets *InitBulletList();
+Invaders *InitInvaderList();
 char collision(SDL_Rect, SDL_Rect);
 
 #endif

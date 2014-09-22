@@ -25,12 +25,44 @@ struct sBullets{
 	DeleteAtEndBullet DeleteAtEnd;
 	ClearBullet Clear;
     BulletStruct *Current;
-    struct sBullets *Next;
+    Bullets *Next;
 	SearchBullet Search;
 	CountBullet Count;
 	DeleteItemBullet DeleteItem;
 	ReturnIElementBullet ReturnIElement;
 	IsEmptyBullet IsEmpty;
+};
+
+
+typedef struct sInvaders Invaders;
+
+typedef Invaders *(*AddAtFrontInvader)(Invaders *list, InvaderStruct *value);
+typedef Invaders *(*AddInvader)(Invaders *list, InvaderStruct *value);
+typedef Invaders *(*DeleteAtFrontInvader)(Invaders *list);
+typedef Invaders *(*DeleteAtEndInvader)(Invaders *list);
+typedef Invaders *(*DeleteInvader)(Invaders *list);
+typedef Invaders *(*ClearInvader)(Invaders *list);
+typedef Invaders *(*SearchInvader)(Invaders *list, InvaderStruct *value);
+typedef Invaders *(*ReturnIElementInvader)(Invaders *list, int item);
+typedef Invaders *(*DeleteItemInvader)(Invaders *list, InvaderStruct item);
+typedef Invaders *(*NextInvader)(Invaders *list);
+typedef Invaders *(*CurrentInvader)(Invaders *list);
+typedef int (*CountInvader)(Invaders *list);
+typedef int (*IsEmptyInvader)(Invaders *list);
+
+struct sInvaders{
+	AddAtFrontInvader AddAtFront;
+	AddInvader Add;
+	DeleteAtFrontInvader DeleteAtFront;
+	DeleteAtEndInvader DeleteAtEnd;
+	ClearInvader Clear;
+    InvaderStruct *Current;
+    Invaders *Next;
+	SearchInvader Search;
+	CountInvader Count;
+	DeleteItemInvader DeleteItem;
+	ReturnIElementInvader ReturnIElement;
+	IsEmptyInvader IsEmpty;
 };
 
 #endif

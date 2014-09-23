@@ -28,7 +28,9 @@ void DrawInvader(InvaderStruct *Invader) {
 }
 
 void UpdateInvader(InvaderStruct *Invader) {
-    Uint32 ShootTmp=0;
+    Uint32 ShootInvTmp=0;
+    int i = 0;
+    int random = 0;
 
     if (countUpdateInvader % 17 == 0) {
         if (Invader->Part.x <= 0) {
@@ -69,15 +71,21 @@ void UpdateInvader(InvaderStruct *Invader) {
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {
-        if (ShipShootList->Current->Direction==1 && ShipShootList->Current->ShootTime > ShootTmp)
+        if (ShotList->Current->Direction==1 && ShotList->Current->ShootTime > ShootInvTmp)
         {
-            ShootTmp=ShipShootList->Current->ShootTime;
+            ShootInvTmp=ShotList->Current->ShootTime;
         }
         ShotList = ShotList->Next;
     }
-    if (random_number(0, 2) == 1 && (SDL_GetTicks() - ShootTmp) > 1000)
+    if ((SDL_GetTicks() - ShootInvTmp) > 700)
     {
-        Invader->Shot(Invader);
+        random = random_number(0, 24);
+        Invaders *InvaderListTemp = InvaderList;
+        for(i=0; i<=random && InvaderListTemp != NULL; i++)
+        {
+            InvaderListTemp = InvaderListTemp->Next;
+        }
+        InvaderListTemp->Current->Shot(InvaderListTemp->Current);
     }
     // if (countUpdateInvaderShip == 30)
     // {

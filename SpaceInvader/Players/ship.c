@@ -59,9 +59,9 @@ void UpdateInputShip(){
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {
-        if (ShipShootList->Current->Direction==0 && ShipShootList->Current->ShootTime > ShootTmp)
+        if (ShotList->Current->Direction==0 && ShotList->Current->ShootTime > ShootTmp)
         {
-            ShootTmp=ShipShootList->Current->ShootTime;
+            ShootTmp=ShotList->Current->ShootTime;
         }
         ShotList = ShotList->Next;
     }

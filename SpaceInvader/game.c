@@ -18,8 +18,7 @@ void InitGame()
     InitLife();
     InitBoss();
     InitLayout();
-    // Dépendant du vaisseau, a ne faire qu'au tir
-    MyBullet = InitBullet(&Ship->Position, 0);
+    ShipShootList = NULL;
     // Faire une liste
     MyInvader = InitInvader(11);
     MyInvader2 = InitInvader(91);
@@ -35,8 +34,6 @@ void LoadGame()
     Life->Load();
     Boss->Load();
     Layout->Load();
-    // Les tirs sont dépendant du vaisseau.
-    // MyBullet->Load(MyBullet);
     // Les ennemis sont nombreux, boucle pour parcourire la liste.
     // MyInvader->Load();
 }
@@ -49,7 +46,12 @@ void DestroyGame()
     Moon->Destroy();
     Boss->Destroy();
     Background->Destroy();
-    MyBullet->Destroy(MyBullet);
+    Bullets *ShotList = ShipShootList;
+    while (ShotList != NULL)
+    {
+        ShotList->Current->Destroy(ShotList->Current);
+        ShotList = ShotList->Next;
+    }
     MyInvader->Destroy(MyInvader);
     MyInvader2->Destroy(MyInvader2);
 }
@@ -61,13 +63,16 @@ void UpdateGame()
     {
         Ship->Update();
     }
-    // Traitement a faire dans les listes
-    MyBullet->Update(MyBullet);
+    Bullets *ShotList = ShipShootList;
+    while (ShotList != NULL)
+    {
+        ShotList->Current->Update(ShotList->Current);
+        ShotList = ShotList->Next;
+    }
     Life->Update();
     Boss->Update();
     MyInvader->Update(MyInvader);
     MyInvader2->Update(MyInvader2);
-
 }
 
 
@@ -79,9 +84,12 @@ void DrawGame(){
     {
         Ship->Draw();
     }
-    // Dépendance aux listes
-    MyBullet->Draw(MyBullet);
-
+    Bullets *ShotList = ShipShootList;
+    while (ShotList != NULL)
+    {
+        ShotList->Current->Draw(ShotList->Current);
+        ShotList = ShotList->Next;
+    }
     Life->Draw();
     Boss->Draw();
     MyInvader->Draw(MyInvader);

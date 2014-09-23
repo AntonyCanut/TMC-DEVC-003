@@ -9,8 +9,6 @@
 #ifndef SpaceInvader_SpriteFunc_h
 #define SpaceInvader_SpriteFunc_h
 
-// typedef enum {false=(int)0, true=(int)1} bool;
-
 // Préparation des type def, on pourrait faire directement mais visuellement c'est mieux
 // La piscine c'est finit, ce qui est dégueulasse va disparaitre merci
 typedef void (*Init)(void);

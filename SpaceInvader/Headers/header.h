@@ -15,22 +15,11 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <stdlib.h>
 
 #include <SDL2.framework/Headers/SDL.h>
 #include <SDL2_image.framework/Headers/SDL_image.h>
 #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
-
-// #include <libavcodec/avcodec.h>
-// #include <libavformat/avformat.h>
-// #include <libswscale/swscale.h>
- // #include </usr/local/Cellar/ffmpeg/2.3.2/include/libavcodec/avcodec.h>
- // #include </usr/local/Cellar/ffmpeg/2.3.2/include/libavformat/avformat.h>
-// #include <SDL2.framework/Headers/SDL_ffmpeg.h>
-//#include "/usr/local/include/SDL2/SDL.h"
-//#include "/usr/local/include/SDL2/SDL_image.h"
-//#include "/usr/local/include/SDL2/SDL_mixer.h"
-
 
 #include "spriteFunc.h"
 #include "listFormat.h"
@@ -55,6 +44,7 @@ bool menu;
 bool isUp;
 bool paused;
 bool destroy;
+bool rightInvader;
 
 PauseStruct *Pause;
 MoonStruct *Moon;
@@ -67,10 +57,10 @@ PlayStruct *Play;
 QuitStruct *Quit;
 ShipStruct *Ship;
 BossStruct *Boss;
-BulletStruct *MyBullet;
 InvaderStruct *MyInvader;
 InvaderStruct *MyInvader2;
 LifeStruct *Life;
+Bullets *ShipShootList;
 
 void DestroyMain();
 void InitGame();
@@ -93,9 +83,8 @@ void InitBoss();
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
 InvaderStruct *InitInvader(int x);
-
-
-
+Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value);
+Bullets *InitBulletList();
 char collision(SDL_Rect, SDL_Rect);
 
 #endif

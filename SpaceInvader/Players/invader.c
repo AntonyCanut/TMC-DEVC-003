@@ -42,7 +42,6 @@ void UpdateInvader(InvaderStruct *Invader) {
 
     if (countUpdateInvader % 2 == 0) {
         if (rightInvader == true) {
-            Invader->Position.x += 2;
             if (Invader->Position.x >= (SCREEN_WIDTH - 70)) {
                 rightInvader = false;
                 Invaders *InvaderListTemp = InvaderList;
@@ -52,9 +51,10 @@ void UpdateInvader(InvaderStruct *Invader) {
                     InvaderListTemp->Current->Position.y += 20;
                     InvaderListTemp = InvaderListTemp->Next;
                 }
+            }else{
+                Invader->Position.x += 2;
             }
         } else {
-            Invader->Position.x -= 2;
             if (Invader->Position.x <= 10) {
                 rightInvader = true;
                 Invaders *InvaderListTemp = InvaderList;
@@ -64,6 +64,8 @@ void UpdateInvader(InvaderStruct *Invader) {
                     InvaderListTemp->Current->Position.y += 20;
                     InvaderListTemp = InvaderListTemp->Next;
                 }
+            }else{
+                Invader->Position.x -= 2;
             }
         }
     }

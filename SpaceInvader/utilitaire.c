@@ -9,7 +9,7 @@
 */
 #include "Headers/header.h"
 
-char collision(SDL_Rect a, SDL_Rect b)
+int collision(SDL_Rect a, SDL_Rect b)
     {
     int collisionX = 0;
     int collisionY = 0;

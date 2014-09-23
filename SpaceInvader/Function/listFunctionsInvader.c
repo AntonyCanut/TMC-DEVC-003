@@ -50,10 +50,27 @@ Invaders *DeleteAtEndInvaderList(Invaders *list)
         return (NULL);
 }
 
+Invaders *DeleteElementInvaderList(Invaders *list, InvaderStruct *value)
+{
+    if(list == NULL)
+        return NULL;
+    if(list->Current == value)
+    {
+        Invaders* tmp = list->Next;
+        free(list);
+        tmp = DeleteElementInvaderList(tmp, value);
+        return tmp;
+    }
+    else
+    {
+        list->Next = DeleteElementInvaderList(list->Next, value);
+        return list;
+    }
+}
+
 Invaders *ElementiInvaderList(Invaders *list, int item)
 {
     int i;
-    
     for(i=0; i<item && list != NULL; i++)
     {
         list = list->Next;
@@ -102,6 +119,7 @@ Invaders *InitInvaderList()
     listOfInvaders->Add = AddAtFrontInvaderList;
     listOfInvaders->DeleteAtEnd = DeleteAtEndInvaderList;
     listOfInvaders->DeleteAtFront = DeleteAtFrontInvaderList;
+    listOfInvaders->Delete = DeleteElementInvaderList;
     listOfInvaders->Clear = EraseInvaderList;
     listOfInvaders->ReturnIElement = ElementiInvaderList;
     listOfInvaders->Count = CountInvaderList;

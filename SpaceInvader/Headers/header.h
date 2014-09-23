@@ -18,13 +18,13 @@
 #include <stdlib.h>
 
 
-#include <SDL2.framework/Headers/SDL.h>
-#include <SDL2_image.framework/Headers/SDL_image.h>
-#include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+// #include <SDL2.framework/Headers/SDL.h>
+// #include <SDL2_image.framework/Headers/SDL_image.h>
+// #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
 
-// #include "/usr/local/include/SDL2/SDL.h"
-// #include "/usr/local/include/SDL2/SDL_image.h"
-// #include "/usr/local/include/SDL2/SDL_mixer.h"
+#include "/usr/local/include/SDL2/SDL.h"
+#include "/usr/local/include/SDL2/SDL_image.h"
+#include "/usr/local/include/SDL2/SDL_mixer.h"
 
 
 
@@ -91,8 +91,10 @@ void InitLife();
 InvaderStruct *InitInvader(int x);
 Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value);
 Invaders *AddAtFrontInvaderList(Invaders *list, InvaderStruct *value);
+Bullets *DeleteElementBulletList(Bullets *list, BulletStruct *value);
+Invaders *DeleteElementInvaderList(Invaders *list, InvaderStruct *value);
 Bullets *InitBulletList();
 Invaders *InitInvaderList();
-char collision(SDL_Rect, SDL_Rect);
+int collision(SDL_Rect, SDL_Rect);
 
 #endif

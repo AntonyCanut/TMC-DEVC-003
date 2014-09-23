@@ -50,6 +50,24 @@ Bullets *DeleteAtEndBulletList(Bullets *list)
         return (NULL);
 }
 
+Bullets *DeleteElementBulletList(Bullets *list, BulletStruct *value)
+{
+    if(list == NULL)
+        return NULL;
+    if(list->Current == value)
+    {
+        Bullets* tmp = list->Next;
+        free(list);
+        tmp = DeleteElementBulletList(tmp, value);
+        return tmp;
+    }
+    else
+    {
+        list->Next = DeleteElementBulletList(list->Next, value);
+        return list;
+    }
+}
+
 Bullets *ElementiBulletList(Bullets *list, int item)
 {
     int i;
@@ -101,6 +119,7 @@ Bullets *InitBulletList()
     listOfBullets->Add = AddAtFrontBulletList;
     listOfBullets->DeleteAtEnd = DeleteAtEndBulletList;
     listOfBullets->DeleteAtFront = DeleteAtFrontBulletList;
+    listOfBullets->Delete = DeleteElementBulletList;
     listOfBullets->Clear = EraseBulletList;
     listOfBullets->ReturnIElement = ElementiBulletList;
     listOfBullets->Count = CountBulletList;

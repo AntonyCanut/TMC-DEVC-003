@@ -20,7 +20,7 @@ void InitGame()
     InitLayout();
     ShipShootList = NULL;
     InvaderList = NULL;
-    // Faire une liste
+
     for (int i = 0; i <= 6; i++)
     {
         InvaderStruct *MyInvader = InitInvader(11 + (80 * i));
@@ -62,6 +62,30 @@ void DestroyGame()
     }
 }
 
+void UpdateCollision()
+{
+    Bullets *ShotList = ShipShootList;
+    Invaders *InvaderListTemp = InvaderList;
+    int i = 0;
+    int j = 0;
+    while (ShotList != NULL)
+    {
+        while (InvaderListTemp != NULL)
+        {
+            if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
+            {
+                ShipShootList =  DeleteElementBulletList(ShipShootList, ShotList->Current);
+                InvaderList =  DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
+                return;
+            }
+            InvaderListTemp = InvaderListTemp->Next;
+            j++;
+        }
+        ShotList = ShotList->Next;
+        i++;
+    }
+}
+
 void UpdateGame()
 {
     Layout->Update();
@@ -72,6 +96,7 @@ void UpdateGame()
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {
+
         ShotList->Current->Update(ShotList->Current);
         ShotList = ShotList->Next;
     }
@@ -81,10 +106,10 @@ void UpdateGame()
         InvaderListTemp->Current->Update(InvaderListTemp->Current);
         InvaderListTemp = InvaderListTemp->Next;
     }
+    UpdateCollision();
     Life->Update();
     Boss->Update();
 }
-
 
 void DrawGame(){
     SDL_RenderClear(Renderer);
@@ -97,6 +122,7 @@ void DrawGame(){
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {
+
         ShotList->Current->Draw(ShotList->Current);
         ShotList = ShotList->Next;
     }

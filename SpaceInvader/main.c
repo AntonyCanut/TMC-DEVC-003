@@ -59,9 +59,6 @@ void DestroyMain()
     Life->Destroy();
     Layout->Destroy();
     Boss->Destroy();
-    // Les ennemis doivent aussi être détruit de la même façon via la liste d'invader
-    MyInvader->Destroy(MyInvader);
-    MyInvader2->Destroy(MyInvader2);
     // /!\ Je met une reserve mais je pense qu'il faudra ajouter une destruction des structures et des listes /!\
     SDL_DestroyRenderer(Renderer);
     SDL_DestroyWindow(Window);
@@ -204,7 +201,7 @@ int main()
    
 
     Mix_PlayChannel(1, sonMenu, -1);
-    Mix_FadeInMusic(musiqueBackground, -1, 10000);
+    Mix_PlayMusic(musiqueBackground, -1);
     //Mix_PlayMusic(musiqueBackground, -1); //Jouer infiniment la musique
     //Mix_FadeInMusic(musiqueBackground, -1, 10000);
     while(isRunning == 1)

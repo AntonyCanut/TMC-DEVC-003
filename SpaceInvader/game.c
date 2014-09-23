@@ -19,9 +19,13 @@ void InitGame()
     InitBoss();
     InitLayout();
     ShipShootList = NULL;
+    InvaderList = NULL;
     // Faire une liste
-    MyInvader = InitInvader(11);
-    MyInvader2 = InitInvader(91);
+    for (int i = 0; i <= 6; i++)
+    {
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i));
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
 }
 
 void LoadGame()
@@ -34,8 +38,6 @@ void LoadGame()
     Life->Load();
     Boss->Load();
     Layout->Load();
-    // Les ennemis sont nombreux, boucle pour parcourire la liste.
-    // MyInvader->Load();
 }
 
 void DestroyGame()
@@ -52,8 +54,12 @@ void DestroyGame()
         ShotList->Current->Destroy(ShotList->Current);
         ShotList = ShotList->Next;
     }
-    MyInvader->Destroy(MyInvader);
-    MyInvader2->Destroy(MyInvader2);
+    Invaders *InvaderListTemp = InvaderList;
+    while (InvaderListTemp != NULL)
+    {
+        InvaderListTemp->Current->Destroy(InvaderListTemp->Current);
+        InvaderListTemp = InvaderListTemp->Next;
+    }
 }
 
 void UpdateGame()
@@ -69,10 +75,14 @@ void UpdateGame()
         ShotList->Current->Update(ShotList->Current);
         ShotList = ShotList->Next;
     }
+    Invaders *InvaderListTemp = InvaderList;
+    while (InvaderListTemp != NULL)
+    {
+        InvaderListTemp->Current->Update(InvaderListTemp->Current);
+        InvaderListTemp = InvaderListTemp->Next;
+    }
     Life->Update();
     Boss->Update();
-    MyInvader->Update(MyInvader);
-    MyInvader2->Update(MyInvader2);
 }
 
 
@@ -90,10 +100,14 @@ void DrawGame(){
         ShotList->Current->Draw(ShotList->Current);
         ShotList = ShotList->Next;
     }
+    Invaders *InvaderListTemp = InvaderList;
+    while (InvaderListTemp != NULL)
+    {
+        InvaderListTemp->Current->Draw(InvaderListTemp->Current);
+        InvaderListTemp = InvaderListTemp->Next;
+    }
     Life->Draw();
     Boss->Draw();
-    MyInvader->Draw(MyInvader);
-    MyInvader2->Draw(MyInvader2);
     if (paused == true)
     {
         Pause->Draw();

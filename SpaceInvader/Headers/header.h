@@ -17,9 +17,16 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+
 #include <SDL2.framework/Headers/SDL.h>
 #include <SDL2_image.framework/Headers/SDL_image.h>
 #include <SDL2_mixer.framework/Headers/SDL_mixer.h>
+
+// #include "/usr/local/include/SDL2/SDL.h"
+// #include "/usr/local/include/SDL2/SDL_image.h"
+// #include "/usr/local/include/SDL2/SDL_mixer.h"
+
+
 
 #include "spriteFunc.h"
 #include "listFormat.h"
@@ -57,10 +64,9 @@ PlayStruct *Play;
 QuitStruct *Quit;
 ShipStruct *Ship;
 BossStruct *Boss;
-InvaderStruct *MyInvader;
-InvaderStruct *MyInvader2;
 LifeStruct *Life;
 Bullets *ShipShootList;
+Invaders *InvaderList;
 
 void DestroyMain();
 void InitGame();
@@ -84,7 +90,9 @@ BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
 InvaderStruct *InitInvader(int x);
 Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value);
+Invaders *AddAtFrontInvaderList(Invaders *list, InvaderStruct *value);
 Bullets *InitBulletList();
+Invaders *InitInvaderList();
 char collision(SDL_Rect, SDL_Rect);
 
 #endif

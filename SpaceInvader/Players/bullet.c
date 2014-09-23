@@ -73,7 +73,8 @@ BulletStruct *InitBullet(SDL_Rect *Canon, int direction){
     Bullet->Position.w = 15;
     Bullet->Position.h = 37;
     Bullet->Direction = direction;
-    
+    Bullet->ShootTime = SDL_GetTicks();
+
     Bullet->Part.x = 0;
     Bullet->Part.y = 0;
     Bullet->Part.w = 120;

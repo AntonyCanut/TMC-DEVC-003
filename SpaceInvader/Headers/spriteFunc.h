@@ -72,6 +72,7 @@ struct sBullet {
     int IsAlive;
     int Speed;
     int Direction;
+    Uint32 ShootTime;
     LoadContent3 Load;
     UnLoadContent3 UnLoad;
     Draw3 Draw;

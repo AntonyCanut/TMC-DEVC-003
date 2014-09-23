@@ -23,20 +23,6 @@ void DrawShip(){
 }
 
 void UpdateShip(){
-    // test 
-    if (countUpdateShip==180)
-    {
-        Ship->Shield=1;
-    }
-    if (countUpdateShip==70 || countUpdateShip==370)
-    {
-        Ship->IsAlive = 1;
-    }
-    if (countUpdateShip==270)
-    {
-        Ship->Life += 1;
-    }
-    // fin test
 
     if (Ship->Shield == 1)
     {
@@ -63,13 +49,23 @@ void UpdateShip(){
 }
 
 void UpdateInputShip(){
+    Uint32 ShootTmp=0;
+
     if(Ship->Position.x <= (SCREEN_WIDTH - 80) && right == true){
         Ship->Position.x += 5;
     }else if( Ship->Position.x >= 10 && left == true){
         Ship->Position.x -= 5;
     }
-    if (shoot==true)
+    Bullets *ShotList = ShipShootList;
+    while (ShotList != NULL)
     {
+        if (ShipShootList->Current->Direction==0 && ShipShootList->Current->ShootTime > ShootTmp)
+        {
+            ShootTmp=ShipShootList->Current->ShootTime;
+        }
+        ShotList = ShotList->Next;
+    }
+    if (shoot==true && (SDL_GetTicks() - ShootTmp) > 300){
         Ship->Shot();
         Mix_PlayChannel(4, sonTir, 0);
     }

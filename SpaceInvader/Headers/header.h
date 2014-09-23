@@ -96,11 +96,7 @@ Bullets *DeleteElementBulletList(Bullets *list, BulletStruct *value);
 Invaders *DeleteElementInvaderList(Invaders *list, InvaderStruct *value);
 Bullets *InitBulletList();
 Invaders *InitInvaderList();
-<<<<<<< HEAD
 int collision(SDL_Rect, SDL_Rect);
-=======
-char collision(SDL_Rect, SDL_Rect);
 int random_number(int min_num, int max_num);
->>>>>>> FETCH_HEAD
 
 #endif

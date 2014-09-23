@@ -72,6 +72,8 @@ struct sBullet {
     int IsAlive;
     int Speed;
     int Direction;
+    int Sprite;
+    Uint32 ShootTime;
     LoadContent3 Load;
     UnLoadContent3 UnLoad;
     Draw3 Draw;
@@ -143,6 +145,7 @@ struct sInvaderStruct {
     SDL_Rect Part;
     int IsAlive;
     int Speed;
+    int Sprite;
     LoadContent2 Load;
     UnLoadContent2 UnLoad;
     Draw2 Draw;

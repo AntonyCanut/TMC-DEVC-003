@@ -207,7 +207,7 @@ int main()
     while(isRunning == 1)
     {
         Uint32 toWait;
-        time = SDL_GetTicks();
+        timeTick = SDL_GetTicks();
         if (menu == true)
         {
             Mix_RewindMusic();
@@ -251,7 +251,7 @@ int main()
                 isRunning = 0;
             }
         }
-        toWait = SDL_GetTicks() - time;
+        toWait = SDL_GetTicks() - timeTick;
         if (toWait < 16)
             SDL_Delay(16 - toWait);
     }

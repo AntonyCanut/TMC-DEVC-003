@@ -23,20 +23,6 @@ void DrawShip(){
 }
 
 void UpdateShip(){
-    // test 
-    if (countUpdateShip==180)
-    {
-        Ship->Shield=1;
-    }
-    if (countUpdateShip==70 || countUpdateShip==370)
-    {
-        Ship->IsAlive = 1;
-    }
-    if (countUpdateShip==270)
-    {
-        Ship->Life += 1;
-    }
-    // fin test
 
     if (Ship->Shield == 1)
     {
@@ -63,13 +49,23 @@ void UpdateShip(){
 }
 
 void UpdateInputShip(){
+    Uint32 ShootTmp=0;
+
     if(Ship->Position.x <= (SCREEN_WIDTH - 80) && right == true){
         Ship->Position.x += 5;
     }else if( Ship->Position.x >= 10 && left == true){
         Ship->Position.x -= 5;
     }
-    if (shoot==true)
+    Bullets *ShotList = ShipShootList;
+    while (ShotList != NULL)
     {
+        if (ShotList->Current->Direction==0 && ShotList->Current->ShootTime > ShootTmp)
+        {
+            ShootTmp=ShotList->Current->ShootTime;
+        }
+        ShotList = ShotList->Next;
+    }
+    if (shoot==true && (SDL_GetTicks() - ShootTmp) > 300){
         Ship->Shot();
         Mix_PlayChannel(4, sonTir, 0);
     }
@@ -77,7 +73,7 @@ void UpdateInputShip(){
 
 void ShotShip(){
     // /* On crée un nouvel élément */
-    BulletStruct *MyBullet = InitBullet(&Ship->Position, 0);
+    BulletStruct *MyBullet = InitBullet(&Ship->Position, 0, 0);
     ShipShootList = AddAtFrontBulletList(ShipShootList, MyBullet);
  
     //  On assigne la valeur au nouvel élément 

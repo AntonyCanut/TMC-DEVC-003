@@ -28,6 +28,8 @@ void DrawInvader(InvaderStruct *Invader) {
 }
 
 void UpdateInvader(InvaderStruct *Invader) {
+    Uint32 ShootTmp=0;
+
     if (countUpdateInvader % 17 == 0) {
         if (Invader->Part.x <= 0) {
             Invader->Part.x = 600;
@@ -63,16 +65,39 @@ void UpdateInvader(InvaderStruct *Invader) {
             }
         }
     }
-
+    srand(time(NULL));
+    Bullets *ShotList = ShipShootList;
+    while (ShotList != NULL)
+    {
+        if (ShipShootList->Current->Direction==1 && ShipShootList->Current->ShootTime > ShootTmp)
+        {
+            ShootTmp=ShipShootList->Current->ShootTime;
+        }
+        ShotList = ShotList->Next;
+    }
+    if (random_number(0, 2) == 1 && (SDL_GetTicks() - ShootTmp) > 1000)
+    {
+        Invader->Shot(Invader);
+    }
     // if (countUpdateInvaderShip == 30)
     // {
     //     deadInvaderShip = 1;
     // }
     // DeadInvaderShip();
-    countUpdateInvader += 1;
+    countUpdateInvader += 2;
 }
 
-void ShotInvader(InvaderStruct *Invader) {}
+void ShotInvader(InvaderStruct *Invader) {
+        // /* On crée un nouvel élément */
+    BulletStruct *MyBullet = InitBullet(&Invader->Position, 1, Invader->Sprite);
+    ShipShootList = AddAtFrontBulletList(ShipShootList, MyBullet);
+    Mix_PlayChannel(4, sonTir, 0);
+    //  On assigne la valeur au nouvel élément 
+    // newShoot->val = InitShipShoot();
+ 
+    // /* On assigne l'adresse de l'élément suivant au nouvel élément */
+    // newShoot->nxt = ShipShootList;
+}
 
 void DeadInvader(InvaderStruct *Invader) {
     if (countUpdateInvader % 5 == 0 && deadInvader == 1) {

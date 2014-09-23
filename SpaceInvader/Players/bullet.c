@@ -9,8 +9,24 @@
 #include "../Headers/header.h"
 int countUpdateShipShoot = 0;
 
-void LoadContentBullet(BulletStruct *Bullet){
-    Bullet->Texture = IMG_LoadTexture(Renderer, "img/player/joueur_tire_300x480_P_120.png");
+void LoadContentBullet(BulletStruct *Bullet){  
+    switch (Bullet->Sprite) {
+        case 0 :
+         Bullet->Texture = IMG_LoadTexture(Renderer, "img/player/joueur_tire_300x480_P_120.png");
+         break;
+        case 1 :
+         Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_tire_300x480_P_120.png");
+         break;    
+        case 2 :
+         Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader2_tire_300x480_P_120.png");
+         break;
+        case 3 :
+         Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader3_tire_300x480_P_120.png");
+         break;
+        case 4:
+         Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader4_tire_300x480_P_120.png");
+         break;
+    } 
 }
 
 void UnLoadContentBullet(BulletStruct *Bullet){
@@ -65,15 +81,16 @@ void DestroyBullet(BulletStruct *Bullet){
 }
 
 // La direction pour savoir si c'est le vaisseau ennemi ou celui du joueur qui a tiré
-BulletStruct *InitBullet(SDL_Rect *Canon, int direction){
+BulletStruct *InitBullet(SDL_Rect *Canon, int Direction, int Sprite){
     BulletStruct *Bullet;
     Bullet = malloc(sizeof(*Bullet));
     Bullet->Position.x = Canon->x + 28;
     Bullet->Position.y = Canon->y + 10;
     Bullet->Position.w = 15;
     Bullet->Position.h = 37;
-    Bullet->Direction = direction;
+    Bullet->Direction = Direction;
     Bullet->ShootTime = SDL_GetTicks();
+    Bullet->Sprite = Sprite;
 
     Bullet->Part.x = 0;
     Bullet->Part.y = 0;

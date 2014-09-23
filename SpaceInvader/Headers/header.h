@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h> 
 
 
 #include <SDL2.framework/Headers/SDL.h>
@@ -34,7 +35,7 @@
 SDL_Window *Window;
 SDL_Renderer *Renderer;
 SDL_Event e;
-Uint32 time;
+Uint32 timeTick;
 
 Mix_Music *musiqueBackground; 
 Mix_Chunk *sonMenu;
@@ -88,7 +89,7 @@ void InitShip();
 void InitBoss();
 BulletStruct *InitBullet(SDL_Rect *Canon, int direction);
 void InitLife();
-InvaderStruct *InitInvader(int x);
+InvaderStruct *InitInvader(int x, int Line, int Sprite);
 Bullets *AddAtFrontBulletList(Bullets *list, BulletStruct *value);
 Invaders *AddAtFrontInvaderList(Invaders *list, InvaderStruct *value);
 Bullets *InitBulletList();

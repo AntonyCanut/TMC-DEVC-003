@@ -144,6 +144,7 @@ struct sInvaderStruct {
     SDL_Rect Part;
     int IsAlive;
     int Speed;
+    int Sprite;
     LoadContent2 Load;
     UnLoadContent2 UnLoad;
     Draw2 Draw;

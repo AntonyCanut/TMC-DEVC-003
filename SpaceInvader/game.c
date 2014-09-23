@@ -23,7 +23,26 @@ void InitGame()
     // Faire une liste
     for (int i = 0; i <= 6; i++)
     {
-        InvaderStruct *MyInvader = InitInvader(11 + (80 * i));
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
         InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     }
 }

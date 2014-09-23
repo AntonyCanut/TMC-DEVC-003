@@ -4,7 +4,19 @@ int countUpdateInvader = 0;
 int deadInvader        = 0;
 
 void LoadContentInvader(InvaderStruct *Invader) {
-    Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
+    switch (Invader->Sprite) {
+        case 2 :
+         Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader2_600x3600_P_600.png");
+         break;
+        case 3 :
+         Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader3_600x3600_P_600.png");
+         break;
+        case 4:
+         Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader4_600x3600_P_600.png");
+         break;
+        default: 
+         Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
+    }    
 }
 
 void UnLoadContentInvader(InvaderStruct *Invader) {
@@ -26,18 +38,28 @@ void UpdateInvader(InvaderStruct *Invader) {
 
     if (countUpdateInvader % 2 == 0) {
         if (rightInvader == true) {
-            Invader->Position.x += 5;
+            Invader->Position.x += 2;
             if (Invader->Position.x >= (SCREEN_WIDTH - 70)) {
                 rightInvader = false;
-                Invader->Position.x -= 5;
-                Invader->Position.y += 70;
+                Invaders *InvaderListTemp = InvaderList;
+                while (InvaderListTemp != NULL)
+                {
+                    InvaderListTemp->Current->Position.x -= 5;
+                    InvaderListTemp->Current->Position.y += 20;
+                    InvaderListTemp = InvaderListTemp->Next;
+                }
             }
         } else {
-            Invader->Position.x -= 5;
+            Invader->Position.x -= 2;
             if (Invader->Position.x <= 10) {
                 rightInvader = true;
-                Invader->Position.x += 5;
-                Invader->Position.y += 70;
+                Invaders *InvaderListTemp = InvaderList;
+                while (InvaderListTemp != NULL)
+                {
+                    InvaderListTemp->Current->Position.x += 5;
+                    InvaderListTemp->Current->Position.y += 20;
+                    InvaderListTemp = InvaderListTemp->Next;
+                }
             }
         }
     }
@@ -77,15 +99,16 @@ void DestroyInvader(InvaderStruct *Invader) {
 }
 
 
-InvaderStruct *InitInvader(int x) {
+InvaderStruct *InitInvader(int x, int Line, int Sprite) {
     InvaderStruct *Invader;
     Invader = malloc(sizeof(*Invader));
     Invader->Position.x = x;
-    Invader->Position.y = 5;
+    Invader->Position.y = 5 + (75 * Line);
     Invader->Position.w = 70;
     Invader->Position.h = 70;
 
     rightInvader = true;
+    Invader->Sprite = Sprite;
 
     Invader->Part.x = 0;
     Invader->Part.y = 0;

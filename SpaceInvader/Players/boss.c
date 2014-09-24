@@ -23,22 +23,49 @@ void DrawBoss(){
 }
 
 void UpdateBoss(){
-	if(countUpdateBoss%17==0 && Boss->Part.x == 0){
-		Boss->Part.x = 1200;
-	}else if(countUpdateBoss%17==0 &&Boss->Part.x == 1200){
-		Boss->Part.x = 0;
-	}
 
+    if (Boss->Shoot==0)
+    {
+        if(countUpdateBoss%17==0 && Boss->Part.x == 0){
+            Boss->Part.x = 1200;
+        }else if(countUpdateBoss%17==0 &&Boss->Part.x == 1200){
+            Boss->Part.x = 0;
+        }
+        if (countUpdateBoss % 2 == 0) {
+            if (Boss->Direction <= 0) {
+                if (Boss->Position.x >= (SCREEN_WIDTH - 230)) {
+                    Boss->Direction= 1;
+                    Boss->Position.x -= 15;
+                }else{
+                    Boss->Position.x += 15;
+                }
+            } else {
+                if (Boss->Position.x <= 10) {
+                    Boss->Direction = 0;
+                    Boss->Position.x += 15;
+                }else{
+                    Boss->Position.x -= 15;
+                }
+            }
+        }
+        if (countUpdateBoss % 2 == 0 && random_number(0, 5)==2 && ((Boss->Position.x + 110) >= (Ship->Position.x - 200) || (Boss->Position.x + 110) <= (Ship->Position.x + 200)))
+        {
+           // Boss->Shoot=1;
+        }
+    }else{
+        Boss->Part.x = 7200;
+    }
+    Boss->Dead();
     countUpdateBoss+=1;
 }
 
 void ShotBoss(){
     // /* On crée un nouvel élément */
     // BossShootElement* newShoot = (struct BossShootStruct *) malloc(sizeof(struct BossShootStruct) + 1);
- 
-    //  On assigne la valeur au nouvel élément 
+
+    //  On assigne la valeur au nouvel élément
     // newShoot->val = InitBossShoot();
- 
+
     // /* On assigne l'adresse de l'élément suivant au nouvel élément */
     // newShoot->nxt = BossShootList;
 }
@@ -60,8 +87,10 @@ void DeadBoss(){
         Boss->Life -= 1;
         if(Boss->Life <= 0){
             Boss->IsAlive=10;
+        }else{
+            Boss->Part.x = 0;
+            Boss->IsAlive = 0;
         }
-        Boss->IsAlive=6;
     }
 }
 
@@ -76,13 +105,15 @@ void InitBoss(){
     Boss->Position.y = 20;
     Boss->Position.w = 220;
     Boss->Position.h = 220;
-    
+
     Boss->Part.x = 0;
     Boss->Part.y = 0;
     Boss->Part.w = 1200;
     Boss->Part.h = 1200;
     Boss->IsAlive = 0;
-    Boss->Life = 10;
+    Boss->Life = 20;
+    Boss->Direction=0;
+    Boss->Shoot=0;
 
     Boss->Draw = DrawBoss;
     Boss->Update = UpdateBoss;

@@ -123,6 +123,8 @@ typedef struct sBossStruct {
     int IsAlive;
     int Life;
     int Speed;
+    int Direction;
+    int Shoot;
     LoadContent Load;
     UnLoadContent UnLoad;
     Draw Draw;

@@ -21,30 +21,30 @@ void InitGame()
     ShipShootList = NULL;
     InvaderList = NULL;
 
-    for (int i = 0; i <= 6; i++)
-    {
-        srand(time(NULL));
-        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
-        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    }
-    for (int i = 0; i <= 6; i++)
-    {
-        srand(time(NULL));
-        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
-        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    }
-    for (int i = 0; i <= 6; i++)
-    {
-        srand(time(NULL));
-        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
-        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    }
-    for (int i = 0; i <= 6; i++)
-    {
-        srand(time(NULL));
-        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
-        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    }
+    // for (int i = 0; i <= 6; i++)
+    // {
+    //     srand(time(NULL));
+    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
+    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    // }
+    // for (int i = 0; i <= 6; i++)
+    // {
+    //     srand(time(NULL));
+    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
+    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    // }
+    // for (int i = 0; i <= 6; i++)
+    // {
+    //     srand(time(NULL));
+    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
+    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    // }
+    // for (int i = 0; i <= 6; i++)
+    // {
+    //     srand(time(NULL));
+    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
+    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    // }
     InitBonus();
 }
 
@@ -110,8 +110,12 @@ void UpdateCollision()
                 InvaderListTemp = InvaderListTemp->Next;
                 j++;
             }
+            if ( Boss->IsAlive <10 && collision(ShotList->Current->Position, Boss->Position) == 1){
+                Boss->IsAlive=1;
+                ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
+            }
         }else{
-            if (collision(ShotList->Current->Position, Ship->Position) == 1){
+            if ( Ship->IsAlive <10 && collision(ShotList->Current->Position, Ship->Position) == 1){
                 Ship->IsAlive=1;
                 ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
             }
@@ -151,7 +155,10 @@ void UpdateGame()
     }
     UpdateCollision();
     Life->Update();
-    Boss->Update();
+    if (Boss->IsAlive <10)
+    {
+        Boss->Update();
+    }
     if (Bonus->IsAlive > 0)
     {
         Bonus->Update();
@@ -184,7 +191,9 @@ void DrawGame(){
         InvaderListTemp = InvaderListTemp->Next;
     }
     Life->Draw();
-    Boss->Draw();
+    if (Boss->IsAlive <10){
+        Boss->Draw();
+    }
     if (paused == true)
     {
         Pause->Draw();

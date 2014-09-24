@@ -23,6 +23,7 @@ SRC = main.c \
 	  Function/listFunctionsBullet.c \
 	  Function/listFunctionsInvader.c \
 	  Players/life.c\
+	  Players/bonus.c\
 	  Players/boss.c\
 
 RM = rm -rf

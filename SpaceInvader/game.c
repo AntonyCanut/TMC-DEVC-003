@@ -45,7 +45,7 @@ void InitGame()
         InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
         InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     }
-    Ship->Shield =1;
+    bonusAlive = false;
 }
 
 void LoadGame()
@@ -58,6 +58,10 @@ void LoadGame()
     Life->Load();
     Boss->Load();
     Layout->Load();
+    if (bonusAlive==true)
+    {
+        Bonus->Load();
+    }
 }
 
 void DestroyGame()
@@ -80,6 +84,10 @@ void DestroyGame()
         InvaderListTemp->Current->Destroy(InvaderListTemp->Current);
         InvaderListTemp = InvaderListTemp->Next;
     }
+    if (bonusAlive==true)
+    {
+        Bonus->Destroy();
+    }
 }
 
 void UpdateCollision()
@@ -96,6 +104,11 @@ void UpdateCollision()
             {
                 if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
                 {
+                    if (bonusAlive==false && random_number(0, 10) == 5)
+                        {
+                            InitBonus(InvaderListTemp->Current->Position.x, InvaderListTemp->Current->Position.y);
+                            bonusAlive=true;
+                        }
                     InvaderListTemp->Current->DeadInv=1;
                     ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
                 }
@@ -140,6 +153,10 @@ void UpdateGame()
     UpdateCollision();
     Life->Update();
     Boss->Update();
+    if (bonusAlive==true)
+    {
+        Bonus->Update();
+    }
 }
 
 void DrawGame(){
@@ -149,6 +166,10 @@ void DrawGame(){
     if (Ship->IsAlive < 6)
     {
         Ship->Draw();
+    }
+    if (bonusAlive==true)
+    {
+        Bonus->Draw();
     }
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)

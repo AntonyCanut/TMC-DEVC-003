@@ -95,6 +95,19 @@ typedef struct sLifeStruct {
     Destroy Destroy;
 } LifeStruct;
 
+typedef struct sBonusStruct {
+    SDL_Texture *Texture;
+    SDL_Rect Position;
+    SDL_Rect Part;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+} BonusStruct;
+
 // ##########################
 // #       END JOUEUR
 // ##########################

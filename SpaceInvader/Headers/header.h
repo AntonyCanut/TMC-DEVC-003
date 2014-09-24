@@ -53,6 +53,7 @@ bool isUp;
 bool paused;
 bool destroy;
 bool rightInvader;
+bool bonusAlive;
 
 PauseStruct *Pause;
 MoonStruct *Moon;
@@ -66,6 +67,7 @@ QuitStruct *Quit;
 ShipStruct *Ship;
 BossStruct *Boss;
 LifeStruct *Life;
+BonusStruct *Bonus;
 Bullets *ShipShootList;
 Invaders *InvaderList;
 
@@ -87,6 +89,7 @@ void InitMars();
 void InitLayout();
 void InitShip();
 void InitBoss();
+void InitBonus(int x, int y);
 BulletStruct *InitBullet(SDL_Rect *Canon, int Direction, int Sprite);
 void InitLife();
 InvaderStruct *InitInvader(int x, int Line, int Sprite);

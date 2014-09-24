@@ -69,7 +69,6 @@ void UpdateInvader(InvaderStruct *Invader) {
             }
         }
     }
-    srand(time(NULL));
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {

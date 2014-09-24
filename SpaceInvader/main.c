@@ -19,6 +19,8 @@ void InitMain()
     paused = false;
     play = false;
     destroy = false;
+    lose = false;
+    victory = false;
 
     if(Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, MIX_DEFAULT_CHANNELS, 1024) == -1) //Initialisation de l'API Mixer
     {
@@ -182,6 +184,45 @@ void UpdateTheMenuInput()
     Menu->UpdateInput();
 }
 
+void UpdateTheEndInput()
+{
+     while (SDL_PollEvent(&e))
+    {
+        switch(e.type){
+            case SDL_QUIT:
+                DestroyMain();
+                break;
+            case SDL_KEYDOWN:
+                switch(e.key.keysym.sym){
+                    case SDLK_ESCAPE:
+                        menu=true;
+                        destroy = true;
+                        play = false;
+                        lose = false;
+                        victory = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            case SDL_KEYUP:
+                switch(e.key.keysym.sym){
+                    case SDLK_ESCAPE:
+                        menu=true;
+                        destroy = true;
+                        play = false;
+                        lose = false;
+                        victory = false;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+        }
+    }
+    Menu->UpdateInput();
+}
+
 
 void DrawTheMenu()
 {
@@ -213,6 +254,7 @@ int main()
         timeTick = SDL_GetTicks();
         if (menu == true)
         {
+            pausedMusic = false;
             Mix_RewindMusic();
             Mix_PauseMusic();
             Mix_Volume(1, MIX_MAX_VOLUME);
@@ -238,6 +280,18 @@ int main()
         {
                 Mix_PauseMusic();
                 UpdateThePauseInput();
+                DrawGame();
+        }
+        else if (lose == true)
+        {
+                Mix_PauseMusic();
+                UpdateTheEndInput();
+                DrawGame();
+        }
+        else if (victory == true)
+        {
+                Mix_PauseMusic();
+                UpdateTheEndInput();
                 DrawGame();
         }
         else

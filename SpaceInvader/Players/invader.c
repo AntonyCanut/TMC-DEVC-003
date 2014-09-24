@@ -39,7 +39,6 @@ void UpdateInvader(InvaderStruct *Invader) {
             Invader->Part.x = 0;
         }
     }
-
     if (countUpdateInvader % 2 == 0) {
         if (rightInvader == true) {
             if (Invader->Position.x >= (SCREEN_WIDTH - 70)) {
@@ -91,6 +90,13 @@ void UpdateInvader(InvaderStruct *Invader) {
             InvaderListTemp->Current->Shot(InvaderListTemp->Current);
         }
     }
+
+
+    if (Invader->Position.y == 700)
+    {
+        lose = true;
+    }
+
     // Invader->Dead(Invader);
     countUpdateInvader += 2;
 }

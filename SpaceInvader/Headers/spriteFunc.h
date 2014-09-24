@@ -304,4 +304,28 @@ typedef struct sPauseStruct {
     Destroy Destroy;
 } PauseStruct;
 
+typedef struct sGameOverStruct {
+    SDL_Texture *Texture;
+    SDL_Rect GameOverText;
+    int IsAlive;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    UpdateInput UpdateInput;
+    Destroy Destroy;
+} GameOverStruct;
+
+typedef struct sVictoryStruct {
+    SDL_Texture *Texture;
+    SDL_Rect VictoryText;
+    int IsAlive;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    UpdateInput UpdateInput;
+    Destroy Destroy;
+} VictoryStruct;
+
 #endif

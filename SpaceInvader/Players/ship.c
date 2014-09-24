@@ -102,6 +102,7 @@ void DeadShip(){
         Ship->Life -= 1;
         if(Ship->Life <= 0){
             Ship->IsAlive=10;
+            lose = true;
         }else{
             Ship->IsAlive=6;
         }

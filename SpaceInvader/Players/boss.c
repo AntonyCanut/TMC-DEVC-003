@@ -51,7 +51,9 @@ void UpdateBoss(){
         if (BossBullet->IsAlive <=0 && countUpdateBoss % 2 == 0 && random_number(0, 5)==2 && ((Boss->Position.x + 110) >= (Ship->Position.x - 200) || (Boss->Position.x + 110) <= (Ship->Position.x + 200)))
         {
            Boss->Shoot=1;
+
            Boss->Shot();
+           Mix_PlayChannel(21, sonLaser, 0);
         }
     }else{
         Boss->Part.x = 7200;
@@ -82,6 +84,7 @@ void DeadBoss(){
         Boss->Life -= 1;
         if(Boss->Life <= 0){
             Boss->IsAlive=10;
+            victory = true;
         }else{
             Boss->Part.x = 0;
             Boss->IsAlive = 0;

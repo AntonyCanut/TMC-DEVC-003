@@ -19,6 +19,8 @@ SRC = main.c \
 	  Menu/play.c \
 	  Menu/quit.c \
 	  Menu/pause.c \
+	  Menu/game_over.c \
+	  Menu/victory.c \
 	  utilitaire.c \
 	  Function/listFunctionsBullet.c \
 	  Function/listFunctionsInvader.c \

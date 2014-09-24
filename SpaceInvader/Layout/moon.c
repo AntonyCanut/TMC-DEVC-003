@@ -22,6 +22,10 @@ void DrawMoon(){
 }
 
 void UpdateMoon(){
+    if (isBoss == true)
+    {
+        Moon->Dead();
+    }
     if (Moon->Position.x >= SCREEN_WIDTH + 400)
     {
         Moon->Position.x = -400;

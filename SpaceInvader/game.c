@@ -10,6 +10,8 @@
 
 void InitGame()
 {
+    InitGameOver();
+    InitVictory();
     InitPause();
     InitBackground();
     InitMoon();
@@ -27,7 +29,7 @@ void InitGame()
     // {
     //     srand(time(NULL));
     //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    //    InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     // }
     // for (int i = 0; i <= 6; i++)
     // {
@@ -41,18 +43,20 @@ void InitGame()
     //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
     //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
+     for (int i = 0; i <= 6; i++)
+     {
+         srand(time(NULL));
+         InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
+         InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+     }
 }
 
 void LoadGame()
 {
     Pause->Load();
+    Victory->Load();
     Background->Load();
+    GameOver->Load();
     Moon->Load();
     Mars->Load();
     Ship->Load();
@@ -69,6 +73,7 @@ void DestroyGame()
     Ship->Destroy();
     Mars->Destroy();
     Moon->Destroy();
+    GameOver->Destroy();
     Boss->Destroy();
     Background->Destroy();
     Bullets *ShotList = ShipShootList;
@@ -217,6 +222,14 @@ void DrawGame(){
     if (paused == true)
     {
         Pause->Draw();
+    }
+    if (lose == true)
+    {
+        GameOver->Draw();
+    }
+    if (victory == true)
+    {
+        Victory->Draw();
     }
     SDL_RenderPresent(Renderer);
 }

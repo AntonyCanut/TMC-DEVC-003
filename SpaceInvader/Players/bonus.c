@@ -24,6 +24,7 @@ void DrawBonus(){
 void UpdateBonus(){
 	Bonus->Position.y += 4;
     if (collision(Bonus->Position, Ship->Position) == 1){
+        Mix_PlayChannel(12, sonBonus, 0);
         Ship->Shield = 1;
 		Bonus->Position.x = 0;
     	Bonus->Position.y = 0;

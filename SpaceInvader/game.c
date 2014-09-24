@@ -45,6 +45,7 @@ void InitGame()
         InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
         InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     }
+    Ship->Shield =1;
 }
 
 void LoadGame()
@@ -95,12 +96,16 @@ void UpdateCollision()
             {
                 if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
                 {
+                    InvaderListTemp->Current->DeadInv=1;
                     ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
-                    InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
-                    return;
                 }
                 InvaderListTemp = InvaderListTemp->Next;
                 j++;
+            }
+        }else{
+            if (collision(ShotList->Current->Position, Ship->Position) == 1){
+                Ship->IsAlive=1;  
+                ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
             }
         }
         ShotList = ShotList->Next;
@@ -118,14 +123,18 @@ void UpdateGame()
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {
-
         ShotList->Current->Update(ShotList->Current);
         ShotList = ShotList->Next;
     }
     Invaders *InvaderListTemp = InvaderList;
     while (InvaderListTemp != NULL)
     {
-        InvaderListTemp->Current->Update(InvaderListTemp->Current);
+        if(InvaderListTemp->Current->DeadInv==6){
+            InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
+        }else{
+            InvaderListTemp->Current->Update(InvaderListTemp->Current);
+        }
+        InvaderListTemp->Current->Dead(InvaderListTemp->Current);
         InvaderListTemp = InvaderListTemp->Next;
     }
     UpdateCollision();

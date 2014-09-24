@@ -92,6 +92,7 @@ void UpdateInvader(InvaderStruct *Invader) {
             InvaderListTemp->Current->Shot(InvaderListTemp->Current);
         } 
     }
+    // Invader->Dead(Invader);
     countUpdateInvader += 2;
 }
 
@@ -102,21 +103,20 @@ void ShotInvader(InvaderStruct *Invader) {
 }
 
 void DeadInvader(InvaderStruct *Invader) {
-    if (countUpdateInvader % 5 == 0 && deadInvader == 1) {
+    if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 1) {
         Invader->Part.x = 1200;
-        deadInvader     = 2;
-    } else if (countUpdateInvader % 5 == 0 && deadInvader == 2) {
+        Invader->DeadInv     = 2;
+    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 2) {
         Invader->Part.x = 1800;
-        deadInvader     = 3;
-    } else if (countUpdateInvader % 5 == 0 && deadInvader == 3) {
+        Invader->DeadInv     = 3;
+    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 3) {
         Invader->Part.x = 2400;
-        deadInvader     = 4;
-    } else if (countUpdateInvader % 5 == 0 && deadInvader == 4) {
+        Invader->DeadInv     = 4;
+    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 4) {
         Invader->Part.x = 3000;
-        deadInvader     = 5;
-    } else if (countUpdateInvader % 5 == 0 && deadInvader == 5) {
-        deadInvader = 0;
-        Invader->Destroy(Invader);
+        Invader->DeadInv     = 5;
+    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 5) {
+        Invader->DeadInv = 6;
     }
 }
     
@@ -136,6 +136,7 @@ InvaderStruct *InitInvader(int x, int Line, int Sprite) {
 
     rightInvader = true;
     Invader->Sprite = Sprite;
+    Invader->DeadInv = 0;
 
     Invader->Part.x = 0;
     Invader->Part.y = 0;

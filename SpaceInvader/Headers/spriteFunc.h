@@ -146,6 +146,7 @@ struct sInvaderStruct {
     int IsAlive;
     int Speed;
     int Sprite;
+    int DeadInv;
     LoadContent2 Load;
     UnLoadContent2 UnLoad;
     Draw2 Draw;

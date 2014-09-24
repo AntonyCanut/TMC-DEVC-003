@@ -57,6 +57,7 @@ Invaders *DeleteElementInvaderList(Invaders *list, InvaderStruct *value)
     if(list->Current == value)
     {
         Invaders* tmp = list->Next;
+        list->Current->Destroy(list->Current);
         free(list);
         tmp = DeleteElementInvaderList(tmp, value);
         return tmp;

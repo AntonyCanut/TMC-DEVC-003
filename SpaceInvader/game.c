@@ -93,8 +93,8 @@ void UpdateCollision()
         {
             if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
             {
-                ShipShootList =  DeleteElementBulletList(ShipShootList, ShotList->Current);
-                InvaderList =  DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
+                ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
+                InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
                 return;
             }
             InvaderListTemp = InvaderListTemp->Next;

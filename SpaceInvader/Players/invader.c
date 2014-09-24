@@ -87,26 +87,15 @@ void UpdateInvader(InvaderStruct *Invader) {
         {
             InvaderListTemp = InvaderListTemp->Next;
         }
-        InvaderListTemp->Current->Shot(InvaderListTemp->Current);
+        // InvaderListTemp->Current->Shot(InvaderListTemp->Current);
     }
-    // if (countUpdateInvaderShip == 30)
-    // {
-    //     deadInvaderShip = 1;
-    // }
-    // DeadInvaderShip();
     countUpdateInvader += 2;
 }
 
 void ShotInvader(InvaderStruct *Invader) {
-        // /* On crée un nouvel élément */
     BulletStruct *MyBullet = InitBullet(&Invader->Position, 1, Invader->Sprite);
     ShipShootList = AddAtFrontBulletList(ShipShootList, MyBullet);
     Mix_PlayChannel(4, sonTir, 0);
-    //  On assigne la valeur au nouvel élément 
-    // newShoot->val = InitShipShoot();
- 
-    // /* On assigne l'adresse de l'élément suivant au nouvel élément */
-    // newShoot->nxt = ShipShootList;
 }
 
 void DeadInvader(InvaderStruct *Invader) {

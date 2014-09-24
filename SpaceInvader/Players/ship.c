@@ -72,15 +72,8 @@ void UpdateInputShip(){
 }
 
 void ShotShip(){
-    // /* On crée un nouvel élément */
     BulletStruct *MyBullet = InitBullet(&Ship->Position, 0, 0);
     ShipShootList = AddAtFrontBulletList(ShipShootList, MyBullet);
- 
-    //  On assigne la valeur au nouvel élément 
-    // newShoot->val = InitShipShoot();
- 
-    // /* On assigne l'adresse de l'élément suivant au nouvel élément */
-    // newShoot->nxt = ShipShootList;
 }
 
 void DeadShip(){

@@ -135,6 +135,24 @@ typedef struct sBossStruct {
     Destroy Destroy;
 } BossStruct;
 
+typedef struct sBossBulletStruct {
+    SDL_Texture *Texture;
+    SDL_Rect PositionHead;
+    SDL_Rect PositionBody;
+    SDL_Rect PositionTail;
+    SDL_Rect PartHead;
+    SDL_Rect PartBody;
+    SDL_Rect PartTail;// gestion des sprites
+    int IsAlive;
+    int Speed;
+    Uint32 ShootTime;
+    LoadContent Load;
+    UnLoadContent UnLoad;
+    Draw Draw;
+    Update Update;
+    Destroy Destroy;
+} BossBulletStruct;
+
 typedef struct sBossLazer {
     SDL_Texture *Texture;
     SDL_Rect Position;

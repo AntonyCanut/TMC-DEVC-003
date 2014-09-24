@@ -69,6 +69,7 @@ LifeStruct *Life;
 BonusStruct *Bonus;
 Bullets *ShipShootList;
 Invaders *InvaderList;
+BossBulletStruct *BossBullet;
 
 void DestroyMain();
 void InitGame();
@@ -89,6 +90,7 @@ void InitLayout();
 void InitShip();
 void InitBoss();
 void InitBonus();
+void InitBossBullet();
 BulletStruct *InitBullet(SDL_Rect *Canon, int Direction, int Sprite);
 void InitLife();
 InvaderStruct *InitInvader(int x, int Line, int Sprite);

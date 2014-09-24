@@ -24,11 +24,11 @@ void DrawBoss(){
 
 void UpdateBoss(){
 
-    if (Boss->Shoot==0)
+    if (Boss->Shoot<=0)
     {
         if(countUpdateBoss%17==0 && Boss->Part.x == 0){
             Boss->Part.x = 1200;
-        }else if(countUpdateBoss%17==0 &&Boss->Part.x == 1200){
+        }else if(countUpdateBoss%17==0 && Boss->Part.x == 1200){
             Boss->Part.x = 0;
         }
         if (countUpdateBoss % 2 == 0) {
@@ -48,9 +48,10 @@ void UpdateBoss(){
                 }
             }
         }
-        if (countUpdateBoss % 2 == 0 && random_number(0, 5)==2 && ((Boss->Position.x + 110) >= (Ship->Position.x - 200) || (Boss->Position.x + 110) <= (Ship->Position.x + 200)))
+        if (BossBullet->IsAlive <=0 && countUpdateBoss % 2 == 0 && random_number(0, 5)==2 && ((Boss->Position.x + 110) >= (Ship->Position.x - 200) || (Boss->Position.x + 110) <= (Ship->Position.x + 200)))
         {
-           // Boss->Shoot=1;
+           Boss->Shoot=1;
+           Boss->Shot();
         }
     }else{
         Boss->Part.x = 7200;
@@ -60,14 +61,8 @@ void UpdateBoss(){
 }
 
 void ShotBoss(){
-    // /* On crée un nouvel élément */
-    // BossShootElement* newShoot = (struct BossShootStruct *) malloc(sizeof(struct BossShootStruct) + 1);
-
-    //  On assigne la valeur au nouvel élément
-    // newShoot->val = InitBossShoot();
-
-    // /* On assigne l'adresse de l'élément suivant au nouvel élément */
-    // newShoot->nxt = BossShootList;
+    BossBullet->IsAlive=1;
+    BossBullet->ShootTime=SDL_GetTicks();
 }
 
 void DeadBoss(){

@@ -25,6 +25,7 @@ SRC = main.c \
 	  Players/life.c\
 	  Players/bonus.c\
 	  Players/boss.c\
+	  Players/bossBullet.c\
 
 RM = rm -rf
 NAME = SpaceInvader

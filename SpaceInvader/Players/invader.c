@@ -87,7 +87,10 @@ void UpdateInvader(InvaderStruct *Invader) {
         {
             InvaderListTemp = InvaderListTemp->Next;
         }
-        // InvaderListTemp->Current->Shot(InvaderListTemp->Current);
+        if (InvaderListTemp != NULL )
+        {
+            InvaderListTemp->Current->Shot(InvaderListTemp->Current);
+        } 
     }
     countUpdateInvader += 2;
 }

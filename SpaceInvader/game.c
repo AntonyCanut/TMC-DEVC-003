@@ -89,16 +89,19 @@ void UpdateCollision()
     int j = 0;
     while (ShotList != NULL)
     {
-        while (InvaderListTemp != NULL)
+        if (ShotList->Current->Direction != 1)
         {
-            if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
+            while (InvaderListTemp != NULL)
             {
-                ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
-                InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
-                return;
+                if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
+                {
+                    ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
+                    InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
+                    return;
+                }
+                InvaderListTemp = InvaderListTemp->Next;
+                j++;
             }
-            InvaderListTemp = InvaderListTemp->Next;
-            j++;
         }
         ShotList = ShotList->Next;
         i++;

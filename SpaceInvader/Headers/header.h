@@ -16,7 +16,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <time.h> 
+#include <time.h>
 
 
 // #include <SDL2.framework/Headers/SDL.h>
@@ -37,7 +37,7 @@ SDL_Renderer *Renderer;
 SDL_Event e;
 Uint32 timeTick;
 
-Mix_Music *musiqueBackground; 
+Mix_Music *musiqueBackground;
 Mix_Chunk *sonMenu;
 Mix_Chunk *sonTir;
 Mix_Chunk *sonExplosion;
@@ -53,7 +53,6 @@ bool isUp;
 bool paused;
 bool destroy;
 bool rightInvader;
-bool bonusAlive;
 
 PauseStruct *Pause;
 MoonStruct *Moon;
@@ -89,7 +88,7 @@ void InitMars();
 void InitLayout();
 void InitShip();
 void InitBoss();
-void InitBonus(int x, int y);
+void InitBonus();
 BulletStruct *InitBullet(SDL_Rect *Canon, int Direction, int Sprite);
 void InitLife();
 InvaderStruct *InitInvader(int x, int Line, int Sprite);

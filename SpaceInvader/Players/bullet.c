@@ -9,14 +9,14 @@
 #include "../Headers/header.h"
 int countUpdateShipShoot = 0;
 
-void LoadContentBullet(BulletStruct *Bullet){  
+void LoadContentBullet(BulletStruct *Bullet){
     switch (Bullet->Sprite) {
         case 0 :
          Bullet->Texture = IMG_LoadTexture(Renderer, "img/player/joueur_tire_300x480_P_120.png");
          break;
         case 1 :
          Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_tire_300x480_P_120.png");
-         break;    
+         break;
         case 2 :
          Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader2_tire_300x480_P_120.png");
          break;
@@ -26,7 +26,7 @@ void LoadContentBullet(BulletStruct *Bullet){
         case 4:
          Bullet->Texture = IMG_LoadTexture(Renderer, "img/invader/invader4_tire_300x480_P_120.png");
          break;
-    } 
+    }
 }
 
 void UnLoadContentBullet(BulletStruct *Bullet){
@@ -67,7 +67,7 @@ void UpdateBullet(BulletStruct *Bullet){
         Bullet->Position.y += 6;
         if(Bullet->Position.y <= 0)
             //DestroyShipShoot();
-        countUpdateShipShoot += 1;   
+        countUpdateShipShoot += 1;
     }
 }
 

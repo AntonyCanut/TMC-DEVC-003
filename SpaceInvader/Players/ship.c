@@ -115,7 +115,7 @@ void InitShip(){
     Ship->Position.y = SCREEN_HEIGHT - 200;
     Ship->Position.w = 70;
     Ship->Position.h = 70;
-    
+
     Ship->Part.x = 0;
     Ship->Part.y = 0;
     Ship->Part.w = 600;

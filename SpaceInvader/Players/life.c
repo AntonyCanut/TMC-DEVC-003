@@ -60,7 +60,7 @@ void InitLife(){
     Life->Position.y = 0;
     Life->Position.w = 70;
     Life->Position.h = 70;
-    
+
     Life->Part.x = 800;
     Life->Part.y = 0;
     Life->Part.w = 800;

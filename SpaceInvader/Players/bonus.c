@@ -23,6 +23,18 @@ void DrawBonus(){
 
 void UpdateBonus(){
 	Bonus->Position.y += 4;
+    if (collision(Bonus->Position, Ship->Position) == 1){
+        Ship->Shield = 1;
+		Bonus->Position.x = 0;
+    	Bonus->Position.y = 0;
+    	Bonus->IsAlive=0;
+    }
+	if (Bonus->Position.y > SCREEN_HEIGHT)
+	{
+		Bonus->Position.x = 0;
+    	Bonus->Position.y = 0;
+    	Bonus->IsAlive=0;
+	}
 }
 
 void DestroyBonus(){
@@ -30,17 +42,18 @@ void DestroyBonus(){
     free(Bonus);
 }
 
-void InitBonus(int x, int y){
+void InitBonus(){
     Bonus = malloc(sizeof(*Bonus));
-    Bonus->Position.x = x - 35;
-    Bonus->Position.y = y - 35;
+    Bonus->Position.x = 0;
+    Bonus->Position.y = 0;
     Bonus->Position.w = 70;
     Bonus->Position.h = 70;
-    
+
     Bonus->Part.x = 0;
     Bonus->Part.y = 0;
     Bonus->Part.w = 800;
     Bonus->Part.h = 800;
+    Bonus->IsAlive=0;
 
     Bonus->Draw = DrawBonus;
     Bonus->Update = UpdateBonus;

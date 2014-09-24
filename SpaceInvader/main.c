@@ -24,7 +24,7 @@ void InitMain()
     {
         printf("%s", Mix_GetError());
     }
-    
+
     musiqueBackground = Mix_LoadMUS("music/stage.mp3"); //Chargement de la musique
     Mix_AllocateChannels(32); //Allouer 32 canaux
     sonMenu = Mix_LoadWAV("music/menu.wav");
@@ -33,7 +33,7 @@ void InitMain()
     sonLaser = Mix_LoadWAV("sounds/lazor.wav");
     Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
 
-    //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois 
+    //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois
     InitMenu();
     InitTitre();
     InitPlay();
@@ -121,8 +121,8 @@ void UpdateTheMenuInput()
                     case SDLK_RETURN:
                         if (isUp == true)
                         {
-                            menu = false;  
-                            play = true;                          
+                            menu = false;
+                            play = true;
                         }
                         else
                         {
@@ -150,8 +150,8 @@ void UpdateTheMenuInput()
                     case SDLK_RETURN:
                         if (isUp == true)
                         {
-                            menu = false;  
-                            play = true;                          
+                            menu = false;
+                            play = true;
                         }
                         else
                         {
@@ -198,7 +198,7 @@ int main()
     InitGame();
     LoadGame();
     int isRunning = 1;
-   
+
 
     Mix_PlayChannel(1, sonMenu, -1);
     Mix_PlayMusic(musiqueBackground, -1);
@@ -215,7 +215,7 @@ int main()
             Mix_Volume(1, MIX_MAX_VOLUME);;
             UpdateTheMenuInput();
             UpdateTheMenu();
-            DrawTheMenu();  
+            DrawTheMenu();
             if (quit == true)
             {
                 isRunning = 0;

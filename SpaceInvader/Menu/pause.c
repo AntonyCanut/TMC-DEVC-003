@@ -20,11 +20,11 @@ void DrawPause(){
 }
 
 void UpdatePause(){
-    
+
 }
 
 void UpdateInputPause(){
-    
+
 }
 
 void DestroyPause(){

@@ -76,7 +76,7 @@ Invaders *ElementiInvaderList(Invaders *list, int item)
     {
         list = list->Next;
     }
- 	
+
  	if(list == NULL)
     {
         return (NULL);

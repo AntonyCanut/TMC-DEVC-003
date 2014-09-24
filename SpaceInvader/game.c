@@ -45,12 +45,12 @@ void InitGame()
         InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
         InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     }
-    bonusAlive = false;
+    InitBonus();
 }
 
 void LoadGame()
 {
-    Pause->Load();   
+    Pause->Load();
     Background->Load();
     Moon->Load();
     Mars->Load();
@@ -58,10 +58,7 @@ void LoadGame()
     Life->Load();
     Boss->Load();
     Layout->Load();
-    if (bonusAlive==true)
-    {
-        Bonus->Load();
-    }
+    Bonus->Load();
 }
 
 void DestroyGame()
@@ -84,10 +81,7 @@ void DestroyGame()
         InvaderListTemp->Current->Destroy(InvaderListTemp->Current);
         InvaderListTemp = InvaderListTemp->Next;
     }
-    if (bonusAlive==true)
-    {
-        Bonus->Destroy();
-    }
+    Bonus->Destroy();
 }
 
 void UpdateCollision()
@@ -104,10 +98,11 @@ void UpdateCollision()
             {
                 if (collision(ShotList->Current->Position, InvaderListTemp->Current->Position) == 1)
                 {
-                    if (bonusAlive==false && random_number(0, 10) == 5)
+                    if (Bonus->IsAlive==0 && Ship->Shield != 1 && random_number(0, 10) == 5)
                         {
-                            InitBonus(InvaderListTemp->Current->Position.x, InvaderListTemp->Current->Position.y);
-                            bonusAlive=true;
+                            Bonus->IsAlive=1;
+                            Bonus->Position.x = InvaderListTemp->Current->Position.x - 35;
+                            Bonus->Position.y = InvaderListTemp->Current->Position.y - 35;
                         }
                     InvaderListTemp->Current->DeadInv=1;
                     ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
@@ -117,7 +112,7 @@ void UpdateCollision()
             }
         }else{
             if (collision(ShotList->Current->Position, Ship->Position) == 1){
-                Ship->IsAlive=1;  
+                Ship->IsAlive=1;
                 ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
             }
         }
@@ -136,7 +131,11 @@ void UpdateGame()
     Bullets *ShotList = ShipShootList;
     while (ShotList != NULL)
     {
-        ShotList->Current->Update(ShotList->Current);
+        if( ShotList->Current->Position.y < 20 || ShotList->Current->Position.y > SCREEN_HEIGHT-20){
+            ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
+        }else{
+            ShotList->Current->Update(ShotList->Current);
+        }
         ShotList = ShotList->Next;
     }
     Invaders *InvaderListTemp = InvaderList;
@@ -153,7 +152,7 @@ void UpdateGame()
     UpdateCollision();
     Life->Update();
     Boss->Update();
-    if (bonusAlive==true)
+    if (Bonus->IsAlive > 0)
     {
         Bonus->Update();
     }
@@ -161,13 +160,13 @@ void UpdateGame()
 
 void DrawGame(){
     SDL_RenderClear(Renderer);
-    
+
     Layout->Draw();
     if (Ship->IsAlive < 6)
     {
         Ship->Draw();
     }
-    if (bonusAlive==true)
+    if (Bonus->IsAlive > 0)
     {
         Bonus->Draw();
     }

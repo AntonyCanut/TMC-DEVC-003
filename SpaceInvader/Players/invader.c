@@ -14,9 +14,9 @@ void LoadContentInvader(InvaderStruct *Invader) {
         case 4:
          Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader4_600x3600_P_600.png");
          break;
-        default: 
+        default:
          Invader->Texture = IMG_LoadTexture(Renderer, "img/invader/invader1_600x3600_P_600.png");
-    }    
+    }
 }
 
 void UnLoadContentInvader(InvaderStruct *Invader) {
@@ -89,7 +89,7 @@ void UpdateInvader(InvaderStruct *Invader) {
         if (InvaderListTemp != NULL )
         {
             InvaderListTemp->Current->Shot(InvaderListTemp->Current);
-        } 
+        }
     }
     // Invader->Dead(Invader);
     countUpdateInvader += 2;
@@ -118,7 +118,7 @@ void DeadInvader(InvaderStruct *Invader) {
         Invader->DeadInv = 6;
     }
 }
-    
+
 void DestroyInvader(InvaderStruct *Invader) {
     Invader->UnLoad(Invader);
     free(Invader);

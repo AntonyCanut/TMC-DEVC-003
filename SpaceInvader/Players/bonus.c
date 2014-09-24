@@ -47,4 +47,5 @@ void InitBonus(int x, int y){
     Bonus->Load = LoadContentBonus;
     Bonus->UnLoad = UnLoadContentBonus;
     Bonus->Destroy = DestroyBonus;
+    Bonus->Load();
 }

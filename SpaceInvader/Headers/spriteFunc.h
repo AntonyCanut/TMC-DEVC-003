@@ -125,6 +125,7 @@ typedef struct sBossStruct {
     int Speed;
     int Direction;
     int Shoot;
+    int Initialisation;
     LoadContent Load;
     UnLoadContent UnLoad;
     Draw Draw;

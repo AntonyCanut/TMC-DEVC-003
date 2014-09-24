@@ -21,30 +21,30 @@ void InitGame()
     ShipShootList = NULL;
     InvaderList = NULL;
 
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
     InitBonus();
 }
 
@@ -133,6 +133,11 @@ void UpdateCollision()
 
 void UpdateGame()
 {
+    if (Boss->Initialisation <= 0 && CountInvaderList(InvaderList) <= 0)
+    {
+        Boss->IsAlive = 0;
+        Boss->Initialisation = 1;
+    }
     Layout->Update();
     if (Ship->IsAlive < 10)
     {

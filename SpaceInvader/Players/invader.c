@@ -92,7 +92,7 @@ void UpdateInvader(InvaderStruct *Invader) {
     }
 
 
-    if (Invader->Position.y == 700)
+    if (Invader->Position.y >= Ship->Position.y)
     {
         lose = true;
     }

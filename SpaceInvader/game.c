@@ -43,12 +43,12 @@ void InitGame()
     //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
     //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     // }
-     for (int i = 0; i <= 6; i++)
-     {
-         srand(time(NULL));
-         InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
-         InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-     }
+    // for (int i = 0; i <= 6; i++)
+    // {
+    //     srand(time(NULL));
+    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
+    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    // }
 }
 
 void LoadGame()
@@ -141,7 +141,7 @@ void UpdateCollision()
 
 void UpdateGame()
 {
-    if (Boss->Initialisation <= 0 && CountInvaderList(InvaderList) <= 0)
+    if (Boss->Initialisation <= 0 && InvaderList == NULL)
     {
         isBoss = true;
         Boss->IsAlive = 0;

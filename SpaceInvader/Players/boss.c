@@ -9,6 +9,7 @@
 #include "../Headers/header.h"
 
 int countUpdateBoss = 0;
+bool tir;
 
 void LoadContentBoss(){
     Boss->Texture = IMG_LoadTexture(Renderer, "img/boss/boss2_1200x8400_P_1200.png");
@@ -23,7 +24,6 @@ void DrawBoss(){
 }
 
 void UpdateBoss(){
-
     if (Boss->Shoot<=0)
     {
         if(countUpdateBoss%17==0 && Boss->Part.x == 0){
@@ -54,9 +54,19 @@ void UpdateBoss(){
 
            Boss->Shot();
            Mix_PlayChannel(21, sonLaser, 0);
+           tir = true;
         }
     }else{
         Boss->Part.x = 7200;
+    }
+    if (BossBullet->IsAlive <= 0)
+    {
+        if (tir == true)
+        {
+            Boss->Part.x = 0;
+            countUpdateBoss = 0;
+            tir = false;
+        }
     }
     Boss->Dead();
     countUpdateBoss+=1;
@@ -83,6 +93,7 @@ void DeadBoss(){
     }else if(countUpdateBoss%5==0 && Boss->IsAlive == 5){
         Boss->Life -= 1;
         if(Boss->Life <= 0){
+            Mix_PlayChannel(27, sonEndBoss, 0);
             Boss->IsAlive=10;
             victory = true;
         }else{
@@ -110,10 +121,10 @@ void InitBoss(){
     Boss->Part.h = 1200;
     Boss->IsAlive = 10;
     Boss->Initialisation = 0;
-    Boss->Life = 30;
+    Boss->Life = 1;
     Boss->Direction=0;
     Boss->Shoot=0;
-
+    tir = false;
     Boss->Draw = DrawBoss;
     Boss->Update = UpdateBoss;
     Boss->Shot = ShotBoss;

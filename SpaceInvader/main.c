@@ -35,6 +35,7 @@ void InitMain()
     sonLaser = Mix_LoadWAV("sounds/lazor.wav");
     sonBoss = Mix_LoadWAV("music/boss_stage.wav");
     sonBonus = Mix_LoadWAV("sounds/bonus.wav");
+    sonEndBoss = Mix_LoadWAV("sounds/endBoss.wav");
     Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
     Mix_Volume(15, 0);
 

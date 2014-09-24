@@ -101,8 +101,8 @@ void UpdateCollision()
                     if (Bonus->IsAlive == 0 && Ship->Shield != 1 && random_number(0, 10) == 5)
                         {
                             Bonus->IsAlive=1;
-                            Bonus->Position.x = InvaderListTemp->Current->Position.x - 35;
-                            Bonus->Position.y = InvaderListTemp->Current->Position.y - 35;
+                            Bonus->Position.x = InvaderListTemp->Current->Position.x + 35;
+                            Bonus->Position.y = InvaderListTemp->Current->Position.y + 35;
                         }
                     InvaderListTemp->Current->DeadInv=1;
                     ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
@@ -111,6 +111,12 @@ void UpdateCollision()
                 j++;
             }
             if ( Boss->IsAlive == 0 && collision(ShotList->Current->Position, Boss->Position) == 1){
+                if (Bonus->IsAlive == 0 && Ship->Shield != 1 && random_number(0, 5) == 2)
+                        {
+                            Bonus->IsAlive=1;
+                            Bonus->Position.x = Boss->Position.x + 110;
+                            Bonus->Position.y = Boss->Position.y + 110;
+                        }
                 Boss->IsAlive=1;
                 ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
             }

@@ -31,7 +31,8 @@ void UpdateShip(){
         Ship->Part.x = 3000;
         Ship->Part.h = 800;
         Ship->Part.w = 800;
-    }else if (Ship->IsAlive == 0 && Ship->Shield == 0)
+    }
+    else if (Ship->IsAlive == 0 && Ship->Shield == 0)
     {
         Ship->Position.w = 70;
         Ship->Position.h = 70;
@@ -42,6 +43,7 @@ void UpdateShip(){
 
     if(countUpdateShip%5==0 && Ship->IsAlive == 6){
         Ship->IsAlive = 0;
+        Mix_PlayChannel(7, sonExplosion, 0);
     }
 
     Ship->Dead();
@@ -67,7 +69,7 @@ void UpdateInputShip(){
     }
     if (shoot==true && (SDL_GetTicks() - ShootTmp) > 300){
         Ship->Shot();
-        Mix_PlayChannel(4, sonTir, 0);
+        Mix_PlayChannel(8, sonTir, 0);
     }
 }
 
@@ -77,6 +79,7 @@ void ShotShip(){
 }
 
 void DeadShip(){
+
     if ( Ship->Shield == 1 && Ship->IsAlive == 1 )
     {
         Ship->Shield = 0;

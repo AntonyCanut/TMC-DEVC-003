@@ -138,6 +138,7 @@ void UpdateGame()
 {
     if (Boss->Initialisation <= 0 && CountInvaderList(InvaderList) <= 0)
     {
+        isBoss = true;
         Boss->IsAlive = 0;
         Boss->Initialisation = 1;
     }

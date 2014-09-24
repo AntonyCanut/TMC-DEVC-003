@@ -120,6 +120,7 @@ void DeadInvader(InvaderStruct *Invader) {
 }
 
 void DestroyInvader(InvaderStruct *Invader) {
+    Mix_PlayChannel(6, sonExplosion, 0);
     Invader->UnLoad(Invader);
     free(Invader);
 }

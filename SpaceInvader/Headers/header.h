@@ -39,9 +39,11 @@ Uint32 timeTick;
 
 Mix_Music *musiqueBackground;
 Mix_Chunk *sonMenu;
+Mix_Chunk *sonBoss;
 Mix_Chunk *sonTir;
 Mix_Chunk *sonExplosion;
 Mix_Chunk *sonLaser;
+Mix_Chunk *sonBonus;
 
 bool right;
 bool left;
@@ -53,6 +55,8 @@ bool isUp;
 bool paused;
 bool destroy;
 bool rightInvader;
+bool isBoss;
+bool pausedMusic;
 
 PauseStruct *Pause;
 MoonStruct *Moon;

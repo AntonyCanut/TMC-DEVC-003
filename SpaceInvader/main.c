@@ -31,7 +31,10 @@ void InitMain()
     sonTir = Mix_LoadWAV("sounds/tirShip.wav");
     sonExplosion = Mix_LoadWAV("sounds/explosionShip.wav");
     sonLaser = Mix_LoadWAV("sounds/lazor.wav");
+    sonBoss = Mix_LoadWAV("music/boss_stage.wav");
+    sonBonus = Mix_LoadWAV("sounds/bonus.wav");
     Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
+    Mix_Volume(15, 0);
 
     //Mix_PlayChannel(2, sonBackground, 0); joue un son une fois
     InitMenu();
@@ -212,7 +215,8 @@ int main()
         {
             Mix_RewindMusic();
             Mix_PauseMusic();
-            Mix_Volume(1, MIX_MAX_VOLUME);;
+            Mix_Volume(1, MIX_MAX_VOLUME);
+            Mix_Volume(15, 0);
             UpdateTheMenuInput();
             UpdateTheMenu();
             DrawTheMenu();
@@ -238,10 +242,18 @@ int main()
         }
         else
         {
-            Mix_Volume(1, 0);
-            if(Mix_PausedMusic() == 1)//Si la musique est en pause
+            if (isBoss == true)
+            {
+                Mix_PauseMusic();
+                Mix_PlayChannel(15, sonBoss, -1);
+                Mix_Volume(15, MIX_MAX_VOLUME);
+                pausedMusic = true;
+                isBoss = false;
+            }
+            if(Mix_PausedMusic() == 1 && pausedMusic == false)//Si la musique est en pause
             {
                 Mix_ResumeMusic(); //Reprendre la musique
+                Mix_Volume(1, 0);
             }
             UpdateGame();
             UpdateGameInput();

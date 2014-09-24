@@ -107,7 +107,7 @@ void InitBoss(){
     Boss->Part.h = 1200;
     Boss->IsAlive = 10;
     Boss->Initialisation = 0;
-    Boss->Life = 20;
+    Boss->Life = 30;
     Boss->Direction=0;
     Boss->Shoot=0;
 

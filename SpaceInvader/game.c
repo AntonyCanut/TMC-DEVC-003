@@ -136,7 +136,7 @@ void UpdateCollision()
 
 void UpdateGame()
 {
-    if (Boss->Initialisation <= 0 && CountInvaderList(InvaderList) <= 0)
+    if (Boss->Initialisation <= 0 && InvaderList == NULL)
     {
         isBoss = true;
         Boss->IsAlive = 0;

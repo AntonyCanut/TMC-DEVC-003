@@ -9,6 +9,7 @@
 #include "../Headers/header.h"
 
 int countUpdateBoss = 0;
+bool tir;
 
 void LoadContentBoss(){
     Boss->Texture = IMG_LoadTexture(Renderer, "img/boss/boss2_1200x8400_P_1200.png");
@@ -23,7 +24,6 @@ void DrawBoss(){
 }
 
 void UpdateBoss(){
-
     if (Boss->Shoot<=0)
     {
         if(countUpdateBoss%17==0 && Boss->Part.x == 0){
@@ -52,9 +52,19 @@ void UpdateBoss(){
         {
            Boss->Shoot=1;
            Boss->Shot();
+           tir = true;
         }
     }else{
         Boss->Part.x = 7200;
+    }
+    if (BossBullet->IsAlive <= 0)
+    {
+        if (tir == true)
+        {
+            Boss->Part.x = 0;
+            countUpdateBoss = 0;
+            tir = false;
+        }
     }
     Boss->Dead();
     countUpdateBoss+=1;
@@ -110,7 +120,7 @@ void InitBoss(){
     Boss->Life = 30;
     Boss->Direction=0;
     Boss->Shoot=0;
-
+    tir = false;
     Boss->Draw = DrawBoss;
     Boss->Update = UpdateBoss;
     Boss->Shot = ShotBoss;

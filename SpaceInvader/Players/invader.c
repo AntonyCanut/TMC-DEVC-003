@@ -1,7 +1,6 @@
 #include "../Headers/header.h"
 
 int countUpdateInvader = 0;
-int deadInvader        = 0;
 
 void LoadContentInvader(InvaderStruct *Invader) {
     switch (Invader->Sprite) {
@@ -108,20 +107,20 @@ void ShotInvader(InvaderStruct *Invader) {
 }
 
 void DeadInvader(InvaderStruct *Invader) {
-    if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 1) {
+    if (countUpdateInvader % 5 == 0 && Invader->IsAlive == 1) {
         Invader->Part.x = 1200;
-        Invader->DeadInv     = 2;
-    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 2) {
+        Invader->IsAlive = 2;
+    } else if (countUpdateInvader % 5 == 0 && Invader->IsAlive == 2) {
         Invader->Part.x = 1800;
-        Invader->DeadInv     = 3;
-    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 3) {
+        Invader->IsAlive = 3;
+    } else if (countUpdateInvader % 5 == 0 && Invader->IsAlive == 3) {
         Invader->Part.x = 2400;
-        Invader->DeadInv     = 4;
-    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 4) {
+        Invader->IsAlive = 4;
+    } else if (countUpdateInvader % 5 == 0 && Invader->IsAlive == 4) {
         Invader->Part.x = 3000;
-        Invader->DeadInv     = 5;
-    } else if (countUpdateInvader % 5 == 0 && Invader->DeadInv == 5) {
-        Invader->DeadInv = 6;
+        Invader->IsAlive = 5;
+    } else if (countUpdateInvader % 5 == 0 && Invader->IsAlive == 5) {
+        Invader->IsAlive = 6;
     }
 }
 
@@ -142,7 +141,7 @@ InvaderStruct *InitInvader(int x, int Line, int Sprite) {
 
     rightInvader = true;
     Invader->Sprite = Sprite;
-    Invader->DeadInv = 0;
+    Invader->IsAlive = 0;
 
     Invader->Part.x = 0;
     Invader->Part.y = 0;

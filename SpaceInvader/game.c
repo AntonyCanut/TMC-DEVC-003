@@ -25,30 +25,34 @@ void InitGame()
     ShipShootList = NULL;
     InvaderList = NULL;
 
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
-    //    InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
-    // for (int i = 0; i <= 6; i++)
-    // {
-    //     srand(time(NULL));
-    //     InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
-    //     InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
-    // }
+    right = false;
+    left = false;
+    shoot = false;
+
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
+       InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 1 , 3);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 2 , 2);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
+    for (int i = 0; i <= 6; i++)
+    {
+        srand(time(NULL));
+        InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 3 , 1);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+    }
 }
 
 void LoadGame()
@@ -112,7 +116,7 @@ void UpdateCollision()
                             Bonus->Position.x = InvaderListTemp->Current->Position.x + 35;
                             Bonus->Position.y = InvaderListTemp->Current->Position.y + 35;
                         }
-                    InvaderListTemp->Current->DeadInv=1;
+                    InvaderListTemp->Current->IsAlive=1;
                     ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
                 }
                 InvaderListTemp = InvaderListTemp->Next;
@@ -141,6 +145,7 @@ void UpdateCollision()
 
 void UpdateGame()
 {
+    UpdateCollision();
     if (Boss->Initialisation <= 0 && InvaderList == NULL)
     {
         isBoss = true;
@@ -165,7 +170,7 @@ void UpdateGame()
     Invaders *InvaderListTemp = InvaderList;
     while (InvaderListTemp != NULL)
     {
-        if(InvaderListTemp->Current->DeadInv==6){
+        if(InvaderListTemp->Current->IsAlive>=6){
             InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
         }else{
             InvaderListTemp->Current->Update(InvaderListTemp->Current);
@@ -173,7 +178,6 @@ void UpdateGame()
         InvaderListTemp->Current->Dead(InvaderListTemp->Current);
         InvaderListTemp = InvaderListTemp->Next;
     }
-    UpdateCollision();
     Life->Update();
     if (Boss->IsAlive <10)
     {

@@ -33,7 +33,7 @@ void InitGame()
     {
         srand(time(NULL));
         InvaderStruct *MyInvader = InitInvader(11 + (80 * i), 0 , 4);
-       InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
+        InvaderList = AddAtFrontInvaderList(InvaderList, MyInvader);
     }
     for (int i = 0; i <= 6; i++)
     {
@@ -157,26 +157,26 @@ void UpdateGame()
     {
         Ship->Update();
     }
-    Bullets *ShotList = ShipShootList;
-    while (ShotList != NULL)
+    Bullets *ShotListUp = ShipShootList;
+    while (ShotListUp != NULL)
     {
-        if( ShotList->Current->Position.y < 20 || ShotList->Current->Position.y > SCREEN_HEIGHT-20){
-            ShipShootList = DeleteElementBulletList(ShipShootList, ShotList->Current);
+        if( ShotListUp->Current->Position.y < 20 || ShotListUp->Current->Position.y > SCREEN_HEIGHT-20){
+            ShipShootList = DeleteElementBulletList(ShipShootList, ShotListUp->Current);
         }else{
-            ShotList->Current->Update(ShotList->Current);
+            ShotListUp->Current->Update(ShotListUp->Current);
         }
-        ShotList = ShotList->Next;
+        ShotListUp = ShotListUp->Next;
     }
-    Invaders *InvaderListTemp = InvaderList;
-    while (InvaderListTemp != NULL)
+    Invaders *InvaderListTempUp = InvaderList;
+    while (InvaderListTempUp != NULL)
     {
-        if(InvaderListTemp->Current->IsAlive>=6){
-            InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTemp->Current);
+        if(InvaderListTempUp->Current->IsAlive>=6){
+            InvaderList = DeleteElementInvaderList(InvaderList, InvaderListTempUp->Current);
         }else{
-            InvaderListTemp->Current->Update(InvaderListTemp->Current);
+            InvaderListTempUp->Current->Update(InvaderListTempUp->Current);
         }
-        InvaderListTemp->Current->Dead(InvaderListTemp->Current);
-        InvaderListTemp = InvaderListTemp->Next;
+        InvaderListTempUp->Current->Dead(InvaderListTempUp->Current);
+        InvaderListTempUp = InvaderListTempUp->Next;
     }
     Life->Update();
     if (Boss->IsAlive <10)
@@ -206,18 +206,18 @@ void DrawGame(){
     {
         BossBullet->Draw();
     }
-    Bullets *ShotList = ShipShootList;
-    while (ShotList != NULL)
+    Bullets *ShotListDraw = ShipShootList;
+    while (ShotListDraw != NULL)
     {
 
-        ShotList->Current->Draw(ShotList->Current);
-        ShotList = ShotList->Next;
+        ShotListDraw->Current->Draw(ShotListDraw->Current);
+        ShotListDraw = ShotListDraw->Next;
     }
-    Invaders *InvaderListTemp = InvaderList;
-    while (InvaderListTemp != NULL)
+    Invaders *InvaderListTempDraw = InvaderList;
+    while (InvaderListTempDraw != NULL)
     {
-        InvaderListTemp->Current->Draw(InvaderListTemp->Current);
-        InvaderListTemp = InvaderListTemp->Next;
+        InvaderListTempDraw->Current->Draw(InvaderListTempDraw->Current);
+        InvaderListTempDraw = InvaderListTempDraw->Next;
     }
     Life->Draw();
     if (Boss->IsAlive <10){

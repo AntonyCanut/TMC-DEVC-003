@@ -58,14 +58,14 @@ void UpdateInputShip(){
     }else if( Ship->Position.x >= 10 && left == true){
         Ship->Position.x -= 5;
     }
-    Bullets *ShotList = ShipShootList;
-    while (ShotList != NULL)
+    Bullets *ShotListInput = ShipShootList;
+    while (ShotListInput != NULL)
     {
-        if (ShotList->Current->Direction==0 && ShotList->Current->ShootTime > ShootTmp)
+        if (ShotListInput->Current->Direction==0 && ShotListInput->Current->ShootTime > ShootTmp)
         {
-            ShootTmp=ShotList->Current->ShootTime;
+            ShootTmp=ShotListInput->Current->ShootTime;
         }
-        ShotList = ShotList->Next;
+        ShotListInput = ShotListInput->Next;
     }
     if (shoot==true && (SDL_GetTicks() - ShootTmp) > 300){
         Ship->Shot();

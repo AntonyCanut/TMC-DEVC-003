@@ -67,26 +67,26 @@ void UpdateInvader(InvaderStruct *Invader) {
             }
         }
     }
-    Bullets *ShotList = ShipShootList;
-    while (ShotList != NULL)
+    Bullets *ShotListInv = ShipShootList;
+    while (ShotListInv != NULL)
     {
-        if (ShotList->Current->Direction==1 && ShotList->Current->ShootTime > ShootInvTmp)
+        if (ShotListInv->Current->Direction==1 && ShotListInv->Current->ShootTime > ShootInvTmp)
         {
-            ShootInvTmp=ShotList->Current->ShootTime;
+            ShootInvTmp=ShotListInv->Current->ShootTime;
         }
-        ShotList = ShotList->Next;
+        ShotListInv = ShotListInv->Next;
     }
     if ((SDL_GetTicks() - ShootInvTmp) > 700)
     {
         random = random_number(0, 24);
-        Invaders *InvaderListTemp = InvaderList;
-        for(i=0; i<=random && InvaderListTemp != NULL; i++)
+        Invaders *InvaderListTempInv = InvaderList;
+        for(i=0; i<=random && InvaderListTempInv != NULL; i++)
         {
-            InvaderListTemp = InvaderListTemp->Next;
+            InvaderListTempInv = InvaderListTempInv->Next;
         }
-        if (InvaderListTemp != NULL )
+        if (InvaderListTempInv != NULL )
         {
-            InvaderListTemp->Current->Shot(InvaderListTemp->Current);
+            InvaderListTempInv->Current->Shot(InvaderListTempInv->Current);
         }
     }
 

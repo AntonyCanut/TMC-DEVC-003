@@ -103,7 +103,10 @@ void UpdateInvader(InvaderStruct *Invader) {
 void ShotInvader(InvaderStruct *Invader) {
     BulletStruct *MyBullet = InitBullet(&Invader->Position, 1, Invader->Sprite);
     ShipShootList = AddAtFrontBulletList(ShipShootList, MyBullet);
-    Mix_PlayChannel(4, sonTir, 0);
+    if (lose == false)
+    { 
+        Mix_PlayChannel(4, sonTir, 0);
+    }
 }
 
 void DeadInvader(InvaderStruct *Invader) {

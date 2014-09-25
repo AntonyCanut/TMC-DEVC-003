@@ -45,6 +45,8 @@ Mix_Chunk *sonExplosion;
 Mix_Chunk *sonLaser;
 Mix_Chunk *sonBonus;
 Mix_Chunk *sonEndBoss;
+Mix_Chunk *sonGameOver;
+Mix_Chunk *sonVictory;
 
 bool right;
 bool left;

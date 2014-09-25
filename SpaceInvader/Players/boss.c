@@ -53,7 +53,10 @@ void UpdateBoss(){
            Boss->Shoot=1;
 
            Boss->Shot();
-           Mix_PlayChannel(21, sonLaser, 0);
+           if (lose == false)
+           {
+            Mix_PlayChannel(21, sonLaser, 0);
+           }
            tir = true;
         }
     }else{
@@ -96,6 +99,7 @@ void DeadBoss(){
             Mix_PlayChannel(27, sonEndBoss, 0);
             Boss->IsAlive=10;
             victory = true;
+            Mix_PlayChannel(26, sonVictory, -1);
         }else{
             Boss->Part.x = 0;
             Boss->IsAlive = 0;

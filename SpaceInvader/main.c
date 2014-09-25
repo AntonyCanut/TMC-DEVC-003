@@ -36,6 +36,8 @@ void InitMain()
     sonBoss = Mix_LoadWAV("music/boss_stage.wav");
     sonBonus = Mix_LoadWAV("sounds/bonus.wav");
     sonEndBoss = Mix_LoadWAV("sounds/endBoss.wav");
+    sonGameOver = Mix_LoadWAV("music/game_over.wav");
+    sonVictory = Mix_LoadWAV("music/win.wav");
     Mix_VolumeChunk(sonMenu, MIX_MAX_VOLUME);
     Mix_Volume(15, 0);
 
@@ -260,6 +262,8 @@ int main()
             Mix_PauseMusic();
             Mix_Volume(1, MIX_MAX_VOLUME);
             Mix_Volume(15, 0);
+            Mix_Volume(24, 0);
+            Mix_Volume(26, 0);
             UpdateTheMenuInput();
             UpdateTheMenu();
             DrawTheMenu();
@@ -285,13 +289,19 @@ int main()
         }
         else if (lose == true)
         {
+                Mix_Volume(24, MIX_MAX_VOLUME);
                 Mix_PauseMusic();
+                Mix_Volume(15, 0);
+                 UpdateGame();
                 UpdateTheEndInput();
                 DrawGame();
         }
         else if (victory == true)
         {
+                Mix_Volume(26, MIX_MAX_VOLUME);
                 Mix_PauseMusic();
+                Mix_Volume(15, 0);
+                 UpdateGame();
                 UpdateTheEndInput();
                 DrawGame();
         }
